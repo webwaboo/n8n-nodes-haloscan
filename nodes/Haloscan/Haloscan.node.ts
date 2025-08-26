@@ -85,9 +85,9 @@ export class Haloscan implements INodeType {
 			options: [
 				// Operation : GetaUserCredit
 				{
-					name: 'Get a User Credit',
-					value: 'GetaUserCredit',
-					action: 'Get a User Credit',
+					name: 'Get User Credit',
+					value: 'GetUserCredit',
+					action: 'Get user credit',
 					description: 'Retrieves the remaining credit for the current user',
 					routing: {
 						// set method and url for the endpoint
@@ -99,7 +99,7 @@ export class Haloscan implements INodeType {
 				},
 			],
 			//default option displayed
-			default: 'GetaUserCredit',
+			default: 'GetUserCredit',
 		},
 
 		// All operations for <keywordExplorer>
