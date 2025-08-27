@@ -431,21 +431,174 @@ export class Haloscan implements INodeType {
 		},
 
 
-		// parameter : projectId
+		// parameter : first_date
 		{
-			displayName: 'Project ID',
-			description: 'ID of the project',
+			displayName: 'First Date',
+			description: 'Date in YYYY-MM-DD format',
 			required: true,
-			name: 'projectId',
+			name: 'first_date',
 			type: 'string',
 			default: '',
 			displayOptions: {
 				show: {
 					//only show if you've selected :
-					resource: ['group'],
+					resource: ['keywordExplorer'],
+					operation: ['GetKeywordSERPPageEvolution'],
 				},
 			},
 		},
+		// parameter : first_date_optional
+		{
+			displayName: 'First Date',
+			description: 'Date in YYYY-MM-DD format. Only used if period = custom.',
+			name: 'first_date_optional',
+			type: 'string',
+			default: '',
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: ['CompareKeywordsSERP'],
+				},
+			},
+		},
+		// parameter : keyword
+		{
+			displayName: 'Keyword',
+			description: 'Requested keyword',
+			required: true,
+			name: 'keyword',
+			type: 'string',
+			default: '',
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: [
+						'CompareKeywordsSERP',
+						'FindKeywordSynonym',
+						'FindKeywordsMatch',
+						'FindRelatedKeyword',
+						'FindSimilarKeyword',
+						'GetKeywordHighlight',
+						'GetKeywordOverview',
+						'GetKeywordQuestion',
+						'GetKeywordAvailableDatesfromSERP',
+						'GetKeywordSERPPageEvolution'
+					],
+				},
+			},
+		},
+		// parameter : keyword_bulk
+		{
+			displayName: 'Keyword',
+			description: 'Requested keyword, ignored if keywords (bulk) is present',
+			name: 'keyword_bulk',
+			type: 'string',
+			default: '',
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: ['GetKeywordSiteStructure'],
+				},
+			},
+		},
+		// parameter : keyword_findKeyword
+		{
+			displayName: 'Keyword',
+			description: 'Requested keyword. Use to find a single keyword, or keywords to look for several keywords at once.',
+			name: 'keyword_findKeyword',
+			type: 'string',
+			default: '',
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: ['FindKeyword'],
+				},
+			},
+		},
+		// parameter : keywords
+		{
+			displayName: 'Keywords',
+			description: 'Array containing the requested keywords',
+			required: true,
+			name: 'keywords',
+			type: 'string',
+			default: [],
+			typeOptions: {
+				multipleValues: true
+			},
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: [
+						'GetKeywordDatainBulk',
+						'ScrapKeyword',
+					],
+				},
+			},
+		},
+		// parameter : keywords_findKeyword
+		{
+			displayName: 'Keywords',
+			description: 'Requested keywords, ignore if keyword is present',
+			name: 'keywords_findKeyword',
+			type: 'string',
+			default: '',
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: ['FindKeyword'],
+				},
+			},
+		},
+		// parameter : keywords_SiteStructure
+		{
+			displayName: 'Keywords',
+			description: 'Requested keywords in an array if requesting bulk data. Must contain at least 50 keywords.',
+			name: 'keywords_SiteStructure',
+			type: 'string',
+			default: [],
+			typeOptions: {
+				multipleValues: true
+			},
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: ['GetKeywordSiteStructure'],
+				},
+			},
+		},
+		// parameter : keywords_sources
+		{
+			displayName: 'Keyword Sources',
+			description: 'Which strategies to use to find keywords from input',
+			name: 'keywords_sources',
+			type: 'multiOptions',
+			options: [
+				{ "name": "Match", "value": "match" },
+				{ "name": "Serp", "value": "serp" },
+				{ "name": "Related", "value": "related" },
+				{ "name": "Highlights", "value": "highlights" },
+				{ "name": "Categories", "value": "categories" },
+				{ "name": "Questions", "value": "questions" }
+			],
+			default: ['serp','related'],
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: ['FindKeyword'],
+				},
+			},
+		},
+
+
 
 		// Optional/additional fields will go here, always in type collection
 		// you can have multiple "Additional Fields" each displayed for specific resource/operation
@@ -528,8 +681,67 @@ export class Haloscan implements INodeType {
 				},
 				//parameter : cpc_min
 				{
-					displayName: 'MinimumCPC',
+					displayName: 'Minimum CPC',
 					name: 'cpc_mmin',
+					type: 'number',
+					default: '',
+				},
+				//parameter : exclude
+				{
+					displayName: 'Exclude',
+					name: 'exclude',
+					description: 'Regular expression for keywords to be excluded',
+					type: 'string',
+					default: '',
+				},
+				//parameter : include
+				{
+					displayName: 'Include',
+					name: 'include',
+					description: 'Regular expression for keywords to be included',
+					type: 'string',
+					default: '',
+				},
+				//parameter : kgr_max
+				{
+					displayName: 'KGR Max',
+					name: 'kgr_max',
+					type: 'number',
+					default: '',
+				},
+				//parameter : kgr_min
+				{
+					displayName: 'KGR Min',
+					name: 'kgr_min',
+					type: 'number',
+					default: '',
+				},
+				//parameter : kvi_keep_na
+				{
+					displayName: 'KVI Keep NA',
+					name: 'kvi_keep_na',
+					type: 'boolean',
+					default: true,
+				},
+				//parameter : kvi_max
+				{
+					displayName: 'KVI Max',
+					name: 'kvi_max',
+					type: 'number',
+					default: '',
+				},
+				//parameter : kvi_min
+				{
+					displayName: 'KVI Min',
+					name: 'kvi_min',
+					type: 'number',
+					default: '',
+				},
+				//parameter : PARAM
+				{
+					displayName: 'PARAM',
+					description: 'Minimum competition value, between 0 and 1',
+					name: 'param',
 					type: 'number',
 					default: '',
 				},
@@ -540,7 +752,7 @@ export class Haloscan implements INodeType {
 		// additional fields for: FindaRelatedKeyword, GetaKeywordQuestion
 		{
 			displayName: 'Additional Fields',
-			name: 'additionalFields',
+			name: 'additionalFields2',
 			type: 'collection',
 			default: {},
 			placeholder: 'Add Field',
@@ -584,7 +796,7 @@ export class Haloscan implements INodeType {
 						GetKeywordSiteStructure*/
 		{
 			displayName: 'Additional Fields',
-			name: 'additionalFields',
+			name: 'additionalFields3',
 			type: 'collection',
 			default: {},
 			placeholder: 'Add Field',
@@ -616,7 +828,90 @@ export class Haloscan implements INodeType {
 			],
 		},
 
-		// additional fields for: TEMPLATE
+		/* additional fields for:
+			 		GetKeywordSiteStructure*/
+		{
+			displayName: 'Additional Fields',
+			name: 'additionalFields4',
+			type: 'collection',
+			default: {},
+			placeholder: 'Add Field',
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: ['GetKeywordSiteStructure'],
+				},
+			},
+			options: [
+				//parameter : granularity
+				{
+					displayName: 'Granularity',
+					description: 'Low granularity will lead to one big group, high granularity will lead to many smaller groups. For reference, Values used by Haloscan\'s UI values are: 0.001 (insufficient), 0.01 (very low), 0.05 (low), 0.1 (mild), 0.25 (average), 0.67 (high), 1 (very high), 10 (excessive). Ignored if mode=manual',
+					name: 'granularity',
+					type: 'number',
+					default: 1,
+				},
+			],
+		},
+
+		/* additional fields for:
+			GetKeywordQuestion*/
+		{
+			displayName: 'Additional Fields',
+			name: 'additionalFields5',
+			type: 'collection',
+			default: {},
+			placeholder: 'Add Field',
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: ['GetKeywordQuestion'],
+				},
+			},
+			options: [
+				//parameter : keep_only_paa
+				{
+					displayName: 'Keep Only PAA',
+					description: 'Whether to include only PAA (People Also Ask) from google in the response',
+					name: 'keep_only_paa',
+					type: 'boolean',
+					default: true,
+				},
+			],
+		},
+
+
+		/* additional fields for:
+			 		FindKeyword*/
+		{
+			displayName: 'Additional Fields',
+			name: 'additionalFields6',
+			type: 'collection',
+			default: {},
+			placeholder: 'Add Field',
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: ['FindKeyword'],
+				},
+			},
+			options: [
+				//parameter : keep_seed
+				{
+					displayName: 'Keep Seed',
+					description: 'Whether to keep the input in the api\'s response',
+					name: 'keep_seed',
+					type: 'boolean',
+					default: true,
+				},
+			],
+		},
+
+		/* additional fields for:
+			 		TEMPLATE*/
 		{
 			displayName: 'Additional Fields',
 			name: 'additionalFields',
@@ -626,30 +921,18 @@ export class Haloscan implements INodeType {
 			displayOptions: {
 				show: {
 					//only show if you've selected :
-					resource: ['guide'],
-					operation: ['createGuide'],
+					resource: ['keywordExplorer'],
+					operation: ['GetKeywordSERPPageEvolution'],
 				},
 			},
 			options: [
-				// parameter : projectId optional
+				//parameter : PARAM
 				{
-					displayName: 'Project ID',
-					description: 'ID of the project',
-					name: 'projectIdOptional',
-					type: 'string',
+					displayName: 'PARAM',
+					description: 'Minimum competition value, between 0 and 1',
+					name: 'param',
+					type: 'number',
 					default: '',
-				},
-				// parameter : guideType
-				{
-					displayName: 'Type of Guide',
-					name: 'guideType',
-					type: 'options',
-					description: "Guide type (google by default)",
-					options :[
-						{name: 'Google', value: 'google'},
-						{name: 'Bing', value: 'bing'},
-					],
-					default:'google',
 				},
 			],
 		},
