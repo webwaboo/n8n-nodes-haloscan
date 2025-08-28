@@ -7,7 +7,7 @@ export class Haloscan implements INodeType {
 		//name of node for the system
 		name: 'haloscan',
 		//path to the icon
-		icon: 'file:Haloscan_logo.svg',
+		icon: 'file:haloscan_bleu.svg',
 		group: ['transform'],
 		version: 1,
 		subtitle: '={{$parameter["resource"] + ": " + $parameter["operation"]}}',
@@ -581,12 +581,12 @@ export class Haloscan implements INodeType {
 			name: 'keywords_sources',
 			type: 'multiOptions',
 			options: [
-				{ "name": "Match", "value": "match" },
-				{ "name": "Serp", "value": "serp" },
-				{ "name": "Related", "value": "related" },
-				{ "name": "Highlights", "value": "highlights" },
-				{ "name": "Categories", "value": "categories" },
-				{ "name": "Questions", "value": "questions" }
+				{ name: "Categories", value: "categories" },
+				{ name: "Highlights", value: "highlights" },
+				{ name: "Match", value: "match" },
+				{ name: "Questions", value: "questions" },
+				{ name: "Related", value: "related" },
+				{ name: "Serp", value: "serp" },
 			],
 			default: ['serp','related'],
 			displayOptions: {
@@ -594,6 +594,135 @@ export class Haloscan implements INodeType {
 					//only show if you've selected :
 					resource: ['keywordExplorer'],
 					operation: ['FindKeyword'],
+				},
+			},
+		},
+		// parameter : lang
+		{
+			displayName: 'Languages',
+			description: 'Only used in conjunction with "categories" in requested_data, the label field will be translated if a different language than english is requested. Original value is also present.',
+			name: 'lang',
+			type: 'options',
+			options: [
+				{ name: "French", value: "fr" },
+				{ name: "English", value: "en" },
+			],
+			default: 'en',
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: ['GetKeywordOverview'],
+				},
+			},
+		},
+		//parameter : lineCount
+		{
+			displayName: 'Line Count',
+			description: 'Max number of returned results',
+			name: 'lineCount',
+			type: 'number',
+			default: 20,
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: [
+						'FindKeyword',
+						'FindKeywordSynonym',
+						'FindKeywordsMatch',
+						'FindRelatedKeyword',
+						'FindSimilarKeyword',
+						'GetKeywordDatainBulk',
+						'GetKeywordHighlight',
+						'GetKeywordQuestion',
+					],
+				},
+			},
+		},
+		//parameter : manual_common_10
+		{
+			displayName: 'Manual Common 10',
+			description: 'In a manual grouping strategy, how many URLs should 2 keywords have in common in their top 10 to be in the same group',
+			name: 'manual_common_10',
+			type: 'number',
+			default: 2,
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: ['GetKeywordSiteStructure'],
+				},
+			},
+		},
+		//parameter : manual_common_100
+		{
+			displayName: 'Manual Common 100',
+			description: 'In a manual grouping strategy, how many URLs should 2 keywords have in common in their top 100 to be in the same group',
+			name: 'manual_common_100',
+			type: 'number',
+			default: 10,
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: ['GetKeywordSiteStructure'],
+				},
+			},
+		},
+		//parameter : mode
+		{
+			displayName: 'Mode',
+			description: 'Defines how groups will be made. Manual means that keywords will be grouped when they share at least manual_common_10 URLs in their last SERP top 10 AND at least manual_common_100 URLS in their last SERP top 100. Multi means that keywords will be automatically grouped (hierarchically) depending on their proximity on several modalities specified in multipartite_modes. You can also influence the attraction force with the granularity parameter.',
+			name: 'mode',
+			type: 'options',
+			options: [
+				{name: "Multi", value: "multi"},
+				{name: "Manual", value: "manual"}
+			],
+			default: 'multi',
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: ['GetKeywordSiteStructure'],
+				},
+			},
+		},
+		//parameter : multipartite_modes
+		{
+			displayName: 'Multipartite Modes',
+			description: 'Which sources of data should be used to build the multipartite graph. This parameter is ignored if mode≠multi.',
+			name: 'multipartite_modes',
+			type: 'multiOptions',
+			options: [
+				{name: "Categories", value: "categories"},
+				{name: "Highlights", value: "highlights"},
+				{name: "Ngram", value: "ngram"},
+				{name: "Related", value: "related"},
+				{name: "SERP", value: "serp"},
+			],
+			default: [],
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: ['GetKeywordSiteStructure'],
+				},
+			},
+		},
+		//parameter : neighbours_sample_max_size
+		{
+			displayName: 'Manual Common 100',
+			description: 'In a manual grouping strategy, how many URLs should 2 keywords have in common in their top 100 to be in the same group',
+			name: 'manual_common_100',
+			type: 'number',
+			default: 10,
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: ['GetKeywordSiteStructure'],
 				},
 			},
 		},
