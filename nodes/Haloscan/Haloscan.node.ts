@@ -130,7 +130,10 @@ export class Haloscan implements INodeType {
 							method: 'POST',
 							url: '=/keywords/serp/compare',
 							body: {
-
+								keyword: '={{$parameter.keyword}}',
+								period: '={{$parameter.period}}',
+								first_date: '={{$parameter.first_date_compare}}',
+								second_date: '={{$parameter.second_date_compare}}',
 							}
 						},
 					},
@@ -147,7 +150,30 @@ export class Haloscan implements INodeType {
 							method: 'POST',
 							url: '=/keywords/find',
 							body: {
-
+								allintitle_max: '={{$parameter.additionalFields_findKeyword.allintitle_max}}',
+								allintitle_min: '={{$parameter.additionalFields_findKeyword.allintitle_min}}',
+								competition_max: '={{$parameter.additionalFields_findKeyword.competition_max}}',
+								competition_min: '={{$parameter.additionalFields_findKeyword.competition_min}}',
+								cpc_max: '={{$parameter.additionalFields_findKeyword.cpc_max}}',
+								cpc_min: '={{$parameter.additionalFields_findKeyword.cpc_min}}',
+								keep_seed: '={{$parameter.keep_seed}}',
+								exact_match: '={{$parameter.exact_match}}',
+								exclude: '={{$parameter.additionalFields_findKeyword.exclude}}',
+								include: '={{$parameter.additionalFields_findKeyword.include}}',
+								keyword: '={{$parameter.keyword_findKeyword}}',
+								keywords: '={{$parameter.keywords_findKeyword}}',
+								keywords_sources: '={{$parameter.keywords_sources}}',
+								kgr_max: '={{$parameter.additionalFields_findKeyword.kgr_max}}',
+								kgr_min: '={{$parameter.additionalFields_findKeyword.kgr_min}}',
+								kvi_keep_na: '={{$parameter.additionalFields_findKeyword.kvi_keep_na}}',
+								kvi_max: '={{$parameter.additionalFields_findKeyword.kvi_max}}',
+								kvi_min: '={{$parameter.additionalFields_findKeyword.kvi_min}}',
+								lineCount: '={{$parameter.lineCount}}',
+								order: '={{$parameter.order}}',
+								order_by: '={{$parameter.order_by_findKeyword}}',
+								page: '={{$parameter.page}}',
+								volume_min: '={{$parameter.additionalFields_findKeyword.volume_min}}',
+								volume_max: '={{$parameter.additionalFields_findKeyword.volume_max}}',
 							}
 						},
 					},
@@ -155,7 +181,7 @@ export class Haloscan implements INodeType {
 				// Operation : FindKeywordSynonym
 				{
 					name: 'Find Keyword Synonym',
-					value: 'FindaKeywordSynonym',
+					value: 'FindKeywordSynonym',
 					action: 'Find keyword synonym',
 					description: 'Finds synonyms for a keyword',
 					routing: {
@@ -164,7 +190,29 @@ export class Haloscan implements INodeType {
 							method: 'POST',
 							url: '=/keywords/synonyms',
 							body: {
-
+								allintitle_max: '={{$parameter.additionalFields.allintitle_max}}',
+								allintitle_min: '={{$parameter.additionalFields.allintitle_min}}',
+								competition_max: '={{$parameter.additionalFields.competition_max}}',
+								competition_min: '={{$parameter.additionalFields.competition_min}}',
+								cpc_max: '={{$parameter.additionalFields.cpc_max}}',
+								cpc_min: '={{$parameter.additionalFields.cpc_min}}',
+								exact_match: '={{$parameter.exact_match}}',
+								exclude: '={{$parameter.additionalFields.exclude}}',
+								include: '={{$parameter.additionalFields.include}}',
+								keyword: '={{$parameter.keyword}}',
+								kgr_max: '={{$parameter.additionalFields.kgr_max}}',
+								kgr_min: '={{$parameter.additionalFields.kgr_min}}',
+								kvi_keep_na: '={{$parameter.additionalFields.kvi_keep_na}}',
+								kvi_max: '={{$parameter.additionalFields.kvi_max}}',
+								kvi_min: '={{$parameter.additionalFields.kvi_min}}',
+								lineCount: '={{$parameter.lineCount}}',
+								order: '={{$parameter.additionalFields.order}}',
+								order_by: '={{$parameter.order_by_findSynoMatch}}',
+								page: '={{$parameter.page}}',
+								volume_max: '={{$parameter.additionalFields.volume_max}}',
+								volume_min: '={{$parameter.additionalFields.volume_min}}',
+								word_count_max: '={{$parameter.additionalFields.word_count_max}}',
+								word_count_min: '={{$parameter.additionalFields.word_count_min}}',
 							}
 						},
 					},
@@ -181,29 +229,29 @@ export class Haloscan implements INodeType {
 							method: 'POST',
 							url: '=/keywords/match',
 							body: {
-								keyword: '={{$parameter.host}}',
-								lineCount: '={{$parameter.nameProject}}',
-								page: '={{$parameter.page}}',
-								order_by: '={{$parameter.order_by}}',
-								order: '={{$parameter.order}}',
+								allintitle_max: '={{$parameter.additionalFields.allintitle_max}}',
+								allintitle_min: '={{$parameter.additionalFields.allintitle_min}}',
+								competition_max: '={{$parameter.additionalFields.competition_max}}',
+								competition_min: '={{$parameter.additionalFields.competition_min}}',
+								cpc_max: '={{$parameter.additionalFields.cpc_max}}',
+								cpc_min: '={{$parameter.additionalFields.cpc_min}}',
 								exact_match: '={{$parameter.exact_match}}',
-								volume_min: '={{$parameter.volume_min}}',
-								volume_max: '={{$parameter.volume_max}}',
-								cpc_min: '={{$parameter.cpc_min}}',
-								cpc_max: '={{$parameter.cpc_max}}',
-								competition_min: '={{$parameter.competition_min}}',
-								competition_max: '={{$parameter.competition_max}}',
-								kgr_min: '={{$parameter.kgr_min}}',
-								kgr_max: '={{$parameter.kgr_max}}',
-								kvi_min: '={{$parameter.kvi_min}}',
-								kvi_max: '={{$parameter.kvi_max}}',
-								kvi_keep_na: '={{$parameter.kvi_keep_na}}',
-								allintitle_min: '={{$parameter.allintitle_min}}',
-								allintitle_max: '={{$parameter.allintitle_max}}',
-								word_count_min: '={{$parameter.word_count_min}}',
-								word_count_max: '={{$parameter.word_count_max}}',
-								include: '={{$parameter.include}}',
-								exclude: '={{$parameter.exclude}}',
+								exclude: '={{$parameter.additionalFields.exclude}}',
+								include: '={{$parameter.additionalFields.include}}',
+								keyword: '={{$parameter.keyword}}',
+								kgr_max: '={{$parameter.additionalFields.kgr_max}}',
+								kgr_min: '={{$parameter.additionalFields.kgr_min}}',
+								kvi_keep_na: '={{$parameter.additionalFields.kvi_keep_na}}',
+								kvi_max: '={{$parameter.additionalFields.kvi_max}}',
+								kvi_min: '={{$parameter.additionalFields.kvi_min}}',
+								lineCount: '={{$parameter.lineCount}}',
+								order: '={{$parameter.additionalFields.order}}',
+								order_by: '={{$parameter.order_by_findSynoMatch}}',
+								page: '={{$parameter.page}}',
+								volume_max: '={{$parameter.additionalFields.volume_max}}',
+								volume_min: '={{$parameter.additionalFields.volume_min}}',
+								word_count_max: '={{$parameter.additionalFields.word_count_max}}',
+								word_count_min: '={{$parameter.additionalFields.word_count_min}}',
 							}
 						},
 					},
@@ -220,7 +268,31 @@ export class Haloscan implements INodeType {
 							method: 'POST',
 							url: '=/keywords/related',
 							body: {
-
+								allintitle_max: '={{$parameter.additionalFields.allintitle_max}}',
+								allintitle_min: '={{$parameter.additionalFields.allintitle_min}}',
+								competition_max: '={{$parameter.additionalFields.competition_max}}',
+								competition_min: '={{$parameter.additionalFields.competition_min}}',
+								cpc_max: '={{$parameter.additionalFields.cpc_max}}',
+								cpc_min: '={{$parameter.additionalFields.cpc_min}}',
+								depth_max: '={{$parameter.depth_max}}',
+								depth_min: '={{$parameter.depth_min}}',
+								exact_match: '={{$parameter.exact_match}}',
+								exclude: '={{$parameter.additionalFields.exclude}}',
+								include: '={{$parameter.additionalFields.include}}',
+								keyword: '={{$parameter.keyword}}',
+								kgr_max: '={{$parameter.additionalFields.kgr_max}}',
+								kgr_min: '={{$parameter.additionalFields.kgr_min}}',
+								kvi_keep_na: '={{$parameter.additionalFields.kvi_keep_na}}',
+								kvi_max: '={{$parameter.additionalFields.kvi_max}}',
+								kvi_min: '={{$parameter.additionalFields.kvi_min}}',
+								lineCount: '={{$parameter.lineCount}}',
+								order: '={{$parameter.additionalFields.order}}',
+								order_by: '={{$parameter.order_by_findRelated}}',
+								page: '={{$parameter.page}}',
+								volume_max: '={{$parameter.additionalFields.volume_max}}',
+								volume_min: '={{$parameter.additionalFields.volume_min}}',
+								word_count_max: '={{$parameter.additionalFields.word_count_max}}',
+								word_count_min: '={{$parameter.additionalFields.word_count_min}}',
 							}
 						},
 					},
@@ -237,7 +309,34 @@ export class Haloscan implements INodeType {
 							method: 'POST',
 							url: '=/keywords/similar',
 							body: {
-
+								allintitle_max: '={{$parameter.additionalFields_findSimilar.allintitle_max}}',
+								allintitle_min: '={{$parameter.additionalFields_findSimilar.allintitle_min}}',
+								competition_max: '={{$parameter.additionalFields_findSimilar.competition_max}}',
+								competition_min: '={{$parameter.additionalFields_findSimilar.competition_min}}',
+								cpc_max: '={{$parameter.additionalFields_findSimilar.cpc_max}}',
+								cpc_min: '={{$parameter.additionalFields_findSimilar.cpc_min}}',
+								exclude: '={{$parameter.additionalFields_findSimilar.exclude}}',
+								include: '={{$parameter.additionalFields_findSimilar.include}}',
+								keyword: '={{$parameter.keyword}}',
+								kgr_max: '={{$parameter.additionalFields_findSimilar.kgr_max}}',
+								kgr_min: '={{$parameter.additionalFields_findSimilar.kgr_min}}',
+								kvi_keep_na: '={{$parameter.additionalFields_findSimilar.kvi_keep_na}}',
+								kvi_max: '={{$parameter.additionalFields_findSimilar.kvi_max}}',
+								kvi_min: '={{$parameter.additionalFields_findSimilar.kvi_min}}',
+								lineCount: '={{$parameter.lineCount}}',
+								order: '={{$parameter.additionalFields_findSimilar.order}}',
+								order_by: '={{$parameter.order_by_findSimilar}}',
+								p1_score_max: '={{$parameter.additionalFields_findSimilar.p1_score_max}}',
+								p1_score_min: '={{$parameter.additionalFields_findSimilar.p1_score_min}}',
+								page: '={{$parameter.page}}',
+								score_max: '={{$parameter.additionalFields_findSimilar.score_max}}',
+								score_min: '={{$parameter.additionalFields_findSimilar.score_min}}',
+								similarity_max: '={{$parameter.similarity_max}}',
+								similarity_min: '={{$parameter.similarity_min}}',
+								volume_max: '={{$parameter.additionalFields_findSimilar.volume_max}}',
+								volume_min: '={{$parameter.additionalFields_findSimilar.volume_min}}',
+								word_count_max: '={{$parameter.additionalFields_findSimilar.word_count_max}}',
+								word_count_min: '={{$parameter.additionalFields_findSimilar.word_count_min}}',
 							}
 						},
 					},
@@ -254,7 +353,29 @@ export class Haloscan implements INodeType {
 							method: 'POST',
 							url: '=/keywords/bulk',
 							body: {
-
+								allintitle_max: '={{$parameter.additionalFields.allintitle_max}}',
+								allintitle_min: '={{$parameter.additionalFields.allintitle_min}}',
+								competition_max: '={{$parameter.additionalFields.competition_max}}',
+								competition_min: '={{$parameter.additionalFields.competition_min}}',
+								cpc_max: '={{$parameter.additionalFields.cpc_max}}',
+								cpc_min: '={{$parameter.additionalFields.cpc_min}}',
+								exact_match: '={{$parameter.exact_match}}',
+								exclude: '={{$parameter.additionalFields.exclude}}',
+								include: '={{$parameter.additionalFields.include}}',
+								keywords: '={{$parameter.keywords}}',
+								kgr_max: '={{$parameter.additionalFields.kgr_max}}',
+								kgr_min: '={{$parameter.additionalFields.kgr_min}}',
+								kvi_keep_na: '={{$parameter.additionalFields.kvi_keep_na}}',
+								kvi_max: '={{$parameter.additionalFields.kvi_max}}',
+								kvi_min: '={{$parameter.additionalFields.kvi_min}}',
+								lineCount: '={{$parameter.lineCount}}',
+								order: '={{$parameter.additionalFields.order}}',
+								order_by: '={{$parameter.order_by_bulk}}',
+								page: '={{$parameter.page}}',
+								volume_max: '={{$parameter.additionalFields.volume_max}}',
+								volume_min: '={{$parameter.additionalFields.volume_min}}',
+								word_count_max: '={{$parameter.additionalFields.word_count_max}}',
+								word_count_min: '={{$parameter.additionalFields.word_count_min}}',
 							}
 						},
 					},
@@ -271,7 +392,31 @@ export class Haloscan implements INodeType {
 							method: 'POST',
 							url: '=/keywords/highlights',
 							body: {
-
+								allintitle_max: '={{$parameter.additionalFields.allintitle_max}}',
+								allintitle_min: '={{$parameter.additionalFields.allintitle_min}}',
+								competition_max: '={{$parameter.additionalFields.competition_max}}',
+								competition_min: '={{$parameter.additionalFields.competition_min}}',
+								cpc_max: '={{$parameter.additionalFields.cpc_max}}',
+								cpc_min: '={{$parameter.additionalFields.cpc_min}}',
+								exact_match: '={{$parameter.exact_match}}',
+								exclude: '={{$parameter.additionalFields.exclude}}',
+								include: '={{$parameter.additionalFields.include}}',
+								keyword: '={{$parameter.keyword}}',
+								kgr_max: '={{$parameter.additionalFields.kgr_max}}',
+								kgr_min: '={{$parameter.additionalFields.kgr_min}}',
+								kvi_keep_na: '={{$parameter.additionalFields.kvi_keep_na}}',
+								kvi_max: '={{$parameter.additionalFields.kvi_max}}',
+								kvi_min: '={{$parameter.additionalFields.kvi_min}}',
+								lineCount: '={{$parameter.lineCount}}',
+								order: '={{$parameter.additionalFields.order}}',
+								order_by: '={{$parameter.order_by_highlight}}',
+								page: '={{$parameter.page}}',
+								similarity_max: '={{$parameter.similarity_max}}',
+								similarity_min: '={{$parameter.similarity_min}}',
+								volume_max: '={{$parameter.additionalFields.volume_max}}',
+								volume_min: '={{$parameter.additionalFields.volume_min}}',
+								word_count_max: '={{$parameter.additionalFields.word_count_max}}',
+								word_count_min: '={{$parameter.additionalFields.word_count_min}}',
 							}
 						},
 					},
@@ -307,7 +452,33 @@ export class Haloscan implements INodeType {
 							method: 'POST',
 							url: '=/keywords/questions',
 							body: {
-
+								allintitle_max: '={{$parameter.additionalFields.allintitle_max}}',
+								allintitle_min: '={{$parameter.additionalFields.allintitle_min}}',
+								competition_max: '={{$parameter.additionalFields.competition_max}}',
+								competition_min: '={{$parameter.additionalFields.competition_min}}',
+								cpc_max: '={{$parameter.additionalFields.cpc_max}}',
+								cpc_min: '={{$parameter.additionalFields.cpc_min}}',
+								depth_max: '={{$parameter.depth_max}}',
+								depth_min: '={{$parameter.depth_min}}',
+								exact_match: '={{$parameter.exact_match}}',
+								exclude: '={{$parameter.additionalFields.exclude}}',
+								include: '={{$parameter.additionalFields.include}}',
+								keep_only_paa: '={{$parameter.keep_only_paa}}',
+								keyword: '={{$parameter.keyword}}',
+								kgr_max: '={{$parameter.additionalFields.kgr_max}}',
+								kgr_min: '={{$parameter.additionalFields.kgr_min}}',
+								kvi_keep_na: '={{$parameter.additionalFields.kvi_keep_na}}',
+								kvi_max: '={{$parameter.additionalFields.kvi_max}}',
+								kvi_min: '={{$parameter.additionalFields.kvi_min}}',
+								lineCount: '={{$parameter.lineCount}}',
+								order: '={{$parameter.additionalFields.order}}',
+								order_by: '={{$parameter.order_by_question}}',
+								page: '={{$parameter.page}}',
+								question_types: '={{$parameter.question_types}}',
+								volume_max: '={{$parameter.additionalFields.volume_max}}',
+								volume_min: '={{$parameter.additionalFields.volume_min}}',
+								word_count_max: '={{$parameter.additionalFields.word_count_max}}',
+								word_count_min: '={{$parameter.additionalFields.word_count_min}}',
 							}
 						},
 					},
@@ -324,7 +495,7 @@ export class Haloscan implements INodeType {
 							method: 'POST',
 							url: '=/keywords/serp/availableDates',
 							body: {
-
+								keyword: '={{$parameter.keyword}}',
 							}
 						},
 					},
@@ -341,6 +512,10 @@ export class Haloscan implements INodeType {
 							method: 'POST',
 							url: '=/keywords/serp/pageEvolution',
 							body: {
+								keyword: '={{$parameter.keyword}}',
+								first_date: '={{$parameter.first_date}}',
+								second_date: '={{$parameter.second_date}}',
+								url: '={{$parameter.url}}',
 
 							}
 						},
@@ -358,7 +533,16 @@ export class Haloscan implements INodeType {
 							method: 'POST',
 							url: '=/keywords/siteStructure',
 							body: {
-
+								keyword: '={{$parameter.keyword_siteStructure}}',
+								keywords: '={{$parameter.keywords_SiteStructure}}',
+								exact_match: '={{$parameter.exact_match}}',
+								neighbours_sources: '={{$parameter.neighbours_sources}}',
+								multipartite_modes: '={{$parameter.multipartite_modes}}',
+								neighbours_sample_max_size: '={{$parameter.neighbours_sample_max_size}}',
+								mode: '={{$parameter.mode}}',
+								granularity: '={{$parameter.granularity}}',
+								manual_common_10: '={{$parameter.manual_common_10}}',
+								manual_common_100: '={{$parameter.manual_common_100}}',
 							}
 						},
 					},
@@ -375,6 +559,7 @@ export class Haloscan implements INodeType {
 							method: 'POST',
 							url: '=/keywords/scrap',
 							body: {
+								keywords: '={{$parameter.keywords}}',
 
 							}
 						},
@@ -431,37 +616,8 @@ export class Haloscan implements INodeType {
 		},
 
 
-		// parameter : first_date
-		{
-			displayName: 'First Date',
-			description: 'Date in YYYY-MM-DD format',
-			required: true,
-			name: 'first_date',
-			type: 'string',
-			default: '',
-			displayOptions: {
-				show: {
-					//only show if you've selected :
-					resource: ['keywordExplorer'],
-					operation: ['GetKeywordSERPPageEvolution'],
-				},
-			},
-		},
-		// parameter : first_date_optional
-		{
-			displayName: 'First Date',
-			description: 'Date in YYYY-MM-DD format. Only used if period = custom.',
-			name: 'first_date_optional',
-			type: 'string',
-			default: '',
-			displayOptions: {
-				show: {
-					//only show if you've selected :
-					resource: ['keywordExplorer'],
-					operation: ['CompareKeywordsSERP'],
-				},
-			},
-		},
+
+
 		// parameter : keyword
 		{
 			displayName: 'Keyword',
@@ -484,16 +640,16 @@ export class Haloscan implements INodeType {
 						'GetKeywordOverview',
 						'GetKeywordQuestion',
 						'GetKeywordAvailableDatesfromSERP',
-						'GetKeywordSERPPageEvolution'
+						'GetKeywordSERPPageEvolution',
 					],
 				},
 			},
 		},
-		// parameter : keyword_bulk
+		// parameter : keyword_siteStructure
 		{
 			displayName: 'Keyword',
 			description: 'Requested keyword, ignored if keywords (bulk) is present',
-			name: 'keyword_bulk',
+			name: 'keyword_siteStructure',
 			type: 'string',
 			default: '',
 			displayOptions: {
@@ -597,10 +753,72 @@ export class Haloscan implements INodeType {
 				},
 			},
 		},
+		// parameter : first_date
+		{
+			displayName: 'First Date',
+			description: 'Date in YYYY-MM-DD format',
+			required: true,
+			name: 'first_date',
+			type: 'string',
+			default: '',
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: ['GetKeywordSERPPageEvolution'],
+				},
+			},
+		},
+		// parameter : first_date_compare
+		{
+			displayName: 'First Date',
+			description: 'Date in YYYY-MM-DD format. Only used if period = \'custom\'.',
+			name: 'first_date_compare',
+			type: 'string',
+			default: '',
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: ['CompareKeywordsSERP'],
+				},
+			},
+		},
+		// parameter : second_date
+		{
+			displayName: 'Second Date',
+			description: 'Date in YYYY-MM-DD format',
+			required: true,
+			name: 'second_date',
+			type: 'string',
+			default: '',
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: ['GetKeywordSERPPageEvolution'],
+				},
+			},
+		},
+		// parameter : second_date_compare
+		{
+			displayName: 'Second Date',
+			description: 'Date in YYYY-MM-DD format. Only used if period = \'custom\'.',
+			name: 'second_date_compare',
+			type: 'string',
+			default: '',
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: ['CompareKeywordsSERP'],
+				},
+			},
+		},
 		// parameter : lang
 		{
 			displayName: 'Languages',
-			description: 'Only used in conjunction with "categories" in requested_data, the label field will be translated if a different language than english is requested. Original value is also present.',
+			description: 'Only used in conjunction with "categories" in \'requested_data\', the label field will be translated if a different language than english is requested. Original value is also present.',
 			name: 'lang',
 			type: 'options',
 			options: [
@@ -616,7 +834,7 @@ export class Haloscan implements INodeType {
 				},
 			},
 		},
-		//parameter : lineCount
+		// parameter : lineCount
 		{
 			displayName: 'Line Count',
 			description: 'Max number of returned results',
@@ -640,7 +858,22 @@ export class Haloscan implements INodeType {
 				},
 			},
 		},
-		//parameter : manual_common_10
+		// parameter : granularity
+		{
+			displayName: 'Granularity',
+			description: 'Low granularity will lead to one big group, high granularity will lead to many smaller groups. For reference, Values used by Haloscan\'s UI values are: 0.001 (insufficient), 0.01 (very low), 0.05 (low), 0.1 (mild), 0.25 (average), 0.67 (high), 1 (very high), 10 (excessive). Ignored if mode=\'manual\'',
+			name: 'granularity',
+			type: 'number',
+			default: 1,
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: ['GetKeywordSiteStructure'],
+				},
+			},
+		},
+		// parameter : manual_common_10
 		{
 			displayName: 'Manual Common 10',
 			description: 'In a manual grouping strategy, how many URLs should 2 keywords have in common in their top 10 to be in the same group',
@@ -655,7 +888,7 @@ export class Haloscan implements INodeType {
 				},
 			},
 		},
-		//parameter : manual_common_100
+		// parameter : manual_common_100
 		{
 			displayName: 'Manual Common 100',
 			description: 'In a manual grouping strategy, how many URLs should 2 keywords have in common in their top 100 to be in the same group',
@@ -670,10 +903,10 @@ export class Haloscan implements INodeType {
 				},
 			},
 		},
-		//parameter : mode
+		// parameter : mode
 		{
 			displayName: 'Mode',
-			description: 'Defines how groups will be made. Manual means that keywords will be grouped when they share at least manual_common_10 URLs in their last SERP top 10 AND at least manual_common_100 URLS in their last SERP top 100. Multi means that keywords will be automatically grouped (hierarchically) depending on their proximity on several modalities specified in multipartite_modes. You can also influence the attraction force with the granularity parameter.',
+			description: 'Defines how groups will be made. Manual means that keywords will be grouped when they share at least \'manual_common_10\' URLs in their last SERP top 10 AND at least \'manual_common_100\' URLS in their last SERP top 100. Multi means that keywords will be automatically grouped (hierarchically) depending on their proximity on several modalities specified in \'multipartite_modes\'. You can also influence the attraction force with the \'granularity\' parameter.',
 			name: 'mode',
 			type: 'options',
 			options: [
@@ -689,7 +922,7 @@ export class Haloscan implements INodeType {
 				},
 			},
 		},
-		//parameter : multipartite_modes
+		// parameter : multipartite_modes
 		{
 			displayName: 'Multipartite Modes',
 			description: 'Which sources of data should be used to build the multipartite graph. This parameter is ignored if mode≠multi.',
@@ -711,13 +944,17 @@ export class Haloscan implements INodeType {
 				},
 			},
 		},
-		//parameter : neighbours_sample_max_size
+		// parameter : neighbours_sample_max_size
 		{
-			displayName: 'Manual Common 100',
-			description: 'In a manual grouping strategy, how many URLs should 2 keywords have in common in their top 100 to be in the same group',
-			name: 'manual_common_100',
+			displayName: 'Neighbours Sample Max Size',
+			description: 'Max number of returned results. Between 10 and 2000. Only used when requesting a single keyword.',
+			name: 'neighbours_sample_max_size',
 			type: 'number',
-			default: 10,
+			typeOptions: {
+						maxValue: 2000,
+						minValue: 10,
+					},
+			default: 1000,
 			displayOptions: {
 				show: {
 					//only show if you've selected :
@@ -726,26 +963,276 @@ export class Haloscan implements INodeType {
 				},
 			},
 		},
-
-
-
-		// Optional/additional fields will go here, always in type collection
-		// you can have multiple "Additional Fields" each displayed for specific resource/operation
-		/* additional fields for:
-						FindKeyword
-						FindKeywordSynonym
-						FindKeywordsMatch
-						FindRelatedKeyword
-						FindSimilarKeyword
-						GetKeywordDatainBulk
-						GetKeywordHighlight
-						GetKeywordQuestion*/
+		// parameter : neighbours_sources
 		{
-			displayName: 'Additional Fields',
-			name: 'additionalFields',
-			type: 'collection',
-			default: {},
-			placeholder: 'Add Field',
+			displayName: 'Neighbours Sources',
+			description: 'Which strategies should be used to find neighbours for keyword. (Ignored if keywords is used).',
+			name: 'neighbours_sources',
+			type: 'multiOptions',
+			options: [
+				{name: "Categories", value: "categories"},
+				{name: "Highlights", value: "highlights"},
+				{name: "Ngram", value: "ngram"},
+				{name: "Related", value: "related"},
+				{name: "SERP", value: "serp"},
+			],
+			default: [],
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: ['GetKeywordSiteStructure'],
+				},
+			},
+		},
+		// parameter : order_by_findKeyword
+		{
+			displayName: 'Order By',
+			description: 'Field used for sorting results. Default sorts by descending \'modality_count\'.',
+			name: 'order_by',
+			type: 'options',
+			options: [
+				{ name: "Allintitle", value: "allintitle" },
+				{ name: "Competition", value: "competition" },
+				{ name: "CPC", value: "cpc" },
+				{ name: "Default", value: "default" },
+				{ name: "Keyword", value: "keyword" },
+				{ name: "KGR", value: "kgr" },
+				{ name: "Volume", value: "volume" }
+			],
+			default: 'default',
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: [
+						'FindKeyword',
+					],
+				},
+			},
+		},
+		// parameter : order_by_findSynoMatch
+		{
+			displayName: 'Order By',
+			description: 'Field used for sorting results. Default sorts by descending volume.',
+			name: 'order_by_findSynoMatch',
+			type: 'options',
+			options: [
+				{ name: "Allintitle", value: "allintitle" },
+				{ name: "Competition", value: "competition" },
+				{ name: "CPC", value: "cpc" },
+				{ name: "Default", value: "default" },
+				{ name: "Keyword", value: "keyword" },
+				{ name: "KGR", value: "kgr" },
+				{ name: "Volume", value: "volume" }
+			],
+			default: 'default',
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: [
+						'FindKeywordSynonym',
+						'FindKeywordsMatch'
+					],
+				},
+			},
+		},
+		// parameter : order_by_findRelated
+		{
+			displayName: 'Order By',
+			description: 'Field used for sorting results. Default sorts by descending depth (absolute value).',
+			name: 'order_by_findRelated',
+			type: 'options',
+			options: [
+				{ name: "Allintitle", value: "allintitle" },
+				{ name: "Competition", value: "competition" },
+				{ name: "CPC", value: "cpc" },
+				{ name: "Default", value: "default" },
+				{ name: "Depth", value: "depth" },
+				{ name: "Keyword", value: "keyword" },
+				{ name: "KGR", value: "kgr" },
+				{ name: "Volume", value: "volume" }
+			],
+			default: 'default',
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: [
+						'FindRelatedKeyword',
+					],
+				},
+			},
+		},
+		// parameter : order_by_findSimilar
+		{
+			displayName: 'Order By',
+			description: 'Field used for sorting results. Default is by descending similarity.',
+			name: 'order_by_findSimilar',
+			type: 'options',
+			options: [
+				{ name: "Allintitle", value: "allintitle" },
+				{ name: "Competition", value: "competition" },
+				{ name: "CPC", value: "cpc" },
+				{ name: "Default", value: "default" },
+				{ name: "Keyword", value: "keyword" },
+				{ name: "KGR", value: "kgr" },
+				{ name: "Similarity", value: "similarity" },
+				{ name: "Volume", value: "volume" }
+			],
+			default: 'default',
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: [
+						'FindSimilarKeyword',
+					],
+				},
+			},
+		},
+		// parameter : order_by_bulk
+		{
+			displayName: 'Order By',
+			description: 'Field used for sorting results. Value "keep" preserves the original input order.',
+			name: 'order_by_bulk',
+			type: 'options',
+			options: [
+				{ name: "Allintitle", value: "allintitle" },
+				{ name: "Competition", value: "competition" },
+				{ name: "CPC", value: "cpc" },
+				{ name: "Keep", value: "keep" },
+				{ name: "Keyword", value: "keyword" },
+				{ name: "KGR", value: "kgr" },
+				{ name: "Volume", value: "volume" }
+			],
+			default: 'keep',
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: [
+						'GetKeywordDatainBulk',
+					],
+				},
+			},
+		},
+		// parameter : order_by_highlight
+		{
+			displayName: 'Order By',
+			description: 'Field used for sorting results. Default is by descending similarity.',
+			name: 'order_by_highlight',
+			type: 'options',
+			options: [
+				{ name: "Allintitle", value: "allintitle" },
+				{ name: "Competition", value: "competition" },
+				{ name: "CPC", value: "cpc" },
+				{ name: "Default", value: "default" },
+				{ name: "Keyword", value: "keyword" },
+				{ name: "KGR", value: "kgr" },
+				{ name: "Similarity", value: "similarity" },
+				{ name: "Volume", value: "volume" }
+			],
+			default: 'default',
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: [
+						'GetKeywordHighlight',
+					],
+				},
+			},
+		},
+		// parameter : order_by_question
+		{
+			displayName: 'Order By',
+			description: 'Field used for sorting results. Default sorts by descending depth (absolute value).',
+			name: 'order_by_highlight',
+			type: 'options',
+			options: [
+				{ name: "Allintitle", value: "allintitle" },
+				{ name: "Competition", value: "competition" },
+				{ name: "CPC", value: "cpc" },
+				{ name: "Default", value: "default" },
+				{ name: "Depth", value: "depth" },
+				{ name: "Keyword", value: "keyword" },
+				{ name: "KGR", value: "kgr" },
+				{ name: "Question Type", value: "question_type" },
+				{ name: "Volume", value: "volume" }
+			],
+			default: 'default',
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: [
+						'GetKeywordQuestion',
+					],
+				},
+			},
+		},
+		// parameter : exact_match
+		{
+			displayName: 'Exact Match',
+			description: 'Whether always ignore accents, punctuation, case, special characters, etc when FALSE. when matching the seed keyword.',
+			name: 'exact_match',
+			type: 'boolean',
+			default: true,
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: [
+						'FindKeyword',
+						'FindKeywordSynonym',
+						'FindKeywordsMatch',
+						'FindRelatedKeyword',
+						'GetKeywordDatainBulk',
+						'GetKeywordHighlight',
+						'GetKeywordQuestion',
+						'GetKeywordSiteStructure',
+					],
+				},
+			},
+		},
+		// parameter : keep_seed
+		{
+			displayName: 'Keep Seed',
+			description: 'Whether to keep the input in the api\'s response',
+			name: 'keep_seed',
+			type: 'boolean',
+			default: true,
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: ['FindKeyword'],
+				},
+			},
+		},
+		// parameter : keep_only_paa
+		{
+			displayName: 'Keep Only PAA',
+			description: 'Whether to include only PAA (People Also Ask) from google in the response',
+			name: 'keep_only_paa',
+			type: 'boolean',
+			default: true,
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: ['GetKeywordQuestion'],
+				},
+			},
+		},
+		// parameter : page
+		{
+			displayName: 'Page',
+			name: 'page',
+			type: 'number',
+			default: 1,
 			displayOptions: {
 				show: {
 					//only show if you've selected :
@@ -762,20 +1249,226 @@ export class Haloscan implements INodeType {
 					],
 				},
 			},
+		},
+		// parameter : period
+		{
+			displayName: 'Period',
+			description: 'The comparison period for SERPs. If custom is used, \'first_date\' and \'second_date\' must be provided and be dates where the requested keyword\'s SERP is available, which you can get by calling the keywords/serp/availableDates endpoint, or by calling this endpoint with another period first.',
+			required: true,
+			name: 'period',
+			type: 'options',
+			options: [
+				{ name: "1 Month", value: "1 month" },
+				{ name: "12 Months", value: "12 months" },
+				{ name: "3 Months", value: "3 months" },
+				{ name: "6 Months", value: "6 months" },
+				{ name: "Custom", value: "custom" }
+			],
+			default: '6 months',
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: [
+						'CompareKeywordsSERP',
+					],
+				},
+			},
+		},
+		// parameter : question_types
+		{
+			displayName: 'Question Types',
+			name: 'question_types',
+			type: 'multiOptions',
+			options: [
+				{ name: "Definition", value: "definition" },
+				{ name: "How", value: "how" },
+				{ name: "How Expensive", value: "how_expensive" },
+				{ name: "How Long", value: "how_long" },
+				{ name: "How Many", value: "how_many" },
+				{ name: "Unknown", value: "unknown" },
+				{ name: "What", value: "what" },
+				{ name: "When", value: "when" },
+				{ name: "Where", value: "where" },
+				{ name: "Who", value: "who" },
+				{ name: "Why", value: "why" },
+				{ name: "Yes/No", value: "yesno" }
+			],
+			default: [],
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: [
+						'GetKeywordQuestion',
+					],
+				},
+			},
+		},
+		// parameter : requested_data
+		{
+			displayName: 'Requested Data',
+			description: 'Requested data for the given keyword, corresponding to the content of different sections of the haloscan overview page. Data will be sent back in a field with the same name in the response, except for the metrics that are split into \'seo_metrics\' and \'ads_metrics\' in the response.',
+			required: true,
+			name: 'requested_data',
+			type: 'multiOptions',
+			options: [
+				{ name: "Categories", value: "categories" },
+				{ name: "Keyword Match", value: "keyword_match" },
+				{ name: "Metrics", value: "metrics" },
+				{ name: "Related Question", value: "related_question" },
+				{ name: "Related Search", value: "related_search" },
+				{ name: "SERP", value: "serp" },
+				{ name: "Similar Category", value: "similar_category" },
+				{ name: "Similar Highlight", value: "similar_highlight" },
+				{ name: "Similar Serp", value: "similar_serp" },
+				{ name: "Synonyms", value: "synonyms" },
+				{ name: "Top Sites", value: "top_sites" },
+				{ name: "Volume History", value: "volume_history" }
+			],
+			default: [],
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: [
+						'GetKeywordOverview',
+					],
+				},
+			},
+		},
+		// parameter : similarity_max
+		{
+			displayName: 'Similarity Max',
+			name: 'similarity_max',
+			type: 'number',
+			default: null,
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: [
+						'FindSimilarKeyword',
+						'GetKeywordHighlight'
+					],
+				},
+			},
+		},
+		// parameter : similarity_min
+		{
+			displayName: 'Similarity Min',
+			name: 'similarity_min',
+			type: 'number',
+			default: null,
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: [
+						'FindSimilarKeyword',
+						'GetKeywordHighlight'
+					],
+				},
+			},
+		},
+		// parameter : url
+		{
+			displayName: 'Url',
+			required: true,
+			name: 'url',
+			type: 'string',
+			default: '',
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: [
+						'GetKeywordSERPPageEvolution',
+					],
+				},
+			},
+		},
+		// parameter : depth_min
+		{
+			displayName: 'Minimum Depth',
+			name: 'depth_min',
+			type: 'number',
+			default: null,
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: [
+						'FindRelatedKeyword',
+						'GetKeywordQuestion'
+						],
+				},
+			},
+		},
+		// parameter : depth_max
+		{
+			displayName: 'Maximum Depth',
+			name: 'depth_max',
+			type: 'number',
+			default: null,
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: [
+						'FindRelatedKeyword',
+						'GetKeywordQuestion'
+						],
+				},
+			},
+		},
+
+
+
+
+		// Optional/additional fields will go here, always in type collection
+		// you can have multiple "Additional Fields" each displayed for specific resource/operation
+		/* additional fields for:
+						FindKeywordSynonym
+						FindKeywordsMatch
+						FindRelatedKeyword
+						GetKeywordDatainBulk
+						GetKeywordHighlight
+						GetKeywordQuestion*/
+		{
+			displayName: 'Additional Fields',
+			name: 'additionalFields',
+			type: 'collection',
+			default: {},
+			placeholder: 'Add Field',
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: [
+						'FindKeywordSynonym',
+						'FindKeywordsMatch',
+						'FindRelatedKeyword',
+						'GetKeywordDatainBulk',
+						'GetKeywordHighlight',
+						'GetKeywordQuestion',
+					],
+				},
+			},
 			options: [
 				//parameter : allintitle_max
 				{
 					displayName: 'Maximum Allintitle',
 					name: 'allintitle_max',
 					type: 'number',
-					default: '',
+					default: null,
 				},
 				//parameter : allintitle_min
 				{
 					displayName: 'Minimum Allintitle',
 					name: 'allintitle_min',
 					type: 'number',
-					default: '',
+					default: null,
 				},
 				//parameter : competition_min
 				{
@@ -787,7 +1480,7 @@ export class Haloscan implements INodeType {
 						maxValue: 1,
 						minValue: 0,
 					},
-					default: '',
+					default: null,
 				},
 				//parameter : competition_max
 				{
@@ -799,21 +1492,21 @@ export class Haloscan implements INodeType {
 						maxValue: 1,
 						minValue: 0,
 					},
-					default: '',
+					default: null,
 				},
 				//parameter : cpc_max
 				{
 					displayName: 'Maximum CPC',
 					name: 'cpc_max',
 					type: 'number',
-					default: '',
+					default: null,
 				},
 				//parameter : cpc_min
 				{
 					displayName: 'Minimum CPC',
 					name: 'cpc_mmin',
 					type: 'number',
-					default: '',
+					default: null,
 				},
 				//parameter : exclude
 				{
@@ -836,14 +1529,14 @@ export class Haloscan implements INodeType {
 					displayName: 'KGR Max',
 					name: 'kgr_max',
 					type: 'number',
-					default: '',
+					default: null,
 				},
 				//parameter : kgr_min
 				{
 					displayName: 'KGR Min',
 					name: 'kgr_min',
 					type: 'number',
-					default: '',
+					default: null,
 				},
 				//parameter : kvi_keep_na
 				{
@@ -857,75 +1550,66 @@ export class Haloscan implements INodeType {
 					displayName: 'KVI Max',
 					name: 'kvi_max',
 					type: 'number',
-					default: '',
+					default: null,
 				},
 				//parameter : kvi_min
 				{
 					displayName: 'KVI Min',
 					name: 'kvi_min',
 					type: 'number',
-					default: '',
+					default: null,
 				},
-				//parameter : PARAM
+				//parameter : order
 				{
-					displayName: 'PARAM',
-					description: 'Minimum competition value, between 0 and 1',
-					name: 'param',
-					type: 'number',
-					default: '',
+					displayName: 'Order',
+					description: 'Whether the results are sorted in ascending or descending order',
+					name: 'order',
+					type: 'options',
+					options: [
+						{name: "Ascending", value: "asc"},
+						{name: "Descending", value: "desc"},
+					],
+					default: 'asc',
 				},
-
-			],
-		},
-
-		// additional fields for: FindaRelatedKeyword, GetaKeywordQuestion
-		{
-			displayName: 'Additional Fields',
-			name: 'additionalFields2',
-			type: 'collection',
-			default: {},
-			placeholder: 'Add Field',
-			displayOptions: {
-				show: {
-					//only show if you've selected :
-					resource: ['keywordExplorer'],
-					operation: [
-						'FindRelatedKeyword',
-						'GetKeywordQuestion'
-						],
-				},
-			},
-			options: [
-				// parameter : depth_min
+				//parameter : volume_max
 				{
-					displayName: 'Minimum Depth',
-					name: 'depth_min',
+					displayName: 'Volume Max',
+					name: 'volume_max',
 					type: 'number',
-					default: '',
+					default: null,
 				},
-				// parameter : depth_max
+				//parameter : volume_min
 				{
-					displayName: 'Maximum Depth',
-					name: 'depth_max',
+					displayName: 'Volume Min',
+					name: 'volume_min',
 					type: 'number',
-					default: '',
+					default: null,
+				},
+				//parameter : word_count_max
+				{
+					displayName: 'Word Count Max',
+					description: 'Max number of words making up the keyword',
+					name: 'word_count_max',
+					type: 'number',
+					default: null,
+				},
+				//parameter : word_count_min
+				{
+					displayName: 'Word Count Min',
+					description: 'Min number of words making up the keyword',
+					name: 'word_count_min',
+					type: 'number',
+					default: null,
 				},
 
 			],
 		},
 
 		/* additional fields for:
-						FindKeyword
-						FindKeywordSynonym
-						FindKeywordsMatch
-						FindRelatedKeyword
-						GetKeywordDatainBulk
-						GetKeywordHighlight
-						GetKeywordQuestion
-						GetKeywordSiteStructure*/
+						FindKeyword*/
 		{
 			displayName: 'Additional Fields',
-			name: 'additionalFields3',
+			name: 'additionalFields_findKeyword',
 			type: 'collection',
 			default: {},
 			placeholder: 'Add Field',
@@ -935,134 +1619,339 @@ export class Haloscan implements INodeType {
 					resource: ['keywordExplorer'],
 					operation: [
 						'FindKeyword',
-						'FindKeywordSynonym',
-						'FindKeywordsMatch',
-						'FindRelatedKeyword',
-						'GetKeywordDatainBulk',
-						'GetKeywordHighlight',
-						'GetKeywordQuestion',
-						'GetKeywordSiteStructure',
 					],
 				},
 			},
 			options: [
-				// parameter : exact_match
+				//parameter : allintitle_max
 				{
-					displayName: 'Exact Match',
-					description: 'Whether always ignore accents, punctuation, case, special characters, etc when FALSE. when matching the seed keyword.',
-					name: 'exact_match',
-					type: 'boolean',
-					default: true,
-				},
-			],
-		},
-
-		/* additional fields for:
-			 		GetKeywordSiteStructure*/
-		{
-			displayName: 'Additional Fields',
-			name: 'additionalFields4',
-			type: 'collection',
-			default: {},
-			placeholder: 'Add Field',
-			displayOptions: {
-				show: {
-					//only show if you've selected :
-					resource: ['keywordExplorer'],
-					operation: ['GetKeywordSiteStructure'],
-				},
-			},
-			options: [
-				//parameter : granularity
-				{
-					displayName: 'Granularity',
-					description: 'Low granularity will lead to one big group, high granularity will lead to many smaller groups. For reference, Values used by Haloscan\'s UI values are: 0.001 (insufficient), 0.01 (very low), 0.05 (low), 0.1 (mild), 0.25 (average), 0.67 (high), 1 (very high), 10 (excessive). Ignored if mode=manual',
-					name: 'granularity',
+					displayName: 'Maximum Allintitle',
+					name: 'allintitle_max',
 					type: 'number',
-					default: 1,
+					default: null,
 				},
-			],
-		},
-
-		/* additional fields for:
-			GetKeywordQuestion*/
-		{
-			displayName: 'Additional Fields',
-			name: 'additionalFields5',
-			type: 'collection',
-			default: {},
-			placeholder: 'Add Field',
-			displayOptions: {
-				show: {
-					//only show if you've selected :
-					resource: ['keywordExplorer'],
-					operation: ['GetKeywordQuestion'],
-				},
-			},
-			options: [
-				//parameter : keep_only_paa
+				//parameter : allintitle_min
 				{
-					displayName: 'Keep Only PAA',
-					description: 'Whether to include only PAA (People Also Ask) from google in the response',
-					name: 'keep_only_paa',
-					type: 'boolean',
-					default: true,
+					displayName: 'Minimum Allintitle',
+					name: 'allintitle_min',
+					type: 'number',
+					default: null,
 				},
-			],
-		},
-
-
-		/* additional fields for:
-			 		FindKeyword*/
-		{
-			displayName: 'Additional Fields',
-			name: 'additionalFields6',
-			type: 'collection',
-			default: {},
-			placeholder: 'Add Field',
-			displayOptions: {
-				show: {
-					//only show if you've selected :
-					resource: ['keywordExplorer'],
-					operation: ['FindKeyword'],
-				},
-			},
-			options: [
-				//parameter : keep_seed
+				//parameter : competition_min
 				{
-					displayName: 'Keep Seed',
-					description: 'Whether to keep the input in the api\'s response',
-					name: 'keep_seed',
-					type: 'boolean',
-					default: true,
-				},
-			],
-		},
-
-		/* additional fields for:
-			 		TEMPLATE*/
-		{
-			displayName: 'Additional Fields',
-			name: 'additionalFields',
-			type: 'collection',
-			default: {},
-			placeholder: 'Add Field',
-			displayOptions: {
-				show: {
-					//only show if you've selected :
-					resource: ['keywordExplorer'],
-					operation: ['GetKeywordSERPPageEvolution'],
-				},
-			},
-			options: [
-				//parameter : PARAM
-				{
-					displayName: 'PARAM',
+					displayName: 'Minimum Competition',
 					description: 'Minimum competition value, between 0 and 1',
-					name: 'param',
+					name: 'competition_min',
 					type: 'number',
+					typeOptions: {
+						maxValue: 1,
+						minValue: 0,
+					},
+					default: null,
+				},
+				//parameter : competition_max
+				{
+					displayName: 'Maximum Competition',
+					description: 'Maximum competition value, between 0 and 1',
+					name: 'competition_max',
+					type: 'number',
+					typeOptions: {
+						maxValue: 1,
+						minValue: 0,
+					},
+					default: null,
+				},
+				//parameter : cpc_max
+				{
+					displayName: 'Maximum CPC',
+					name: 'cpc_max',
+					type: 'number',
+					default: null,
+				},
+				//parameter : cpc_min
+				{
+					displayName: 'Minimum CPC',
+					name: 'cpc_mmin',
+					type: 'number',
+					default: null,
+				},
+				//parameter : exclude
+				{
+					displayName: 'Exclude',
+					name: 'exclude',
+					description: 'Regular expression for keywords to be excluded',
+					type: 'string',
 					default: '',
 				},
+				//parameter : include
+				{
+					displayName: 'Include',
+					name: 'include',
+					description: 'Regular expression for keywords to be included',
+					type: 'string',
+					default: '',
+				},
+				//parameter : kgr_max
+				{
+					displayName: 'KGR Max',
+					name: 'kgr_max',
+					type: 'number',
+					default: null,
+				},
+				//parameter : kgr_min
+				{
+					displayName: 'KGR Min',
+					name: 'kgr_min',
+					type: 'number',
+					default: null,
+				},
+				//parameter : kvi_keep_na
+				{
+					displayName: 'KVI Keep NA',
+					name: 'kvi_keep_na',
+					type: 'boolean',
+					default: true,
+				},
+				//parameter : kvi_max
+				{
+					displayName: 'KVI Max',
+					name: 'kvi_max',
+					type: 'number',
+					default: null,
+				},
+				//parameter : kvi_min
+				{
+					displayName: 'KVI Min',
+					name: 'kvi_min',
+					type: 'number',
+					default: null,
+				},
+				//parameter : order
+				{
+					displayName: 'Order',
+					description: 'Whether the results are sorted in ascending or descending order',
+					name: 'order',
+					type: 'options',
+					options: [
+						{name: "Ascending", value: "asc"},
+						{name: "Descending", value: "desc"},
+					],
+					default: 'asc',
+				},
+				//parameter : volume_max
+				{
+					displayName: 'Volume Max',
+					name: 'volume_max',
+					type: 'number',
+					default: null,
+				},
+				//parameter : volume_min
+				{
+					displayName: 'Volume Min',
+					name: 'volume_min',
+					type: 'number',
+					default: null,
+				},
+
+			],
+		},
+
+		/* additional fields for:
+						FindSimilarKeyword*/
+		{
+			displayName: 'Additional Fields',
+			name: 'additionalFields_findSimilar',
+			type: 'collection',
+			default: {},
+			placeholder: 'Add Field',
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: [
+						'FindSimilarKeyword',
+					],
+				},
+			},
+				options: [
+				//parameter : allintitle_max
+				{
+					displayName: 'Maximum Allintitle',
+					name: 'allintitle_max',
+					type: 'number',
+					default: null,
+				},
+				//parameter : allintitle_min
+				{
+					displayName: 'Minimum Allintitle',
+					name: 'allintitle_min',
+					type: 'number',
+					default: null,
+				},
+				//parameter : competition_min
+				{
+					displayName: 'Minimum Competition',
+					description: 'Minimum competition value, between 0 and 1',
+					name: 'competition_min',
+					type: 'number',
+					typeOptions: {
+						maxValue: 1,
+						minValue: 0,
+					},
+					default: null,
+				},
+				//parameter : competition_max
+				{
+					displayName: 'Maximum Competition',
+					description: 'Maximum competition value, between 0 and 1',
+					name: 'competition_max',
+					type: 'number',
+					typeOptions: {
+						maxValue: 1,
+						minValue: 0,
+					},
+					default: null,
+				},
+				//parameter : cpc_max
+				{
+					displayName: 'Maximum CPC',
+					name: 'cpc_max',
+					type: 'number',
+					default: null,
+				},
+				//parameter : cpc_min
+				{
+					displayName: 'Minimum CPC',
+					name: 'cpc_mmin',
+					type: 'number',
+					default: null,
+				},
+				//parameter : exclude
+				{
+					displayName: 'Exclude',
+					name: 'exclude',
+					description: 'Regular expression for keywords to be excluded',
+					type: 'string',
+					default: '',
+				},
+				//parameter : include
+				{
+					displayName: 'Include',
+					name: 'include',
+					description: 'Regular expression for keywords to be included',
+					type: 'string',
+					default: '',
+				},
+				//parameter : kgr_max
+				{
+					displayName: 'KGR Max',
+					name: 'kgr_max',
+					type: 'number',
+					default: null,
+				},
+				//parameter : kgr_min
+				{
+					displayName: 'KGR Min',
+					name: 'kgr_min',
+					type: 'number',
+					default: null,
+				},
+				//parameter : kvi_keep_na
+				{
+					displayName: 'KVI Keep NA',
+					name: 'kvi_keep_na',
+					type: 'boolean',
+					default: true,
+				},
+				//parameter : kvi_max
+				{
+					displayName: 'KVI Max',
+					name: 'kvi_max',
+					type: 'number',
+					default: null,
+				},
+				//parameter : kvi_min
+				{
+					displayName: 'KVI Min',
+					name: 'kvi_min',
+					type: 'number',
+					default: null,
+				},
+				//parameter : order
+				{
+					displayName: 'Order',
+					description: 'Whether the results are sorted in ascending or descending order',
+					name: 'order',
+					type: 'options',
+					options: [
+						{name: "Ascending", value: "asc"},
+						{name: "Descending", value: "desc"},
+					],
+					default: 'asc',
+				},
+				//parameter : p1_score_max
+				{
+					displayName: 'P1 Score Max',
+					description: 'Max common top 10',
+					name: 'p1_score_max',
+					type: 'number',
+					default: null,
+				},
+				//parameter : p1_score_min
+				{
+					displayName: 'P1 Score Min',
+					description: 'Min common top 10',
+					name: 'p1_score_min',
+					type: 'number',
+					default: null,
+				},
+				//parameter : score_max
+				{
+					displayName: 'Score Max',
+					description: 'Max common top 100',
+					name: 'score_max',
+					type: 'number',
+					default: null,
+				},
+				//parameter : score_min
+				{
+					displayName: 'Score Min',
+					description: 'Min common top 100',
+					name: 'score_min',
+					type: 'number',
+					default: null,
+				},
+				//parameter : volume_max
+				{
+					displayName: 'Volume Max',
+					name: 'volume_max',
+					type: 'number',
+					default: null,
+				},
+				//parameter : volume_min
+				{
+					displayName: 'Volume Min',
+					name: 'volume_min',
+					type: 'number',
+					default: null,
+				},
+				//parameter : word_count_max
+				{
+					displayName: 'Word Count Max',
+					description: 'Max number of words making up the keyword',
+					name: 'word_count_max',
+					type: 'number',
+					default: null,
+				},
+				//parameter : word_count_min
+				{
+					displayName: 'Word Count Min',
+					description: 'Min number of words making up the keyword',
+					name: 'word_count_min',
+					type: 'number',
+					default: null,
+				},
+
 			],
 		},
 
