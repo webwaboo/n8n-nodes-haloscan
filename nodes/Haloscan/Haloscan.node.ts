@@ -585,34 +585,267 @@ export class Haloscan implements INodeType {
 				},
 			},
 			options: [
-				// Operation : getPhotos
+				// Operation : CompareDomainKeywordswithCompetitors
 				{
-					name: 'Get Photos',
-					value: 'getPhotos',
-					action: 'Get Mars Rover photos',
-					description: 'Get photos from the Mars Rover',
-					routing: {
-						// set method and url for the endpoint
-						request: {
-							method: 'GET',
-						},
-					},
-				},
-				// Operation : generateQuestionsBasedonGuideWords
-				{
-					name: 'Generate Questions Based on Guide Words',
-					value: 'generateQuestionsBasedonGuideWords',
-					action: 'Generate questions based on guide words',
+					name: 'Compare Domain Keywords with Competitors',
+					value: 'CompareDomainKeywordswithCompetitors',
+					action: 'Compare domain s keywords with competitors',
+					description: 'Compares keyword rankings between a given website and its competitors',
 					routing: {
 						// set method and url for the endpoint
 						request: {
 							method: 'POST',
-							url: '=/guides/{{$parameter.guideId}}/seotxl/questions',
+							url: '=/domains/siteCompetitors/keywordsDiff',
+							body: {
+								keyword: '={{$parameter.keyword}}',
+								period: '={{$parameter.period}}',
+								first_date: '={{$parameter.first_date_compare}}',
+								second_date: '={{$parameter.second_date_compare}}',
+							},
 						},
 					},
 				},
+				// Operation : GetBestKeywordsfromPage
+				{
+					name: 'Get Best Keywords From Page',
+					value: 'GetBestKeywordsfromPage',
+					action: 'Get best keywords from page',
+					description: 'Retrieves the best-positioned keyword for the given pages',
+					routing: {
+						// set method and url for the endpoint
+						request: {
+							method: 'POST',
+							url: '=/domains/pageBestKeywords',
+						},
+					},
+				},
+				// Operation : GetCompetitorBestPages
+				{
+					name: 'Get Competitor Best Pages',
+					value: 'GetCompetitorBestPages',
+					action: 'Get competitor best pages',
+					description: 'Retrieves the best-performing pages of a competitor\'s domain',
+					routing: {
+						// set method and url for the endpoint
+						request: {
+							method: 'POST',
+							url: '=/domains/siteCompetitors/bestPages',
+						},
+					},
+				},
+				// Operation : GetCompetitorsKeywordsBestPosition
+				{
+					name: 'Get Competitor Keywords with the Best Position',
+					value: 'GetCompetitorsKeywordsBestPosition',
+					action: 'Get competitor keywords with the best position',
+					description: 'Get the keywords of a competitor with the best positions',
+					routing: {
+						// set method and url for the endpoint
+						request: {
+							method: 'POST',
+							url: '=/domains/keywordsBestPos',
+						},
+					},
+				},
+				// Operation : GetDomainCategoriesbasedGMBBacklinks
+				{
+					name: 'Get Domain Categories Based on GMB Backlinks',
+					value: 'GetDomainCategoriesbasedGMBBacklinks',
+					action: 'Get competitor keywords with the best position',
+					description: 'Retrieves the business categories associated with a given domain or URL based on GMB backlinks',
+					routing: {
+						// set method and url for the endpoint
+						request: {
+							method: 'POST',
+							url: '=/domains/gmbBacklinks/categories',
+						},
+					},
+				},
+				// Operation : GetDomainCompetitors
+				{
+					name: 'Get Domain Competitors',
+					value: 'GetDomainCompetitors',
+					action: 'Get domain s competitors',
+					description: 'Retrieves a list of competitor domains for a given website',
+					routing: {
+						// set method and url for the endpoint
+						request: {
+							method: 'POST',
+							url: '=/domains/siteCompetitors',
+						},
+					},
+				},
+				// Operation : GetDomainDatainBulk
+				{
+					name: 'Get Domain Data in Bulk',
+					value: 'GetDomainDatainBulk',
+					action: 'Get domain s data in bulk',
+					description: 'Retrieves data for a list of provided domains or URLs',
+					routing: {
+						// set method and url for the endpoint
+						request: {
+							method: 'POST',
+							url: '=/domains/bulk',
+						},
+					},
+				},
+				// Operation : GetDomainGMBBacklinksMap
+				{
+					name: 'Get Domain GMB Backlinks Map',
+					value: 'GetDomainGMBBacklinksMap',
+					action: 'Get domain s gmb backlinks map',
+					description: 'Retrieves the geographical locations of backlinks for a given domain or URL',
+					routing: {
+						// set method and url for the endpoint
+						request: {
+							method: 'POST',
+							url: '=/domains/gmbBacklinks/map',
+						},
+					},
+				},
+				// Operation : GetDomainOverview
+				{
+					name: 'Get Domain Overview',
+					value: 'GetDomainOverview',
+					action: 'Get domain overview',
+					description: 'Retrieves an SEO overview for a domain or URL',
+					routing: {
+						// set method and url for the endpoint
+						request: {
+							method: 'POST',
+							url: '=/domains/overview',
+						},
+					},
+				},
+				// Operation : GetDomainPositionHistory
+				{
+					name: 'Get Domain Position History',
+					value: 'GetDomainPositionHistory',
+					action: 'Get domain s position history',
+					description: 'Retrieves the historical ranking positions of a specified domain or URL for various keywords',
+					routing: {
+						// set method and url for the endpoint
+						request: {
+							method: 'POST',
+							url: '=/domains/history',
+						},
+					},
+				},
+				// Operation : GetDomainTopPages
+				{
+					name: 'Get Domain Top Pages',
+					value: 'GetDomainTopPages',
+					action: 'Get domains top pages',
+					description: 'Retrieves top-performing pages of a domain or URL',
+					routing: {
+						// set method and url for the endpoint
+						request: {
+							method: 'POST',
+							url: '=/domains/topPages',
+						},
+					},
+				},
+				// Operation : GetExpiredDomains
+				{
+					name: 'Get Expired Domains',
+					value: 'GetExpiredDomains',
+					action: 'Get expired domains',
+					description: 'Retrieves a list of (registar free) expired domains with SEO metrics',
+					routing: {
+						// set method and url for the endpoint
+						request: {
+							method: 'POST',
+							url: '=/domains/expired',
+						},
+					},
+				},
+				// Operation : GetGMBBacklink
+				{
+					name: 'Get GMB Backlink',
+					value: 'GetGMBBacklink',
+					action: 'Get gmb backlink',
+					description: 'Retrieves GMB backlink data for a specified domain or URL',
+					routing: {
+						// set method and url for the endpoint
+						request: {
+							method: 'POST',
+							url: '=/domains/gmbBacklinks',
+						},
+					},
+				},
+				// Operation : GetHistoryofDomainPages
+				{
+					name: 'Get History of Domain Pages',
+					value: 'GetHistoryofDomainPages',
+					action: 'Get history of domain s pages',
+					description: 'Fetches metrics for specific pages of a domain',
+					routing: {
+						// set method and url for the endpoint
+						request: {
+							method: 'POST',
+							url: '=/domains/pagesHistory',
+						},
+					},
+				},
+				// Operation : GetKeywordDatafromURL
+				{
+					name: 'Get Keyword Data From an URL',
+					value: 'GetKeywordDatafromURL',
+					action: 'Get keyword data from an url',
+					description: 'Retrieves keyword data for a given URL or domain',
+					routing: {
+						// set method and url for the endpoint
+						request: {
+							method: 'POST',
+							url: '=/domains/keywords',
+						},
+					},
+				},
+				// Operation : GetRankingofDomainKeyword
+				{
+					name: 'Get Ranking of Domain Keyword',
+					value: 'GetRankingofDomainKeyword',
+					action: 'Get ranking of domain s keyword',
+					description: 'Fetches a current domain rankings for a domain or URL',
+					routing: {
+						// set method and url for the endpoint
+						request: {
+							method: 'POST',
+							url: '=/domains/positions',
+						},
+					},
+				},
+				// Operation : GetVisibilityTrendofDomains
+				{
+					name: 'Get Visibility Trend of Domains',
+					value: 'GetVisibilityTrendofDomains',
+					action: 'Get visibility trend of domains',
+					description: 'Retrieves a visibility trend data for a given list of websites or URLs',
+					routing: {
+						// set method and url for the endpoint
+						request: {
+							method: 'POST',
+							url: '=/domains/history/visibilityTrends',
+						},
+					},
+				},
+				// Operation : RevealExpiredDomains
+				{
+					name: 'Reveal Expired Domains',
+					value: 'RevealExpiredDomains',
+					action: 'Reveal expired domains',
+					description: 'Reveals expired root domains using the provided keys retrieved from the domains/expired endpoint',
+					routing: {
+						// set method and url for the endpoint
+						request: {
+							method: 'POST',
+							url: '=/domains/expired/reveal',
+						},
+					},
+				},
+
 			],
-			default: 'get',
+			default: 'GetDomainOverview',
 		},
 
 
@@ -1423,7 +1656,31 @@ export class Haloscan implements INodeType {
 			},
 		},
 
-
+		// parameter : acceptedTypes
+		{
+			displayName: 'Accepted Types',
+			name: 'acceptedTypes',
+			description: 'That\'s just a filter, it\'s not necessary to use it if you used the matching boolean params (using the boolean params makes it faster). The only difference is that with this, you can separate mixed keywords, where seed is better than some competitors and less good than others. Hence, bested and besting become absolute: bested by every single competitor (that is there), or besting every single competitor',
+			type: 'multiOptions',
+			options:[
+				{ name: "Auto", value: "auto" },
+				{ name: "Bested", value: "bested" },
+				{ name: "Besting", value: "besting" },
+				{ name: "Exclusive", value: "exclusive" },
+				{ name: "Missing", value: "missing" },
+				{ name: "Mixed", value: "mixed" }
+			],
+			default: ['auto'],
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['siteExplorer'],
+					operation: [
+						'CompareDomainKeywordswithCompetitors',
+						],
+				},
+			},
+		},
 
 
 		// Optional/additional fields will go here, always in type collection
@@ -1954,6 +2211,8 @@ export class Haloscan implements INodeType {
 
 			],
 		},
+
+
 
 		]
 	};
