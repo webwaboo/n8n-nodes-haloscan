@@ -1655,12 +1655,266 @@ export class Haloscan implements INodeType {
 				},
 			},
 		},
+		// required site explorer
+		  {
+    displayName: "Competitors",
+   description: "List of competitor domains or root domains",
+   name: "competitors",
+   default: [],
+   required: true,
+   displayOptions: {
+     show: {
+       resource: [
+          "siteExplorer"
+        ],
+       operation: [
+          "GetCompetitorsKeywordsBestPosition"
+        ]
+      }
+    },
+   type: "string",
+   typeOptions: {
+     multipleValues: true
+    }
+  },
+  {
+    displayName: "Keywords",
+   description: "List of keywords to look for",
+   name: "keywords",
+   default: [],
+   required: true,
+   displayOptions: {
+     show: {
+       resource: [
+          "siteExplorer"
+        ],
+       operation: [
+          "GetCompetitorsKeywordsBestPosition"
+        ]
+      }
+    },
+   type: "string",
+   typeOptions: {
+     multipleValues: true
+    }
+  },
+  {
+    displayName: "Inputs",
+   description: 'Array containing the requested URLs or domains',
+   name: "inputs",
+   default: [],
+   required: true,
+   displayOptions: {
+     show: {
+       resource: [
+          "siteExplorer"
+        ],
+       operation: [
+          "GetDomainDatainBulk"
+        ]
+      }
+    },
+   type: "string",
+   typeOptions: {
+     multipleValues: true
+    }
+  },
+  {
+    displayName: "Date From",
+   description: "Date in YYYY-MM-DD format",
+   name: "date_from",
+   default: "",
+   required: true,
+   displayOptions: {
+     show: {
+       resource: [
+          "siteExplorer"
+        ],
+       operation: [
+          "GetDomainPositionHistory",
+          "GetHistoryofDomainPages"
+        ]
+      }
+    },
+   type: "string"
+  },
+  {
+    displayName: "Input",
+   description: 'Requested URL or domain',
+   name: "input",
+   default: "",
+   required: true,
+   displayOptions: {
+     show: {
+       resource: [
+          "siteExplorer"
+        ],
+       operation: [
+          "CompareDomainKeywordswithCompetitors",
+          "GetCompetitorBestPages",
+          "GetDomainCategoriesbasedGMBBacklinks",
+          "GetDomainCompetitors",
+          "GetDomainGMBBacklinksMap",
+          "GetDomainPositionHistory",
+          "GetDomainTopPages",
+          "GetGMBBacklink",
+          "GetHistoryofDomainPages",
+          "GetKeywordDatafromURL",
+          "GetRankingofDomainKeyword"
+        ]
+      }
+    },
+   type: "string"
+  },
+  {
+    displayName: "Root Domain Keys",
+   description: 'List of root_domain_key fields from items in the domains/expired endpoint which you want to reveal. 1 expired domain credit will be consumed for each item in this list that you haven\'t previously revealed.',
+   name: "root_domain_keys",
+   default: [],
+   required: true,
+   displayOptions: {
+     show: {
+       resource: [
+          "siteExplorer"
+        ],
+       operation: [
+          "RevealExpiredDomains"
+        ]
+      }
+    },
+   type: "string",
+   typeOptions: {
+     multipleValues: true
+    }
+  },
+  {
+    displayName: "Input",
+   description: 'Requested URL, domain or root domain',
+   name: "input",
+   default: "",
+   required: true,
+   displayOptions: {
+     show: {
+       resource: [
+          "siteExplorer"
+        ],
+       operation: [
+          "GetDomainOverview"
+        ]
+      }
+    },
+   type: "string"
+  },
+  {
+    displayName: "Input",
+   description: 'Array containing the requested URLs or domains',
+   name: "input",
+   default: [],
+   required: true,
+   displayOptions: {
+     show: {
+       resource: [
+          "siteExplorer"
+        ],
+       operation: [
+          "GetBestKeywordsfromPage",
+          "GetVisibilityTrendofDomains"
+        ]
+      }
+    },
+   type: "string",
+   typeOptions: {
+     multipleValues: true
+    }
+  },
+  {
+    displayName: "Requested Data",
+   description: 'Requested data for the given URL or domain, corresponding to the content of different sections of the haloscan overview page. Data will be sent back in a field with the same name in the response.',
+   name: "requested_data",
+   default: [],
+   required: true,
+   displayOptions: {
+     show: {
+       resource: [
+          "siteExplorer"
+        ],
+       operation: [
+          "GetDomainOverview"
+        ]
+      }
+    },
+   type: "multiOptions",
+   options: [
+      {
+       name: "Best Keywords",
+       value: "best_keywords"
+      },
+      {
+       name: "Best Pages",
+       value: "best_pages"
+      },
+      {
+       name: "Categories",
+       value: "categories"
+      },
+      {
+       name: "GMB Backlinks",
+       value: "gmb_backlinks"
+      },
+      {
+       name: "Metrics",
+       value: "metrics"
+      },
+      {
+       name: "Positions and Pages History",
+       value: "positions_and_pages_history"
+      },
+      {
+       name: "Positions Breakdown",
+       value: "positions_breakdown"
+      },
+      {
+       name: "Positions Breakdown History",
+       value: "positions_breakdown_history"
+      },
+      {
+       name: "Traffic Value",
+       value: "traffic_value"
+      },
+      {
+       name: "Visibility Index History",
+       value: "visibility_index_history"
+      }
+    ]
+  },
+  {
+    displayName: "Date To",
+   description: "Date in YYYY-MM-DD format",
+   name: "date_to",
+   default: "",
+   required: true,
+   displayOptions: {
+     show: {
+       resource: [
+          "siteExplorer"
+        ],
+       operation: [
+          "GetDomainPositionHistory",
+          "GetHistoryofDomainPages"
+        ]
+      }
+    },
+   type: "string"
+  },
+
+
+
 
 		// parameter : acceptedTypes
 		{
 			displayName: 'Accepted Types',
 			name: 'acceptedTypes',
-			description: 'That\'s just a filter, it\'s not necessary to use it if you used the matching boolean params (using the boolean params makes it faster). The only difference is that with this, you can separate mixed keywords, where seed is better than some competitors and less good than others. Hence, bested and besting become absolute: bested by every single competitor (that is there), or besting every single competitor',
+			description: 'That\'s just a filter, it\'s not necessary to use it if you used the matching boolean params (using the boolean params makes it faster). The only difference is that with this, you can separate mixed keywords, where seed is better than some competitors and less good than others. Hence, bested and besting become absolute: bested by every single competitor (that is there), or besting every single competitor.',
 			type: 'multiOptions',
 			options:[
 				{ name: "Auto", value: "auto" },
