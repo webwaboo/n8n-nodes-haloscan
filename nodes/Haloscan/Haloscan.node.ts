@@ -861,7 +861,7 @@ export class Haloscan implements INodeType {
 							method: 'POST',
 							url: '=/domains/overview',
 							body: {
-								input: '={{$parameter.input}}',
+								input: '={{$parameter.input_domain}}',
 								lang: '={{$parameter.lang}}',
 								mode: '={{$parameter.mode}}',
 								requested_data: '={{$parameter.requested_data}}',
@@ -2193,7 +2193,7 @@ export class Haloscan implements INodeType {
 		{
 			displayName: "Input",
 		description: 'Requested URL, domain or root domain',
-		name: "input",
+		name: "input_domain",
 		default: "",
 		required: true,
 		displayOptions: {
@@ -2920,7 +2920,7 @@ export class Haloscan implements INodeType {
 					value: "matching_pages"
 				},
 				{
-					name: "Matching Top 10 positions",
+					name: 'Matching Top 10 Positions',
 					value: "matching_top_10_positions"
 				},
 				{
@@ -2928,11 +2928,11 @@ export class Haloscan implements INodeType {
 					value: "matching_top_100"
 				},
 				{
-					name: "Matching Top 3 positions",
+					name: 'Matching Top 3 Positions',
 					value: "matching_top_3_positions"
 				},
 				{
-					name: "Matching Top 50 positions",
+					name: 'Matching Top 50 Positions',
 					value: "matching_top_50_positions"
 				},
 				{
@@ -3093,31 +3093,7 @@ export class Haloscan implements INodeType {
 
 
 
-		// parameter : acceptedTypes
-		{
-			displayName: 'Accepted Types',
-			name: 'acceptedTypes',
-			description: 'That\'s just a filter, it\'s not necessary to use it if you used the matching boolean params (using the boolean params makes it faster). The only difference is that with this, you can separate mixed keywords, where seed is better than some competitors and less good than others. Hence, bested and besting become absolute: bested by every single competitor (that is there), or besting every single competitor.',
-			type: 'multiOptions',
-			options:[
-				{ name: "Auto", value: "auto" },
-				{ name: "Bested", value: "bested" },
-				{ name: "Besting", value: "besting" },
-				{ name: "Exclusive", value: "exclusive" },
-				{ name: "Missing", value: "missing" },
-				{ name: "Mixed", value: "mixed" }
-			],
-			default: ['auto'],
-			displayOptions: {
-				show: {
-					//only show if you've selected :
-					resource: ['siteExplorer'],
-					operation: [
-						'CompareDomainKeywordswithCompetitors',
-						],
-				},
-			},
-		},
+
 
 
 		// Optional/additional fields will go here, always in type collection
