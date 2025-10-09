@@ -539,7 +539,7 @@ export class Haloscan implements INodeType {
 								neighbours_sources: '={{$parameter.neighbours_sources}}',
 								multipartite_modes: '={{$parameter.multipartite_modes}}',
 								neighbours_sample_max_size: '={{$parameter.neighbours_sample_max_size}}',
-								mode: '={{$parameter.mode}}',
+								mode: '={{$parameter.mode_structure}}',
 								granularity: '={{$parameter.granularity}}',
 								manual_common_10: '={{$parameter.manual_common_10}}',
 								manual_common_100: '={{$parameter.manual_common_100}}',
@@ -589,7 +589,7 @@ export class Haloscan implements INodeType {
 				{
 					name: 'Compare Domain Keywords with Competitors',
 					value: 'CompareDomainKeywordswithCompetitors',
-					action: 'Compare domain s keywords with competitors',
+					action: 'Compare domain keywords with competitors',
 					description: 'Compares keyword rankings between a given website and its competitors',
 					routing: {
 						// set method and url for the endpoint
@@ -665,7 +665,7 @@ export class Haloscan implements INodeType {
 							body: {
 								lineCount: '={{$parameter.lineCount}}',
 								strategy: '={{$parameter.strategy}}',
-								input: '={{$parameter.input}}',
+								input: '={{$parameter.input_visibility_bestkeyword}}',
 							},
 						},
 					},
@@ -685,7 +685,7 @@ export class Haloscan implements INodeType {
 								competitors: '={{$parameter.competitors}}',
 								lineCount: '={{$parameter.lineCount}}',
 								mode: '={{$parameter.mode}}',
-								order_by: '={{$parameter.order_by}}',
+								order_by: '={{$parameter.order_by_competitor_keyworddata}}',
 								page: '={{$parameter.page}}',
 								strategy: '={{$parameter.strategy}}',
 								input: '={{$parameter.input}}',
@@ -716,7 +716,7 @@ export class Haloscan implements INodeType {
 						// set method and url for the endpoint
 						request: {
 							method: 'POST',
-							url: '=/domains/keywordsBestPos',
+							url: '=/domains/siteCompetitors/keywordsBestPos',
 							body: {
 								allintitle_keep_na: '={{$parameter.additionalFields_GetCompetitorsKeywordsBestPosition.allintitle_keep_na}}',
 								allintitle_max: '={{$parameter.additionalFields_GetCompetitorsKeywordsBestPosition.allintitle_max}}',
@@ -729,7 +729,7 @@ export class Haloscan implements INodeType {
 								competition_keep_na: '={{$parameter.additionalFields_GetCompetitorsKeywordsBestPosition.competition_keep_na}}',
 								competition_max: '={{$parameter.additionalFields_GetCompetitorsKeywordsBestPosition.competition_max}}',
 								competition_min: '={{$parameter.additionalFields_GetCompetitorsKeywordsBestPosition.competition_min}}',
-								competitors: '={{$parameter.competitors}}',
+								competitors: '={{$parameter.competitors_bestposition}}',
 								competitors_positions_max: '={{$parameter.additionalFields_GetCompetitorsKeywordsBestPosition.competitors_positions_max}}',
 								competitors_positions_min: '={{$parameter.additionalFields_GetCompetitorsKeywordsBestPosition.competitors_positions_min}}',
 								cpc_keep_na: '={{$parameter.additionalFields_GetCompetitorsKeywordsBestPosition.cpc_keep_na}}',
@@ -739,7 +739,7 @@ export class Haloscan implements INodeType {
 								keyword_include: '={{$parameter.additionalFields_GetCompetitorsKeywordsBestPosition.keyword_include}}',
 								keyword_word_count_max: '={{$parameter.additionalFields_GetCompetitorsKeywordsBestPosition.keyword_word_count_max}}',
 								keyword_word_count_min: '={{$parameter.additionalFields_GetCompetitorsKeywordsBestPosition.keyword_word_count_min}}',
-								keywords: '={{$parameter.keywords}}',
+								keywords: '={{$parameter.keywords_bestposition}}',
 								kgr_keep_na: '={{$parameter.additionalFields_GetCompetitorsKeywordsBestPosition.kgr_keep_na}}',
 								kgr_max: '={{$parameter.additionalFields_GetCompetitorsKeywordsBestPosition.kgr_max}}',
 								kgr_min: '={{$parameter.additionalFields_GetCompetitorsKeywordsBestPosition.kgr_min}}',
@@ -747,8 +747,8 @@ export class Haloscan implements INodeType {
 								kvi_max: '={{$parameter.additionalFields_GetCompetitorsKeywordsBestPosition.kvi_max}}',
 								kvi_min: '={{$parameter.additionalFields_GetCompetitorsKeywordsBestPosition.kvi_min}}',
 								lineCount: '={{$parameter.lineCount}}',
-								mode: '={{$parameter.mode}}',
-								order_by: '={{$parameter.order_by}}',
+								mode: '={{$parameter.mode_bestposition}}',
+								order_by: '={{$parameter.order_by_bestposition}}',
 								page: '={{$parameter.page}}',
 								unique_competitors_count_max: '={{$parameter.additionalFields_GetCompetitorsKeywordsBestPosition.unique_competitors_count_max}}',
 								unique_competitors_count_min: '={{$parameter.additionalFields_GetCompetitorsKeywordsBestPosition.unique_competitors_count_min}}',
@@ -763,7 +763,7 @@ export class Haloscan implements INodeType {
 				{
 					name: 'Get Domain Categories Based on GMB Backlinks',
 					value: 'GetDomainCategoriesbasedGMBBacklinks',
-					action: 'Get competitor keywords with the best position',
+					action: 'Get domain categories based on gmb backlinks',
 					description: 'Retrieves the business categories associated with a given domain or URL based on GMB backlinks',
 					routing: {
 						// set method and url for the endpoint
@@ -781,7 +781,7 @@ export class Haloscan implements INodeType {
 				{
 					name: 'Get Domain Competitors',
 					value: 'GetDomainCompetitors',
-					action: 'Get domain s competitors',
+					action: 'Get domain competitors',
 					description: 'Retrieves a list of competitor domains for a given website',
 					routing: {
 						// set method and url for the endpoint
@@ -801,7 +801,7 @@ export class Haloscan implements INodeType {
 				{
 					name: 'Get Domain Data in Bulk',
 					value: 'GetDomainDatainBulk',
-					action: 'Get domain s data in bulk',
+					action: 'Get domain data in bulk',
 					description: 'Retrieves data for a list of provided domains or URLs',
 					routing: {
 						// set method and url for the endpoint
@@ -873,7 +873,7 @@ export class Haloscan implements INodeType {
 				{
 					name: 'Get Domain Position History',
 					value: 'GetDomainPositionHistory',
-					action: 'Get domain s position history',
+					action: 'Get domain position history',
 					description: 'Retrieves the historical ranking positions of a specified domain or URL for various keywords',
 					routing: {
 						// set method and url for the endpoint
@@ -908,7 +908,7 @@ export class Haloscan implements INodeType {
 								most_recent_position_max: '={{$parameter.additionalFields_GetDomainPositionHistory.most_recent_position_max}}',
 								most_recent_position_min: '={{$parameter.additionalFields_GetDomainPositionHistory.most_recent_position_min}}',
 								order: '={{$parameter.additionalFields_GetDomainPositionHistory.order}}',
-								order_by: '={{$parameter.order_by}}',
+								order_by: '={{$parameter.order_by_domain_history}}',
 								page: '={{$parameter.page}}',
 								page_count_max: '={{$parameter.additionalFields_GetDomainPositionHistory.page_count_max}}',
 								page_count_min: '={{$parameter.additionalFields_GetDomainPositionHistory.page_count_min}}',
@@ -943,7 +943,7 @@ export class Haloscan implements INodeType {
 								lineCount: '={{$parameter.lineCount}}',
 								mode: '={{$parameter.mode}}',
 								order: '={{$parameter.additionalFields_GetDomainTopPagesGetHistoryofDomainPages.order}}',
-								order_by: '={{$parameter.order_by}}',
+								order_by: '={{$parameter.order_by_domain_history}}',
 								page: '={{$parameter.page}}',
 								total_top_10_max: '={{$parameter.additionalFields_GetDomainTopPagesGetHistoryofDomainPages.total_top_10_max}}',
 								total_top_10_min: '={{$parameter.additionalFields_GetDomainTopPagesGetHistoryofDomainPages.total_top_10_min}}',
@@ -1004,7 +1004,7 @@ export class Haloscan implements INodeType {
 								matching_traffic_max: '={{$parameter.additionalFields_GetExpiredDomains.matching_traffic_max}}',
 								matching_traffic_min: '={{$parameter.additionalFields_GetExpiredDomains.matching_traffic_min}}',
 								order: '={{$parameter.additionalFields_GetExpiredDomains.order}}',
-								order_by: '={{$parameter.order_by}}',
+								order_by: '={{$parameter.order_by_expired}}',
 								page: '={{$parameter.page}}',
 								pinterest_pins_max: '={{$parameter.additionalFields_GetExpiredDomains.pinterest_pins_max}}',
 								pinterest_pins_min: '={{$parameter.additionalFields_GetExpiredDomains.pinterest_pins_min}}',
@@ -1081,7 +1081,7 @@ export class Haloscan implements INodeType {
 				{
 					name: 'Get History of Domain Pages',
 					value: 'GetHistoryofDomainPages',
-					action: 'Get history of domain s pages',
+					action: 'Get history of domain pages',
 					description: 'Fetches metrics for specific pages of a domain',
 					routing: {
 						// set method and url for the endpoint
@@ -1097,7 +1097,7 @@ export class Haloscan implements INodeType {
 								lineCount: '={{$parameter.lineCount}}',
 								mode: '={{$parameter.mode}}',
 								order: '={{$parameter.additionalFields_GetDomainTopPagesGetHistoryofDomainPages.order}}',
-								order_by: '={{$parameter.order_by}}',
+								order_by: '={{$parameter.order_by_domain_history}}',
 								page: '={{$parameter.page}}',
 								total_top_10_max: '={{$parameter.additionalFields_GetDomainTopPagesGetHistoryofDomainPages.total_top_10_max}}',
 								total_top_10_min: '={{$parameter.additionalFields_GetDomainTopPagesGetHistoryofDomainPages.total_top_10_min}}',
@@ -1145,7 +1145,7 @@ export class Haloscan implements INodeType {
 								lineCount: '={{$parameter.lineCount}}',
 								mode: '={{$parameter.mode}}',
 								order: '={{$parameter.additionalFields_GetKeywordDatafromURL.order}}',
-								order_by: '={{$parameter.order_by}}',
+								order_by: '={{$parameter.order_by_competitor_keyworddata}}',
 								page: '={{$parameter.page}}',
 								position_max: '={{$parameter.additionalFields_GetKeywordDatafromURL.position_max}}',
 								position_min: '={{$parameter.additionalFields_GetKeywordDatafromURL.position_min}}',
@@ -1167,7 +1167,7 @@ export class Haloscan implements INodeType {
 				{
 					name: 'Get Ranking of Domain Keyword',
 					value: 'GetRankingofDomainKeyword',
-					action: 'Get ranking of domain s keyword',
+					action: 'Get ranking of domain keyword',
 					description: 'Fetches a current domain rankings for a domain or URL',
 					routing: {
 						// set method and url for the endpoint
@@ -1194,7 +1194,7 @@ export class Haloscan implements INodeType {
 								lineCount: '={{$parameter.lineCount}}',
 								mode: '={{$parameter.mode}}',
 								order: '={{$parameter.additionalFields_GetRankingofDomainKeyword.order}}',
-								order_by: '={{$parameter.order_by}}',
+								order_by: '={{$parameter.order_by_ranking}}',
 								page: '={{$parameter.page}}',
 								position_max: '={{$parameter.additionalFields_GetRankingofDomainKeyword.position_max}}',
 								position_min: '={{$parameter.additionalFields_GetRankingofDomainKeyword.position_min}}',
@@ -1222,7 +1222,7 @@ export class Haloscan implements INodeType {
 							method: 'POST',
 							url: '=/domains/history/visibilityTrends',
 							body: {
-								input: '={{$parameter.input}}',
+								input: '={{$parameter.input_visibility_bestkeyword}}',
 								mode: '={{$parameter.mode}}',
 								type: '={{$parameter.type}}',
 							},
@@ -1480,7 +1480,7 @@ export class Haloscan implements INodeType {
 			displayOptions: {
 				show: {
 					//only show if you've selected :
-					resource: ['keywordExplorer'],
+					resource: ['keywordExplorer', 'siteExplorer'],
 					operation: [
 						'FindKeyword',
 						'FindKeywordSynonym',
@@ -1490,6 +1490,18 @@ export class Haloscan implements INodeType {
 						'GetKeywordDatainBulk',
 						'GetKeywordHighlight',
 						'GetKeywordQuestion',
+						'CompareDomainKeywordswithCompetitors',
+						'GetCompetitorBestPages',
+						'GetCompetitorsKeywordsBestPosition',
+						'GetDomainCompetitors',
+						'GetDomainDatainBulk',
+						'GetDomainPositionHistory',
+						'GetDomainTopPages',
+						'GetExpiredDomains',
+						'GetGMBBacklink',
+						'GetHistoryofDomainPages',
+						'GetKeywordDatafromURL',
+						'GetRankingofDomainKeyword'
 					],
 				},
 			},
@@ -1543,7 +1555,7 @@ export class Haloscan implements INodeType {
 		{
 			displayName: 'Mode',
 			description: 'Defines how groups will be made. Manual means that keywords will be grouped when they share at least \'manual_common_10\' URLs in their last SERP top 10 AND at least \'manual_common_100\' URLS in their last SERP top 100. Multi means that keywords will be automatically grouped (hierarchically) depending on their proximity on several modalities specified in \'multipartite_modes\'. You can also influence the attraction force with the \'granularity\' parameter.',
-			name: 'mode',
+			name: 'mode_structure',
 			type: 'options',
 			options: [
 				{name: "Multi", value: "multi"},
@@ -1872,7 +1884,7 @@ export class Haloscan implements INodeType {
 			displayOptions: {
 				show: {
 					//only show if you've selected :
-					resource: ['keywordExplorer'],
+					resource: ['keywordExplorer', 'siteExplorer'],
 					operation: [
 						'FindKeyword',
 						'FindKeywordSynonym',
@@ -1882,6 +1894,18 @@ export class Haloscan implements INodeType {
 						'GetKeywordDatainBulk',
 						'GetKeywordHighlight',
 						'GetKeywordQuestion',
+						'CompareDomainKeywordswithCompetitors',
+						'GetCompetitorBestPages',
+						'GetCompetitorsKeywordsBestPosition',
+						'GetDomainCompetitors',
+						'GetDomainDatainBulk',
+						'GetDomainPositionHistory',
+						'GetDomainTopPages',
+						'GetExpiredDomains',
+						'GetGMBBacklink',
+						'GetHistoryofDomainPages',
+						'GetKeywordDatafromURL',
+						'GetRankingofDomainKeyword'
 					],
 				},
 			},
@@ -2062,7 +2086,7 @@ export class Haloscan implements INodeType {
 		{
     displayName: "Competitors",
    description: "List of competitor domains or root domains",
-   name: "competitors",
+   name: "competitors_bestposition",
    default: [],
    required: true,
    displayOptions: {
@@ -2083,7 +2107,7 @@ export class Haloscan implements INodeType {
 		{
 			displayName: "Keywords",
 		description: "List of keywords to look for",
-		name: "keywords",
+		name: "keywords_bestposition",
 		default: [],
 		required: true,
 		displayOptions: {
@@ -2211,7 +2235,7 @@ export class Haloscan implements INodeType {
 		{
 		displayName: "Input",
 		description: 'Array containing the requested URLs or domains',
-		name: "input",
+		name: "input_visibility_bestkeyword",
 		default: [],
 		required: true,
 		displayOptions: {
@@ -2316,7 +2340,7 @@ export class Haloscan implements INodeType {
     description: "That’s just a filter, it’s not necessary to use it if you used the matching boolean params (using the boolean params makes it faster). The only difference is that with this, you can separate mixed keywords, where seed is better than some competitors and less good than others. Hence, bested and besting become absolute: bested by every single competitor (that is there), or besting every single competitor",
     name: "acceptedTypes",
     default: [
-      "auto"
+      'auto'
     ],
     displayOptions: {
       show: {
@@ -2459,7 +2483,7 @@ export class Haloscan implements INodeType {
 		{
 			displayName: "Order By",
 			description: 'Field used for sorting results. "default" value first sorts by descending unique_competitors_count, then by descending best_competitor_traffic.',
-			name: "order_by",
+			name: "order_by_bestposition",
 			default: "default",
 			displayOptions: {
 				show: {
@@ -2585,7 +2609,7 @@ export class Haloscan implements INodeType {
 		{
 			displayName: "Mode",
 			description: "Whether to look for a root domain or subdomain",
-			name: "mode",
+			name: "mode_bestposition",
 			default: "root",
 			displayOptions: {
 				show: {
@@ -2641,7 +2665,7 @@ export class Haloscan implements INodeType {
 					]
 				}
 			},
-			type: 'string',
+			type: "string",
 			default: ["auto"],
 			typeOptions: {
 				multipleValues: true
@@ -2650,7 +2674,7 @@ export class Haloscan implements INodeType {
 		{
 			displayName: "Order By",
 			description: 'Field used for sorting results. Default sorts by descending traffic and then ascending position.',
-			name: "order_by",
+			name: "order_by_domain_history",
 			default: "default",
 			displayOptions: {
 				show: {
@@ -2740,7 +2764,7 @@ export class Haloscan implements INodeType {
 		{
 			displayName: "Order By",
 			description: "Field used for sorting results",
-			name: "order_by",
+			name: "order_by_competitor_keyworddata",
 			default: "default",
 			displayOptions: {
 				show: {
@@ -2772,8 +2796,8 @@ export class Haloscan implements INodeType {
 					value: "exclusive_keywords"
 				},
 				{
-					name: "Keyword",
-					value: "keyword"
+					name: "Keywords",
+					value: "keywords"
 				},
 				{
 					name: "Most Alike URL",
@@ -2865,7 +2889,7 @@ export class Haloscan implements INodeType {
 		{
 			displayName: "Order By",
 			description: "Field used for sorting results. Default sort is by descending matching_traffic if keyword is present, or total_traffic otherwise.",
-			name: "order_by",
+			name: "order_by_expired",
 			default: "default",
 			displayOptions: {
 				show: {
@@ -3004,7 +3028,7 @@ export class Haloscan implements INodeType {
 		{
 			displayName: "Order By",
 			description: "Field used for sorting results. Defaut sort is by descending traffic, then ascending position.",
-			name: "order_by",
+			name: "order_by_ranking",
 			default: "default",
 			displayOptions: {
 				show: {
