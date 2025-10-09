@@ -4999,7 +4999,7 @@ export class Haloscan implements INodeType {
         displayName: "Is Claimed",
         name: "is_claimed",
         default: false,
-        description: "When FALSE, only return unclaimed companies. When TRUE, only return claimed companies. Leave empty if you don't want to filter",
+        description: "Whether to return claimed or unclaimed companies. When FALSE, only return unclaimed companies. When TRUE, only return claimed companies. Leave empty if you don't want to filter",
         type: "boolean"
       },
       {
