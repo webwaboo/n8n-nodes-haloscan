@@ -597,16 +597,16 @@ export class Haloscan implements INodeType {
 							method: 'POST',
 							url: '=/domains/siteCompetitors/keywordsDiff',
 							body: {
-								acceptedTypes: '={{$parameter.acceptedTypes}}',
 								bested: '={{$parameter.bested}}',
 								besting: '={{$parameter.besting}}',
 								competitors: '={{$parameter.competitors}}',
-								exclusive: '={{$parameter.exclusive}}',
+								//exclusive: '={{$parameter.exclusive}}',
 								lineCount: '={{$parameter.lineCount}}',
 								missing: '={{$parameter.missing}}',
 								mode: '={{$parameter.mode}}',
 								page: '={{$parameter.page}}',
 								input: '={{$parameter.input}}',
+								acceptedTypes: '={{$parameter.acceptedTypes}}',
 								allintitle_keep_na: '={{$parameter.additionalFields_CompareDomainKeywordswithCompetitors.allintitle_keep_na}}',
 								allintitle_max: '={{$parameter.additionalFields_CompareDomainKeywordswithCompetitors.allintitle_max}}',
 								allintitle_min: '={{$parameter.additionalFields_CompareDomainKeywordswithCompetitors.allintitle_min}}',
@@ -663,7 +663,7 @@ export class Haloscan implements INodeType {
 							method: 'POST',
 							url: '=/domains/pageBestKeywords',
 							body: {
-								lineCount: '={{$parameter.lineCount}}',
+								lineCount: '={{$parameter.lineCount_bestkeyword}}',
 								strategy: '={{$parameter.strategy}}',
 								input: '={{$parameter.input_visibility_bestkeyword}}',
 							},
@@ -835,7 +835,7 @@ export class Haloscan implements INodeType {
 				{
 					name: 'Get Domain GMB Backlinks Map',
 					value: 'GetDomainGMBBacklinksMap',
-					action: 'Get domain s gmb backlinks map',
+					action: 'Get domain gmb backlinks map',
 					description: 'Retrieves the geographical locations of backlinks for a given domain or URL',
 					routing: {
 						// set method and url for the endpoint
@@ -981,7 +981,7 @@ export class Haloscan implements INodeType {
 								first_time_available_max: '={{$parameter.additionalFields_GetExpiredDomains.first_time_available_max}}',
 								first_time_available_min: '={{$parameter.additionalFields_GetExpiredDomains.first_time_available_min}}',
 								firstseen_min: '={{$parameter.additionalFields_GetExpiredDomains.firstseen_min}}',
-								keyword: '={{$parameter.keyword}}',
+								keyword: '={{$parameter.keyword_expired}}',
 								last_seen_max: '={{$parameter.additionalFields_GetExpiredDomains.last_seen_max}}',
 								last_seen_min: '={{$parameter.additionalFields_GetExpiredDomains.last_seen_min}}',
 								last_time_available_max: '={{$parameter.additionalFields_GetExpiredDomains.last_time_available_max}}',
@@ -1065,7 +1065,7 @@ export class Haloscan implements INodeType {
 								longitude_min: '={{$parameter.additionalFields_GetGMBBacklink.longitude_min}}',
 								mode: '={{$parameter.mode}}',
 								order: '={{$parameter.additionalFields_GetGMBBacklink.order}}',
-								order_by: '={{$parameter.order_by}}',
+								order_by: '={{$parameter.order_by_backlink}}',
 								page: '={{$parameter.page}}',
 								rating_count_keep_na: '={{$parameter.additionalFields_GetGMBBacklink.rating_count_keep_na}}',
 								rating_count_max: '={{$parameter.additionalFields_GetGMBBacklink.rating_count_max}}',
@@ -1097,7 +1097,7 @@ export class Haloscan implements INodeType {
 								lineCount: '={{$parameter.lineCount}}',
 								mode: '={{$parameter.mode}}',
 								order: '={{$parameter.additionalFields_GetDomainTopPagesGetHistoryofDomainPages.order}}',
-								order_by: '={{$parameter.order_by_domain_history}}',
+								order_by: '={{$parameter.order_by_pagehistory}}',
 								page: '={{$parameter.page}}',
 								total_top_10_max: '={{$parameter.additionalFields_GetDomainTopPagesGetHistoryofDomainPages.total_top_10_max}}',
 								total_top_10_min: '={{$parameter.additionalFields_GetDomainTopPagesGetHistoryofDomainPages.total_top_10_min}}',
@@ -1136,7 +1136,7 @@ export class Haloscan implements INodeType {
 								input: '={{$parameter.input}}',
 								keyword_exclude: '={{$parameter.additionalFields_GetKeywordDatafromURL.keyword_exclude}}',
 								keyword_include: '={{$parameter.additionalFields_GetKeywordDatafromURL.keyword_include}}',
-								keywords: '={{$parameter.keywords}}',
+								keywords: '={{$parameter.keywords_bestposition}}',
 								kgr_max: '={{$parameter.additionalFields_GetKeywordDatafromURL.kgr_max}}',
 								kgr_min: '={{$parameter.additionalFields_GetKeywordDatafromURL.kgr_min}}',
 								kvi_keep_na: '={{$parameter.additionalFields_GetKeywordDatafromURL.kvi_keep_na}}',
@@ -1241,7 +1241,7 @@ export class Haloscan implements INodeType {
 							method: 'POST',
 							url: '=/domains/expired/reveal',
 							body: {
-								root_domain_keys: '={{$parameter.root_domain_keys}}',
+								root_domain_keys: '={{$parameter.root_domain_keys.toInt()}}'
 							},
 						},
 					},
@@ -1470,42 +1470,6 @@ export class Haloscan implements INodeType {
 				},
 			},
 		},
-		// parameter : lineCount
-		{
-			displayName: 'Line Count',
-			description: 'Max number of returned results',
-			name: 'lineCount',
-			type: 'number',
-			default: 20,
-			displayOptions: {
-				show: {
-					//only show if you've selected :
-					resource: ['keywordExplorer', 'siteExplorer'],
-					operation: [
-						'FindKeyword',
-						'FindKeywordSynonym',
-						'FindKeywordsMatch',
-						'FindRelatedKeyword',
-						'FindSimilarKeyword',
-						'GetKeywordDatainBulk',
-						'GetKeywordHighlight',
-						'GetKeywordQuestion',
-						'CompareDomainKeywordswithCompetitors',
-						'GetCompetitorBestPages',
-						'GetCompetitorsKeywordsBestPosition',
-						'GetDomainCompetitors',
-						'GetDomainDatainBulk',
-						'GetDomainPositionHistory',
-						'GetDomainTopPages',
-						'GetExpiredDomains',
-						'GetGMBBacklink',
-						'GetHistoryofDomainPages',
-						'GetKeywordDatafromURL',
-						'GetRankingofDomainKeyword'
-					],
-				},
-			},
-		},
 		// parameter : granularity
 		{
 			displayName: 'Granularity',
@@ -1551,7 +1515,7 @@ export class Haloscan implements INodeType {
 				},
 			},
 		},
-		// parameter : mode
+		// parameter : mode_structure
 		{
 			displayName: 'Mode',
 			description: 'Defines how groups will be made. Manual means that keywords will be grouped when they share at least \'manual_common_10\' URLs in their last SERP top 10 AND at least \'manual_common_100\' URLS in their last SERP top 100. Multi means that keywords will be automatically grouped (hierarchically) depending on their proximity on several modalities specified in \'multipartite_modes\'. You can also influence the attraction force with the \'granularity\' parameter.',
@@ -1875,41 +1839,6 @@ export class Haloscan implements INodeType {
 				},
 			},
 		},
-		// parameter : page
-		{
-			displayName: 'Page',
-			name: 'page',
-			type: 'number',
-			default: 1,
-			displayOptions: {
-				show: {
-					//only show if you've selected :
-					resource: ['keywordExplorer', 'siteExplorer'],
-					operation: [
-						'FindKeyword',
-						'FindKeywordSynonym',
-						'FindKeywordsMatch',
-						'FindRelatedKeyword',
-						'FindSimilarKeyword',
-						'GetKeywordDatainBulk',
-						'GetKeywordHighlight',
-						'GetKeywordQuestion',
-						'CompareDomainKeywordswithCompetitors',
-						'GetCompetitorBestPages',
-						'GetCompetitorsKeywordsBestPosition',
-						'GetDomainCompetitors',
-						'GetDomainDatainBulk',
-						'GetDomainPositionHistory',
-						'GetDomainTopPages',
-						'GetExpiredDomains',
-						'GetGMBBacklink',
-						'GetHistoryofDomainPages',
-						'GetKeywordDatafromURL',
-						'GetRankingofDomainKeyword'
-					],
-				},
-			},
-		},
 		// parameter : period
 		{
 			displayName: 'Period',
@@ -2082,309 +2011,303 @@ export class Haloscan implements INodeType {
 				},
 			},
 		},
-		// required site explorer
-		{
-    displayName: "Competitors",
-   description: "List of competitor domains or root domains",
-   name: "competitors_bestposition",
-   default: [],
-   required: true,
-   displayOptions: {
-     show: {
-       resource: [
-          "siteExplorer"
-        ],
-       operation: [
-          "GetCompetitorsKeywordsBestPosition"
-        ]
-      }
-    },
-   type: "string",
-   typeOptions: {
-     multipleValues: true
-    }
-		},
-		{
-			displayName: "Keywords",
-		description: "List of keywords to look for",
-		name: "keywords_bestposition",
-		default: [],
-		required: true,
-		displayOptions: {
-			show: {
-				resource: [
-						"siteExplorer"
-					],
-				operation: [
-						"GetCompetitorsKeywordsBestPosition"
-					]
-				}
-			},
-		type: "string",
-		typeOptions: {
-			multipleValues: true
-			}
-		},
+
+		// required site explorer:
+
+		//inputs
 		{
 			displayName: "Inputs",
-		description: 'Array containing the requested URLs or domains',
-		name: "inputs",
-		default: [],
-		required: true,
-		displayOptions: {
-			show: {
-				resource: [
-						"siteExplorer"
-					],
-				operation: [
-						"GetDomainDatainBulk"
-					]
+			description: 'Array containing the requested URLs or domains',
+			name: "inputs",
+			default: [],
+			required: true,
+			displayOptions: {
+				show: {
+					resource: [
+							"siteExplorer"
+						],
+					operation: [
+							"GetDomainDatainBulk"
+						]
+					}
+				},
+			type: "string",
+			typeOptions: {
+				multipleValues: true
 				}
-			},
-		type: "string",
-		typeOptions: {
-			multipleValues: true
-			}
 		},
+		//input_domain
+		{
+			displayName: "Input",
+			description: 'Requested URL, domain or root domain',
+			name: "input_domain",
+			default: "",
+			required: true,
+			displayOptions: {
+				show: {
+					resource: [
+							"siteExplorer"
+						],
+					operation: [
+							"GetDomainOverview"
+						]
+					}
+				},
+			type: "string"
+		},
+		//input_visibility_bestkeyword
+		{
+			displayName: "Input",
+			description: 'Array containing the requested URLs or domains',
+			name: "input_visibility_bestkeyword",
+			default: [],
+			required: true,
+			displayOptions: {
+				show: {
+					resource: [
+							"siteExplorer"
+						],
+					operation: [
+							"GetBestKeywordsfromPage",
+							"GetVisibilityTrendofDomains"
+						]
+					}
+				},
+			type: "string",
+			typeOptions: {
+				multipleValues: true
+				}
+		},
+		//input
+		{
+			displayName: "Input",
+			description: 'Requested URL or domain',
+			name: "input",
+			default: "",
+			required: true,
+			displayOptions: {
+				show: {
+					resource: [
+							"siteExplorer"
+						],
+					operation: [
+							"CompareDomainKeywordswithCompetitors",
+							"GetCompetitorBestPages",
+							"GetDomainCategoriesbasedGMBBacklinks",
+							"GetDomainCompetitors",
+							"GetDomainGMBBacklinksMap",
+							"GetDomainPositionHistory",
+							"GetDomainTopPages",
+							"GetGMBBacklink",
+							"GetHistoryofDomainPages",
+							"GetKeywordDatafromURL",
+							"GetRankingofDomainKeyword"
+						]
+					}
+				},
+			type: "string"
+		},
+		//competitors_bestposition
+		{
+			displayName: "Competitors",
+			description: "List of competitor domains or root domains",
+			name: "competitors_bestposition",
+			default: [],
+			required: true,
+			displayOptions: {
+				show: {
+					resource: [
+							"siteExplorer"
+						],
+					operation: [
+							"GetCompetitorsKeywordsBestPosition"
+						]
+					}
+				},
+			type: "string",
+			typeOptions: {
+				multipleValues: true
+				}
+		},
+		//keywords_bestposition
+		{
+			displayName: "Keywords",
+			description: "List of keywords to look for",
+			name: "keywords_bestposition",
+			default: [],
+			required: true,
+			displayOptions: {
+				show: {
+					resource: [
+							"siteExplorer"
+						],
+					operation: [
+							"GetCompetitorsKeywordsBestPosition",
+							"GetKeywordDatafromURL"
+						]
+					}
+				},
+			type: "string",
+			typeOptions: {
+				multipleValues: true
+				}
+		},
+		//date_from
 		{
 			displayName: "Date From",
-		description: "Date in YYYY-MM-DD format",
-		name: "date_from",
-		default: "",
-		required: true,
-		displayOptions: {
-			show: {
-				resource: [
-						"siteExplorer"
-					],
-				operation: [
-						"GetDomainPositionHistory",
-						"GetHistoryofDomainPages"
-					]
-				}
-			},
-		type: "string"
+			description: "Date in YYYY-MM-DD format",
+			name: "date_from",
+			default: "",
+			required: true,
+			displayOptions: {
+				show: {
+					resource: [
+							"siteExplorer"
+						],
+					operation: [
+							"GetDomainPositionHistory",
+							"GetHistoryofDomainPages"
+						]
+					}
+				},
+			type: "string"
 		},
-		{
-			displayName: "Input",
-		description: 'Requested URL or domain',
-		name: "input",
-		default: "",
-		required: true,
-		displayOptions: {
-			show: {
-				resource: [
-						"siteExplorer"
-					],
-				operation: [
-						"CompareDomainKeywordswithCompetitors",
-						"GetCompetitorBestPages",
-						"GetDomainCategoriesbasedGMBBacklinks",
-						"GetDomainCompetitors",
-						"GetDomainGMBBacklinksMap",
-						"GetDomainPositionHistory",
-						"GetDomainTopPages",
-						"GetGMBBacklink",
-						"GetHistoryofDomainPages",
-						"GetKeywordDatafromURL",
-						"GetRankingofDomainKeyword"
-					]
-				}
-			},
-		type: "string"
-		},
-		{
-			displayName: "Root Domain Keys",
-		description: 'List of root_domain_key fields from items in the domains/expired endpoint which you want to reveal. 1 expired domain credit will be consumed for each item in this list that you haven\'t previously revealed.',
-		name: "root_domain_keys",
-		default: [],
-		required: true,
-		displayOptions: {
-			show: {
-				resource: [
-						"siteExplorer"
-					],
-				operation: [
-						"RevealExpiredDomains"
-					]
-				}
-			},
-		type: "string",
-		typeOptions: {
-			multipleValues: true
-			}
-		},
-		{
-			displayName: "Input",
-		description: 'Requested URL, domain or root domain',
-		name: "input_domain",
-		default: "",
-		required: true,
-		displayOptions: {
-			show: {
-				resource: [
-						"siteExplorer"
-					],
-				operation: [
-						"GetDomainOverview"
-					]
-				}
-			},
-		type: "string"
-		},
-		{
-		displayName: "Input",
-		description: 'Array containing the requested URLs or domains',
-		name: "input_visibility_bestkeyword",
-		default: [],
-		required: true,
-		displayOptions: {
-			show: {
-				resource: [
-						"siteExplorer"
-					],
-				operation: [
-						"GetBestKeywordsfromPage",
-						"GetVisibilityTrendofDomains"
-					]
-				}
-			},
-		type: "string",
-		typeOptions: {
-			multipleValues: true
-			}
-		},
-		{
-			displayName: "Requested Data",
-		description: 'Requested data for the given URL or domain, corresponding to the content of different sections of the haloscan overview page. Data will be sent back in a field with the same name in the response.',
-		name: "requested_data",
-		default: [],
-		required: true,
-		displayOptions: {
-			show: {
-				resource: [
-						"siteExplorer"
-					],
-				operation: [
-						"GetDomainOverview"
-					]
-				}
-			},
-		type: "multiOptions",
-		options: [
-				{
-				name: "Best Keywords",
-				value: "best_keywords"
-				},
-				{
-				name: "Best Pages",
-				value: "best_pages"
-				},
-				{
-				name: "Categories",
-				value: "categories"
-				},
-				{
-				name: "GMB Backlinks",
-				value: "gmb_backlinks"
-				},
-				{
-				name: "Metrics",
-				value: "metrics"
-				},
-				{
-				name: "Positions and Pages History",
-				value: "positions_and_pages_history"
-				},
-				{
-				name: "Positions Breakdown",
-				value: "positions_breakdown"
-				},
-				{
-				name: "Positions Breakdown History",
-				value: "positions_breakdown_history"
-				},
-				{
-				name: "Traffic Value",
-				value: "traffic_value"
-				},
-				{
-				name: "Visibility Index History",
-				value: "visibility_index_history"
-				}
-			]
-		},
+		//date_to
 		{
 			displayName: "Date To",
-		description: "Date in YYYY-MM-DD format",
-		name: "date_to",
-		default: "",
-		required: true,
-		displayOptions: {
-			show: {
-				resource: [
-						"siteExplorer"
-					],
-				operation: [
-						"GetDomainPositionHistory",
-						"GetHistoryofDomainPages"
-					]
+			description: "Date in YYYY-MM-DD format",
+			name: "date_to",
+			default: "",
+			required: true,
+			displayOptions: {
+				show: {
+					resource: [
+							"siteExplorer"
+						],
+					operation: [
+							"GetDomainPositionHistory",
+							"GetHistoryofDomainPages"
+						]
+					}
+				},
+			type: "string"
+		},
+		//root_domain_keys
+		{
+			displayName: "Root Domain Keys",
+			description: 'List of root_domain_key fields from items in the domains/expired endpoint which you want to reveal. 1 expired domain credit will be consumed for each item in this list that you haven\'t previously revealed.',
+			name: "root_domain_keys",
+			default: [],
+			required: true,
+			displayOptions: {
+				show: {
+					resource: [
+							"siteExplorer"
+						],
+					operation: [
+							"RevealExpiredDomains"
+						]
+					}
+				},
+			type: "string",
+			typeOptions: {
+				multipleValues: true
 				}
-			},
-		type: "string"
+		},
+		//requested_data
+		{
+			displayName: "Requested Data",
+			description: 'Requested data for the given URL or domain, corresponding to the content of different sections of the haloscan overview page. Data will be sent back in a field with the same name in the response.',
+			name: "requested_data",
+			default: [],
+			required: true,
+			displayOptions: {
+				show: {
+					resource: [
+							"siteExplorer"
+						],
+					operation: [
+							"GetDomainOverview"
+						]
+					}
+				},
+			type: "multiOptions",
+			options: [
+					{
+					name: "Best Keywords",
+					value: "best_keywords"
+					},
+					{
+					name: "Best Pages",
+					value: "best_pages"
+					},
+					{
+					name: "Categories",
+					value: "categories"
+					},
+					{
+					name: "GMB Backlinks",
+					value: "gmb_backlinks"
+					},
+					{
+					name: "Metrics",
+					value: "metrics"
+					},
+					{
+					name: "Positions and Pages History",
+					value: "positions_and_pages_history"
+					},
+					{
+					name: "Positions Breakdown",
+					value: "positions_breakdown"
+					},
+					{
+					name: "Positions Breakdown History",
+					value: "positions_breakdown_history"
+					},
+					{
+					name: "Traffic Value",
+					value: "traffic_value"
+					},
+					{
+					name: "Visibility Index History",
+					value: "visibility_index_history"
+					}
+				]
 		},
 
 		//optional site explorer
+
+		//competitors
 		{
-    displayName: "Accepted Types",
-    description: "That’s just a filter, it’s not necessary to use it if you used the matching boolean params (using the boolean params makes it faster). The only difference is that with this, you can separate mixed keywords, where seed is better than some competitors and less good than others. Hence, bested and besting become absolute: bested by every single competitor (that is there), or besting every single competitor",
-    name: "acceptedTypes",
-    default: [
-      'auto'
-    ],
-    displayOptions: {
-      show: {
-        resource: [
-          "siteExplorer"
-        ],
-        operation: [
-          "CompareDomainKeywordswithCompetitors"
-        ]
-      }
-    },
-    type: "multiOptions",
-    options: [
-      {
-        name: "Auto",
-        value: "auto"
-      },
-      {
-        name: "Bested",
-        value: "bested"
-      },
-      {
-        name: "Besting",
-        value: "besting"
-      },
-      {
-        name: "Exclusive",
-        value: "exclusive"
-      },
-      {
-        name: "Missing",
-        value: "missing"
-      },
-      {
-        name: "Mixed",
-        value: "mixed"
-      }
-    ]
+			displayName: "Competitors",
+			description: "List of competitors to compare the input to",
+			name: "competitors",
+			displayOptions: {
+				show: {
+					resource: [
+						"siteExplorer"
+					],
+					operation: [
+						"CompareDomainKeywordswithCompetitors",
+						"GetCompetitorBestPages"
+					]
+				}
+			},
+			type: "string",
+			default: ['auto'],
+			typeOptions: {
+				multipleValues: true
+			}
 		},
+		//acceptedTypes
 		{
-			displayName: "Missing",
-			description: "Whether to include positions where the search input is not positioned, and at least one of the requested competitors is",
-			name: "missing",
-			default: false,
+			displayName: "Accepted Types",
+			description: "That\'s just a filter, it\'s not necessary to use it if you used the matching boolean params (using the boolean params makes it faster). The only difference is that with this, you can separate mixed keywords, where seed is better than some competitors and less good than others. Hence, bested and besting become absolute: bested by every single competitor (that is there), or besting every single competitor",
+			name: "acceptedTypes",
+			default: [
+				'auto'
+			],
 			displayOptions: {
 				show: {
 					resource: [
@@ -2395,8 +2318,35 @@ export class Haloscan implements INodeType {
 					]
 				}
 			},
-			type: "boolean"
+			type: "multiOptions",
+			options: [
+				{
+					name: "Auto",
+					value: "auto"
+				},
+				{
+					name: "Bested",
+					value: "bested"
+				},
+				{
+					name: "Besting",
+					value: "besting"
+				},
+				{
+					name: "Exclusive",
+					value: "exclusive"
+				},
+				{
+					name: "Missing",
+					value: "missing"
+				},
+				{
+					name: "Mixed",
+					value: "mixed"
+				}
+			]
 		},
+		//strategy
 		{
 			displayName: "Strategy",
 			description: "Whether to return all positioned keywords, only active ones or only lost ones",
@@ -2428,6 +2378,25 @@ export class Haloscan implements INodeType {
 				}
 			]
 		},
+		//missing
+		{
+			displayName: "Missing",
+			description: "Whether to include positions where the search input is not positioned, and at least one of the requested competitors is",
+			name: "missing",
+			default: false,
+			displayOptions: {
+				show: {
+					resource: [
+						"siteExplorer"
+					],
+					operation: [
+						"CompareDomainKeywordswithCompetitors"
+					]
+				}
+			},
+			type: "boolean"
+		},
+		//besting
 		{
 			displayName: "Besting",
 			description: "Whether to include positions where the search input is positioned, and better positioned than at least one of the requested competitors",
@@ -2445,6 +2414,43 @@ export class Haloscan implements INodeType {
 			},
 			type: "boolean"
 		},
+		//bested
+		{
+			displayName: "Bested",
+			description: "Whether to include positions where the search input is positioned, but at least one of the requested competitors is positioned better",
+			name: "bested",
+			default: false,
+			displayOptions: {
+				show: {
+					resource: [
+						"siteExplorer"
+					],
+					operation: [
+						"CompareDomainKeywordswithCompetitors"
+					]
+				}
+			},
+			type: "boolean"
+		},
+		//exclusive
+		{
+			displayName: "Exclusive",
+			description: "Whether to include positions where only the search input is positioned, and none of the requested competitors is",
+			name: "exclusive",
+			default: false,
+			displayOptions: {
+				show: {
+					resource: [
+						"siteExplorer"
+					],
+					operation: [
+						"CompareDomainKeywordswithCompetitors"
+					]
+				}
+			},
+			type: "boolean"
+		},
+		//type
 		{
 			displayName: "Type",
 			description: "Determines how returned values are computed",
@@ -2480,6 +2486,223 @@ export class Haloscan implements INodeType {
 				}
 			]
 		},
+		//lang
+		{
+			displayName: "Languages",
+			description: 'Only used in conjunction with "categories" in requested_data, the label field will be translated if a different language than english is requested. Original value is also present.',
+			name: "lang",
+			default: "en",
+			displayOptions: {
+				show: {
+					resource: [
+						"siteExplorer"
+					],
+					operation: [
+						"GetDomainOverview"
+					]
+				}
+			},
+			type: "options",
+			options: [
+				{
+					name: "English",
+					value: "en"
+				},
+				{
+					name: "French",
+					value: "fr"
+				}
+			]
+		},
+		//mode_bestposition
+		{
+			displayName: "Mode",
+			description: "Whether to look for a root domain or subdomain",
+			name: "mode_bestposition",
+			default: "root",
+			displayOptions: {
+				show: {
+					resource: [
+						"siteExplorer"
+					],
+					operation: [
+						"GetCompetitorsKeywordsBestPosition"
+					]
+				}
+			},
+			type: "options",
+			options: [
+				{
+					name: "Domain",
+					value: "domain"
+				},
+				{
+					name: "Root",
+					value: "root"
+				}
+			]
+		},
+		//keyword_expired
+		{
+			displayName: "Keyword",
+			description: "Only keep expired domains that were positioned on keywords matching this expression",
+			name: "keyword_expired",
+			default: "",
+			displayOptions: {
+				show: {
+					resource: [
+						"siteExplorer"
+					],
+					operation: [
+						"GetExpiredDomains"
+					]
+				}
+			},
+			type: "string"
+		},
+		//lineCount_bestkeyword
+		{
+			displayName: "Line Count",
+			description: "Number of keywords to return. Between 1 and 10.",
+			name: "lineCount_bestkeyword",
+			default: 3,
+			displayOptions: {
+				show: {
+					resource: [
+						"siteExplorer"
+					],
+					operation: [
+						"GetBestKeywordsfromPage"
+					]
+				}
+			},
+			type: "number",
+			typeOptions: {
+				minValue: 1,
+				maxValue: 10
+			}
+		},
+		// parameter : page
+		{
+			displayName: 'Page',
+			name: 'page',
+			type: 'number',
+			default: 1,
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer', 'siteExplorer'],
+					operation: [
+						'FindKeyword',
+						'FindKeywordSynonym',
+						'FindKeywordsMatch',
+						'FindRelatedKeyword',
+						'FindSimilarKeyword',
+						'GetKeywordDatainBulk',
+						'GetKeywordHighlight',
+						'GetKeywordQuestion',
+						'CompareDomainKeywordswithCompetitors',
+						'GetCompetitorBestPages',
+						'GetCompetitorsKeywordsBestPosition',
+						'GetDomainCompetitors',
+						'GetDomainDatainBulk',
+						'GetDomainPositionHistory',
+						'GetDomainTopPages',
+						'GetExpiredDomains',
+						'GetGMBBacklink',
+						'GetHistoryofDomainPages',
+						'GetKeywordDatafromURL',
+						'GetRankingofDomainKeyword'
+					],
+				},
+			},
+		},
+		// parameter : lineCount
+		{
+			displayName: 'Line Count',
+			description: 'Max number of returned results',
+			name: 'lineCount',
+			type: 'number',
+			default: 20,
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer', 'siteExplorer'],
+					operation: [
+						'FindKeyword',
+						'FindKeywordSynonym',
+						'FindKeywordsMatch',
+						'FindRelatedKeyword',
+						'FindSimilarKeyword',
+						'GetKeywordDatainBulk',
+						'GetKeywordHighlight',
+						'GetKeywordQuestion',
+						'CompareDomainKeywordswithCompetitors',
+						'GetCompetitorBestPages',
+						'GetCompetitorsKeywordsBestPosition',
+						'GetDomainCompetitors',
+						'GetDomainDatainBulk',
+						'GetDomainPositionHistory',
+						'GetDomainTopPages',
+						'GetExpiredDomains',
+						'GetGMBBacklink',
+						'GetHistoryofDomainPages',
+						'GetKeywordDatafromURL',
+						'GetRankingofDomainKeyword'
+					],
+				},
+			},
+		},
+		//mode
+		{
+			displayName: "Mode",
+			description: 'Whether to look for a domain or a full URL. Leave empty for auto detection.',
+			name: "mode",
+			default: "auto",
+			displayOptions: {
+				show: {
+					resource: [
+						"siteExplorer"
+					],
+					operation: [
+						"CompareDomainKeywordswithCompetitors",
+						"GetCompetitorBestPages",
+						"GetDomainCategoriesbasedGMBBacklinks",
+						"GetDomainCompetitors",
+						"GetDomainDatainBulk",
+						"GetDomainGMBBacklinksMap",
+						"GetDomainOverview",
+						"GetDomainPositionHistory",
+						"GetDomainTopPages",
+						"GetGMBBacklink",
+						"GetHistoryofDomainPages",
+						"GetKeywordDatafromURL",
+						"GetRankingofDomainKeyword",
+						"GetVisibilityTrendofDomains"
+					]
+				}
+			},
+			type: "options",
+			options: [
+				{
+					name: "Auto",
+					value: "auto"
+				},
+				{
+					name: "Domain",
+					value: "domain"
+				},
+				{
+					name: "Root",
+					value: "root"
+				},
+				{
+					name: "URL",
+					value: "url"
+				}
+			]
+		},
+		//order_by_bestposition
 		{
 			displayName: "Order By",
 			description: 'Field used for sorting results. "default" value first sorts by descending unique_competitors_count, then by descending best_competitor_traffic.',
@@ -2579,98 +2802,7 @@ export class Haloscan implements INodeType {
 				}
 			]
 		},
-		{
-			displayName: "Languages",
-			description: 'Only used in conjunction with "categories" in requested_data, the label field will be translated if a different language than english is requested. Original value is also present.',
-			name: "lang",
-			default: "en",
-			displayOptions: {
-				show: {
-					resource: [
-						"siteExplorer"
-					],
-					operation: [
-						"GetDomainOverview"
-					]
-				}
-			},
-			type: "options",
-			options: [
-				{
-					name: "English",
-					value: "en"
-				},
-				{
-					name: "French",
-					value: "fr"
-				}
-			]
-		},
-		{
-			displayName: "Mode",
-			description: "Whether to look for a root domain or subdomain",
-			name: "mode_bestposition",
-			default: "root",
-			displayOptions: {
-				show: {
-					resource: [
-						"siteExplorer"
-					],
-					operation: [
-						"GetCompetitorsKeywordsBestPosition"
-					]
-				}
-			},
-			type: "options",
-			options: [
-				{
-					name: "Domain",
-					value: "domain"
-				},
-				{
-					name: "Root",
-					value: "root"
-				}
-			]
-		},
-		{
-			displayName: "Keyword",
-			description: "Only keep expired domains that were positioned on keywords matching this expression",
-			name: "keyword",
-			default: "",
-			displayOptions: {
-				show: {
-					resource: [
-						"siteExplorer"
-					],
-					operation: [
-						"GetExpiredDomains"
-					]
-				}
-			},
-			type: "string"
-		},
-		{
-			displayName: "Competitors",
-			description: "List of competitors to compare the input to",
-			name: "competitors",
-			displayOptions: {
-				show: {
-					resource: [
-						"siteExplorer"
-					],
-					operation: [
-						"CompareDomainKeywordswithCompetitors",
-						"GetCompetitorBestPages"
-					]
-				}
-			},
-			type: "string",
-			default: ["auto"],
-			typeOptions: {
-				multipleValues: true
-			}
-		},
+		//order_by_domain_history
 		{
 			displayName: "Order By",
 			description: 'Field used for sorting results. Default sorts by descending traffic and then ascending position.',
@@ -2683,8 +2815,7 @@ export class Haloscan implements INodeType {
 					],
 					operation: [
 						"GetDomainPositionHistory",
-						"GetDomainTopPages",
-						"GetHistoryofDomainPages"
+						"GetDomainTopPages"
 					]
 				}
 			},
@@ -2744,23 +2875,7 @@ export class Haloscan implements INodeType {
 				}
 			]
 		},
-		{
-			displayName: "Bested",
-			description: "Whether to include positions where the search input is positioned, but at least one of the requested competitors is positioned better",
-			name: "bested",
-			default: false,
-			displayOptions: {
-				show: {
-					resource: [
-						"siteExplorer"
-					],
-					operation: [
-						"CompareDomainKeywordswithCompetitors"
-					]
-				}
-			},
-			type: "boolean"
-		},
+		//order_by_competitor_keyworddata
 		{
 			displayName: "Order By",
 			description: "Field used for sorting results",
@@ -2772,8 +2887,7 @@ export class Haloscan implements INodeType {
 						"siteExplorer"
 					],
 					operation: [
-						"GetCompetitorBestPages",
-						"GetKeywordDatafromURL"
+						"GetCompetitorBestPages"
 					]
 				}
 			},
@@ -2817,75 +2931,79 @@ export class Haloscan implements INodeType {
 				}
 			]
 		},
+		// order_by_bulk
 		{
-			displayName: "Line Count",
-			description: "Number of keywords to return. Between 1 and 10.",
-			name: "lineCount",
-			default: 3,
+			displayName: "Order By",
+			description: "Field used for sorting results",
+			name: "order_by_bulk",
+			default: "keep",
 			displayOptions: {
 				show: {
 					resource: [
 						"siteExplorer"
 					],
 					operation: [
-						"GetBestKeywordsfromPage"
-					]
-				}
-			},
-			type: "number",
-			typeOptions: {
-				minValue: 1,
-				maxValue: 10
-			}
-		},
-		{
-			displayName: "Mode",
-			description: 'Whether to look for a domain or a full URL. Leave empty for auto detection.',
-			name: "mode",
-			default: "auto",
-			displayOptions: {
-				show: {
-					resource: [
-						"siteExplorer"
-					],
-					operation: [
-						"CompareDomainKeywordswithCompetitors",
-						"GetCompetitorBestPages",
-						"GetDomainCategoriesbasedGMBBacklinks",
-						"GetDomainCompetitors",
-						"GetDomainDatainBulk",
-						"GetDomainGMBBacklinksMap",
-						"GetDomainOverview",
-						"GetDomainPositionHistory",
-						"GetDomainTopPages",
-						"GetGMBBacklink",
-						"GetHistoryofDomainPages",
-						"GetKeywordDatafromURL",
-						"GetRankingofDomainKeyword",
-						"GetVisibilityTrendofDomains"
+						"GetDomainDatainBulk"
 					]
 				}
 			},
 			type: "options",
 			options: [
 				{
-					name: "Auto",
-					value: "auto"
+					name: "First Time Seen",
+					value: "first_time_seen"
 				},
 				{
-					name: "Domain",
-					value: "domain"
+					name: "Indexed Pages",
+					value: "indexed_pages"
 				},
 				{
-					name: "Root",
-					value: "root"
+					name: "Keep",
+					value: "keep"
 				},
 				{
-					name: "URL",
-					value: "url"
+					name: "Last Time Seen",
+					value: "last_time_seen"
+				},
+				{
+					name: "Name",
+					value: "name"
+				},
+				{
+					name: "Total Top 10",
+					value: "total_top_10"
+				},
+				{
+					name: "Total Top 100",
+					value: "total_top_100"
+				},
+				{
+					name: "Total Top 3",
+					value: "total_top_3"
+				},
+				{
+					name: "Total Top 50",
+					value: "total_top_50"
+				},
+				{
+					name: "Total Traffic",
+					value: "total_traffic"
+				},
+				{
+					name: "Total Traffic Value",
+					value: "total_traffic_value"
+				},
+				{
+					name: "Type",
+					value: "type"
+				},
+				{
+					name: "Unique Keywords",
+					value: "unique_keywords"
 				}
 			]
 		},
+		//order_by_expired
 		{
 			displayName: "Order By",
 			description: "Field used for sorting results. Default sort is by descending matching_traffic if keyword is present, or total_traffic otherwise.",
@@ -3025,6 +3143,7 @@ export class Haloscan implements INodeType {
 				}
 			]
 		},
+		//order_by_ranking
 		{
 			displayName: "Order By",
 			description: "Field used for sorting results. Defaut sort is by descending traffic, then ascending position.",
@@ -3096,27 +3215,202 @@ export class Haloscan implements INodeType {
 				}
 			]
 		},
+		//order_by_backlink
 		{
-			displayName: "Exclusive",
-			description: "Whether to include positions where only the search input is positioned, and none of the requested competitors is",
-			name: "exclusive",
-			default: false,
+			displayName: "Order By",
+			description: "Field used for sorting results. Default value first sorts by descending rating_count, then by descending rating_value.",
+			name: "order_by_backlink",
+			default: "default",
 			displayOptions: {
 				show: {
 					resource: [
 						"siteExplorer"
 					],
 					operation: [
-						"CompareDomainKeywordswithCompetitors"
+						"GetGMBBacklink"
 					]
 				}
 			},
-			type: "boolean"
+			type: "options",
+			options: [
+				{
+					name: "Address",
+					value: "address"
+				},
+				{
+					name: "Categories",
+					value: "categories"
+				},
+				{
+					name: "Default",
+					value: "default"
+				},
+				{
+					name: "Domain",
+					value: "domain"
+				},
+				{
+					name: "Is_claimed",
+					value: "is_claimed"
+				},
+				{
+					name: "Latitude",
+					value: "latitude"
+				},
+				{
+					name: "Longitude",
+					value: "longitude"
+				},
+				{
+					name: "Name",
+					value: "name"
+				},
+				{
+					name: "Phone",
+					value: "phone"
+				},
+				{
+					name: "Rating Count",
+					value: "rating_count"
+				},
+				{
+					name: "Rating Value",
+					value: "rating_value"
+				},
+				{
+					name: "Root Domain",
+					value: "root_domain"
+				},
+				{
+					name: "Total Photos",
+					value: "total_photos"
+				},
+				{
+					name: "URL",
+					value: "url"
+				}
+			]
 		},
-
-
-
-
+		// order_by_pagehistory
+		{
+			displayName: "Order By",
+			description: 'Field used for sorting results. Default sorts by descending traffic and then ascending position.',
+			name: "order_by_pagehistory",
+			default: "default",
+			displayOptions: {
+				show: {
+					resource: [
+						"siteExplorer"
+					],
+					operation: [
+						"GetHistoryofDomainPages"
+					]
+				}
+			},
+			type: "options",
+			options: [
+				{
+					name: "Default",
+					value: "default"
+				},
+				{
+					name: "Domain",
+					value: "domain"
+				},
+				{
+					name: "First Time Seen",
+					value: "first_time_seen"
+				},
+				{
+					name: "Known Versions",
+					value: "known_versions"
+				},
+				{
+					name: "Last Time Seen",
+					value: "last_time_seen"
+				},
+				{
+					name: "Total Top 10",
+					value: "total_top_10"
+				},
+				{
+					name: "Total Top 100",
+					value: "total_top_100"
+				},
+				{
+					name: "Total Top 3",
+					value: "total_top_3"
+				},
+				{
+					name: "Total Top 50",
+					value: "total_top_50"
+				},
+				{
+					name: "Total Traffic",
+					value: "total_traffic"
+				},
+				{
+					name: "Total Traffic Value",
+					value: "total_traffic_value"
+				},
+				{
+					name: "Unique Keywords",
+					value: "unique_keywords"
+				},
+				{
+					name: "URL",
+					value: "url"
+				}
+			]
+		},
+		//order_by_keywords
+		{
+			displayName: "Order By",
+			description: "Field used for sorting results",
+			name: "order_by_keywords",
+			default: "default",
+			displayOptions: {
+				show: {
+					resource: [
+						"siteExplorer"
+					],
+					operation: [
+						"GetKeywordDatafromURL"
+					]
+				}
+			},
+			type: "options",
+			options: [
+				{
+					name: "Allintitle",
+					value: "allintitle"
+				},
+				{
+					name: "Competition",
+					value: "competition"
+				},
+				{
+					name: "CPC",
+					value: "cpc"
+				},
+				{
+					name: "Default",
+					value: "default"
+				},
+				{
+					name: "Keyword",
+					value: "keyword"
+				},
+				{
+					name: "KGR",
+					value: "kgr"
+				},
+				{
+					name: "Volume",
+					value: "volume"
+				}
+			]
+		},
 
 
 
