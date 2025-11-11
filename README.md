@@ -1,46 +1,132 @@
-![Banner image](https://user-images.githubusercontent.com/10284570/173569848-c624317f-42b1-45a6-ab09-f0ea3c247648.png)
+# n8n-nodes-haloscan
 
-# n8n-nodes-starter
+This is an n8n community node. It lets you use Haloscan in your n8n workflows.
 
-This repo contains example nodes to help you get started building your own custom integrations for [n8n](n8n.io). It includes the node linter and other dependencies.
+_Haloscan is an API providing a suite of powerful tools for keyword research, competitor analysis, SERP tracking, expired domain discovery, and more._
 
-To make your custom node available to the community, you must create it as an npm package, and [submit it to the npm registry](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry).
+[n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/reference/license/) workflow automation platform.
 
-## Prerequisites
+[Overview](#Overview)  
+[Authentication](#Authentication)  
+[Operations](#Operations)  
+[Usage](#Usage)  
+[Troubleshooting](#Troubleshooting)  
+[Resources](#Resources)  
+# **Custom App for Haloscan API**
 
-You need the following installed on your development machine:
+## **Overview**
 
-* [git](https://git-scm.com/downloads)
-* Node.js and pnpm. Minimum version Node 18. You can find instructions on how to install both using nvm (Node Version Manager) for Linux, Mac, and WSL [here](https://github.com/nvm-sh/nvm). For Windows users, refer to Microsoft's guide to [Install NodeJS on Windows](https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows).
-* Install n8n with:
-  ```
-  pnpm install n8n -g
-  ```
-* Recommended: follow n8n's guide to [set up your development environment](https://docs.n8n.io/integrations/creating-nodes/build/node-development-environment/).
+This custom app integrates with the **Haloscan API**, providing a suite of powerful tools for keyword research, competitor analysis, SERP tracking, expired domain discovery, and more. Designed for **SEO professionals, marketers, and businesses**, this app streamlines data retrieval and analysis, allowing users to make data-driven decisions efficiently.
 
-## Using this starter
+---
 
-These are the basic steps for working with the starter. For detailed guidance on creating and publishing nodes, refer to the [documentation](https://docs.n8n.io/integrations/creating-nodes/).
+## **Authentication**
 
-1. [Generate a new repository](https://github.com/n8n-io/n8n-nodes-starter/generate) from this template repository.
-2. Clone your new repo:
-   ```
-   git clone https://github.com/<your organization>/<your-repo-name>.git
-   ```
-3. Run `pnpm i` to install dependencies.
-4. Open the project in your editor.
-5. Browse the examples in `/nodes` and `/credentials`. Modify the examples, or replace them with your own nodes.
-6. Update the `package.json` to match your details.
-7. Run `pnpm lint` to check for errors or `pnpm lintfix` to automatically fix errors when possible.
-8. Test your node locally. Refer to [Run your node locally](https://docs.n8n.io/integrations/creating-nodes/test/run-node-locally/) for guidance.
-9. Replace this README with documentation for your node. Use the [README_TEMPLATE](README_TEMPLATE.md) to get started.
-10. Update the LICENSE file to use your details.
-11. [Publish](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry) your package to npm.
+To use the app, you must authenticate with your **Haloscan API Key**:
 
-## More information
+1. Obtain your API key from your **Haloscan account**.
+2. Enter the API key in the app settings or provide it when prompted.
+3. Ensure the key has **sufficient credits** for API calls.
 
-Refer to our [documentation on creating nodes](https://docs.n8n.io/integrations/creating-nodes/) for detailed information on building your own nodes.
+---
 
-## License
+## **Operations**
 
-[MIT](https://github.com/n8n-io/n8n-nodes-starter/blob/master/LICENSE.md)
+### **User Credit & Account**
+- **Get User Credit** – Retrieves the remaining credit for the current user.
+
+### **Keyword Research**
+- **Get Keywords Overview** – Retrieves an SEO overview for a keyword.
+- **Find Keywords Match** – Finds keyword variations based on a seed keyword.
+- **Find Similar Keywords** – Finds keywords similar to a given keyword.
+- **Get Keywords Highlights** – Identifies keyword highlights with high similarity, search volume, CPC, and competition metrics.
+- **Find Related Keyword** – Finds related keywords based on a seed keyword.
+- **Get Keywords Questions** – Retrieves popular question-based queries related to a keyword.
+- **Find Keywords Synonyms** – Finds keyword synonyms.
+- **Find Keywords** – Finds related keywords based on a seed keyword.
+- **Get Keywords Site Structure** – Analyzes keyword relationships and groups them based on shared statistics.
+- **Compare Keywords SERP** – Compares SERPs for a given keyword.
+- **Get Keywords Available Dates from SERP** – Retrieves a list of available dates for requested keyword in the SERP data.
+- **Get Keywords SERP Page Evolution** – Tracks the ranking history of a specific URL for a given keyword between two dates.
+- **Get Keywords Data (Bulk)** – Retrieves bulk keyword data.
+- **Scrap Keywords** – Submits a request to refresh keyword data.
+
+### **Domain & URL Analysis**
+- **Get a Domain Overview** – Retrieves an SEO overview for a domain or URL.
+- **Get Ranking of Domain's Keyword** – Fetches current domain rankings for a domain or URL.
+- **Get a Domain's Top Pages** – Retrieves top-performing pages of a domain or URL.
+- **Get History of a Domain's Position** – Retrieves the historical ranking positions of a specified domain or URL for various keywords.
+- **Get History of a Domain's Pages** – Fetches historical keyword rankings, traffic, and visibility metrics for specific pages of a domain.
+- **Get Best Keywords from Page** – Retrieves the best-positioned keywords for the given pages.
+- **Get Keywords Data from URL** – Retrieves keyword data for a given URL or domain.
+- **Get Domains Data (in Bulk)** – Retrieves bulk domain data for a list of provided domains or URLs.
+
+### **Competitor Analysis**
+- **Get Domains Competitors** – Retrieves a list of competitor domains for a given website.
+- **Compare Domain's Keywords With Competitors** – Compares keyword rankings between a given website and its competitors.
+- **Get Competitors Best Pages** – Retrieves the best-performing pages of competitor domains compared to a given website.
+
+### **Visibility & Trends**
+- **Get Visibility Trends of Domains** – Retrieves visibility trend data for a given website or URL.
+
+### **Expired Domains**
+- **Get Expired Domains** – Retrieves a list of expired domains with SEO metrics.
+- **Reveal Expired Domains** – Reveals expired root domains using the provided keys retrieved from the domains/expired endpoint.
+
+### **Google My Business (GMB) Insights**
+- **Get GMB Backlinks** – Retrieves Google My Business (GMB) backlink data for a specified domain or URL.
+- **Get Domain's GMB Backlinks Map** – Retrieves the geographical locations of Google My Business (GMB) backlinks for a given domain or URL.
+- **Get Domain's Categories (based on GMB Backlinks)** – Retrieves the business categories associated with a given domain or URL based on GMB backlinks.
+
+---
+
+## **Usage**
+
+### **1. Keyword Discovery**
+- Enter a seed keyword (e.g., `"digital marketing"`)
+- Retrieve **similar keywords**, **question-based keywords**, and **synonyms**  
+
+### **2. Competitor Analysis**
+- Input a domain (e.g., `"example.com"`)
+- Get **competitor websites**, **keyword ranking comparisons**, and **top-performing competitor pages**  
+
+### **3. SERP Tracking**
+- Enter a keyword (e.g., `"best SEO tools"`)
+- Compare **SERP rankings across two dates**
+- Analyze **position changes** for top URLs  
+
+### **4. Expired Domains**
+- Search for **expired domains** related to a niche
+- Unlock **domain details** for purchase evaluation  
+
+### **5. GMB Insights**
+- Retrieve **business listings** associated with a domain
+- Identify **backlinks and business categories**  
+
+---
+
+## **Troubleshooting**
+
+### **1. API Key Issues**
+- **Problem:** API key not working.  
+- **Solution:** Ensure the key is **correct**, **active**, and has **sufficient credits**.
+
+### **2. No Results Found**
+- **Problem:** A keyword or domain returns no data.  
+- **Solution:** Try a **broader query**, **check spelling**, or **increase line count**.
+
+### **3. Expired Domain Data Not Revealed**
+- **Problem:** Expired domains show limited data.  
+- **Solution:** Use the **reveal expired domains** module to unlock details.
+
+### **4. Rate Limit Exceeded**
+- **Problem:** Too many API calls in a short time.  
+- **Solution:** Space out requests or **upgrade your Haloscan API plan**.
+
+---
+
+## **Resources**
+For detailed API documentation, refer to:  
+🔗 **[https://tool.haloscan.com/sign-in](#)**
+
+---
