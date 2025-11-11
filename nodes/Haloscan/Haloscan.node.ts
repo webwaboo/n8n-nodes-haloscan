@@ -7,7 +7,7 @@ export class Haloscan implements INodeType {
 		//name of node for the system
 		name: 'haloscan',
 		//path to the icon
-		icon: 'file:haloscan_bleu.svg',
+		icon: 'file:haloscan_bleu_square.svg',
 		group: ['transform'],
 		version: 1,
 		subtitle: '={{$parameter["resource"] + ": " + $parameter["operation"]}}',
@@ -3444,58 +3444,7 @@ export class Haloscan implements INodeType {
 				},
 			},
 			options: [
-				//parameter : allintitle_max
-				{
-					displayName: 'Maximum Allintitle',
-					name: 'allintitle_max',
-					type: 'number',
-					default: null,
-				},
-				//parameter : allintitle_min
-				{
-					displayName: 'Minimum Allintitle',
-					name: 'allintitle_min',
-					type: 'number',
-					default: null,
-				},
-				//parameter : competition_min
-				{
-					displayName: 'Minimum Competition',
-					description: 'Minimum competition value, between 0 and 1',
-					name: 'competition_min',
-					type: 'number',
-					typeOptions: {
-						maxValue: 1,
-						minValue: 0,
-					},
-					default: null,
-				},
-				//parameter : competition_max
-				{
-					displayName: 'Maximum Competition',
-					description: 'Maximum competition value, between 0 and 1',
-					name: 'competition_max',
-					type: 'number',
-					typeOptions: {
-						maxValue: 1,
-						minValue: 0,
-					},
-					default: null,
-				},
-				//parameter : cpc_max
-				{
-					displayName: 'Maximum CPC',
-					name: 'cpc_max',
-					type: 'number',
-					default: null,
-				},
-				//parameter : cpc_min
-				{
-					displayName: 'Minimum CPC',
-					name: 'cpc_mmin',
-					type: 'number',
-					default: null,
-				},
+
 				//parameter : exclude
 				{
 					displayName: 'Exclude',
@@ -3544,6 +3493,58 @@ export class Haloscan implements INodeType {
 				{
 					displayName: 'KVI Min',
 					name: 'kvi_min',
+					type: 'number',
+					default: null,
+				},
+				//parameter : allintitle_max
+				{
+					displayName: 'Maximum Allintitle',
+					name: 'allintitle_max',
+					type: 'number',
+					default: null,
+				},
+				//parameter : competition_max
+				{
+					displayName: 'Maximum Competition',
+					description: 'Maximum competition value, between 0 and 1',
+					name: 'competition_max',
+					type: 'number',
+					typeOptions: {
+						maxValue: 1,
+						minValue: 0,
+					},
+					default: null,
+				},
+				//parameter : cpc_max
+				{
+					displayName: 'Maximum CPC',
+					name: 'cpc_max',
+					type: 'number',
+					default: null,
+				},
+				//parameter : allintitle_min
+				{
+					displayName: 'Minimum Allintitle',
+					name: 'allintitle_min',
+					type: 'number',
+					default: null,
+				},
+				//parameter : competition_min
+				{
+					displayName: 'Minimum Competition',
+					description: 'Minimum competition value, between 0 and 1',
+					name: 'competition_min',
+					type: 'number',
+					typeOptions: {
+						maxValue: 1,
+						minValue: 0,
+					},
+					default: null,
+				},
+				//parameter : cpc_min
+				{
+					displayName: 'Minimum CPC',
+					name: 'cpc_mmin',
 					type: 'number',
 					default: null,
 				},
@@ -3611,58 +3612,7 @@ export class Haloscan implements INodeType {
 				},
 			},
 			options: [
-				//parameter : allintitle_max
-				{
-					displayName: 'Maximum Allintitle',
-					name: 'allintitle_max',
-					type: 'number',
-					default: null,
-				},
-				//parameter : allintitle_min
-				{
-					displayName: 'Minimum Allintitle',
-					name: 'allintitle_min',
-					type: 'number',
-					default: null,
-				},
-				//parameter : competition_min
-				{
-					displayName: 'Minimum Competition',
-					description: 'Minimum competition value, between 0 and 1',
-					name: 'competition_min',
-					type: 'number',
-					typeOptions: {
-						maxValue: 1,
-						minValue: 0,
-					},
-					default: null,
-				},
-				//parameter : competition_max
-				{
-					displayName: 'Maximum Competition',
-					description: 'Maximum competition value, between 0 and 1',
-					name: 'competition_max',
-					type: 'number',
-					typeOptions: {
-						maxValue: 1,
-						minValue: 0,
-					},
-					default: null,
-				},
-				//parameter : cpc_max
-				{
-					displayName: 'Maximum CPC',
-					name: 'cpc_max',
-					type: 'number',
-					default: null,
-				},
-				//parameter : cpc_min
-				{
-					displayName: 'Minimum CPC',
-					name: 'cpc_mmin',
-					type: 'number',
-					default: null,
-				},
+
 				//parameter : exclude
 				{
 					displayName: 'Exclude',
@@ -3711,6 +3661,58 @@ export class Haloscan implements INodeType {
 				{
 					displayName: 'KVI Min',
 					name: 'kvi_min',
+					type: 'number',
+					default: null,
+				},
+				//parameter : allintitle_max
+				{
+					displayName: 'Maximum Allintitle',
+					name: 'allintitle_max',
+					type: 'number',
+					default: null,
+				},
+				//parameter : competition_max
+				{
+					displayName: 'Maximum Competition',
+					description: 'Maximum competition value, between 0 and 1',
+					name: 'competition_max',
+					type: 'number',
+					typeOptions: {
+						maxValue: 1,
+						minValue: 0,
+					},
+					default: null,
+				},
+				//parameter : cpc_max
+				{
+					displayName: 'Maximum CPC',
+					name: 'cpc_max',
+					type: 'number',
+					default: null,
+				},
+				//parameter : allintitle_min
+				{
+					displayName: 'Minimum Allintitle',
+					name: 'allintitle_min',
+					type: 'number',
+					default: null,
+				},
+				//parameter : competition_min
+				{
+					displayName: 'Minimum Competition',
+					description: 'Minimum competition value, between 0 and 1',
+					name: 'competition_min',
+					type: 'number',
+					typeOptions: {
+						maxValue: 1,
+						minValue: 0,
+					},
+					default: null,
+				},
+				//parameter : cpc_min
+				{
+					displayName: 'Minimum CPC',
+					name: 'cpc_mmin',
 					type: 'number',
 					default: null,
 				},
@@ -3762,58 +3764,6 @@ export class Haloscan implements INodeType {
 				},
 			},
 				options: [
-				//parameter : allintitle_max
-				{
-					displayName: 'Maximum Allintitle',
-					name: 'allintitle_max',
-					type: 'number',
-					default: null,
-				},
-				//parameter : allintitle_min
-				{
-					displayName: 'Minimum Allintitle',
-					name: 'allintitle_min',
-					type: 'number',
-					default: null,
-				},
-				//parameter : competition_min
-				{
-					displayName: 'Minimum Competition',
-					description: 'Minimum competition value, between 0 and 1',
-					name: 'competition_min',
-					type: 'number',
-					typeOptions: {
-						maxValue: 1,
-						minValue: 0,
-					},
-					default: null,
-				},
-				//parameter : competition_max
-				{
-					displayName: 'Maximum Competition',
-					description: 'Maximum competition value, between 0 and 1',
-					name: 'competition_max',
-					type: 'number',
-					typeOptions: {
-						maxValue: 1,
-						minValue: 0,
-					},
-					default: null,
-				},
-				//parameter : cpc_max
-				{
-					displayName: 'Maximum CPC',
-					name: 'cpc_max',
-					type: 'number',
-					default: null,
-				},
-				//parameter : cpc_min
-				{
-					displayName: 'Minimum CPC',
-					name: 'cpc_mmin',
-					type: 'number',
-					default: null,
-				},
 				//parameter : exclude
 				{
 					displayName: 'Exclude',
@@ -3862,6 +3812,58 @@ export class Haloscan implements INodeType {
 				{
 					displayName: 'KVI Min',
 					name: 'kvi_min',
+					type: 'number',
+					default: null,
+				},
+					//parameter : allintitle_max
+				{
+					displayName: 'Maximum Allintitle',
+					name: 'allintitle_max',
+					type: 'number',
+					default: null,
+				},
+				//parameter : competition_max
+				{
+					displayName: 'Maximum Competition',
+					description: 'Maximum competition value, between 0 and 1',
+					name: 'competition_max',
+					type: 'number',
+					typeOptions: {
+						maxValue: 1,
+						minValue: 0,
+					},
+					default: null,
+				},
+				//parameter : cpc_max
+				{
+					displayName: 'Maximum CPC',
+					name: 'cpc_max',
+					type: 'number',
+					default: null,
+				},
+				//parameter : allintitle_min
+				{
+					displayName: 'Minimum Allintitle',
+					name: 'allintitle_min',
+					type: 'number',
+					default: null,
+				},
+				//parameter : competition_min
+				{
+					displayName: 'Minimum Competition',
+					description: 'Minimum competition value, between 0 and 1',
+					name: 'competition_min',
+					type: 'number',
+					typeOptions: {
+						maxValue: 1,
+						minValue: 0,
+					},
+					default: null,
+				},
+				//parameter : cpc_min
+				{
+					displayName: 'Minimum CPC',
+					name: 'cpc_mmin',
 					type: 'number',
 					default: null,
 				},
@@ -3969,58 +3971,10 @@ export class Haloscan implements INodeType {
         type: "boolean"
       },
       {
-        displayName: "Maximum Allintitle",
-        name: "allintitle_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Allintitle",
-        name: "allintitle_min",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Maximum Best Competitor Position",
-        name: "best_competitor_position_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Best Competitor Position",
-        name: "best_competitor_position_min",
-        default: null,
-        type: "number"
-      },
-      {
         displayName: "Best Competitor Traffic Keep NA",
         name: "best_competitor_traffic_keep_na",
         default: false,
         type: "boolean"
-      },
-      {
-        displayName: "Maximum Best Competitor Traffic",
-        name: "best_competitor_traffic_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Best Competitor Traffic",
-        name: "best_competitor_traffic_min",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Maximum Best Reference Position",
-        name: "best_reference_position_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Best Reference Position",
-        name: "best_reference_position_min",
-        default: null,
-        type: "number"
       },
       {
         displayName: "Best Reference Traffic Keep NA",
@@ -4029,56 +3983,10 @@ export class Haloscan implements INodeType {
         type: "boolean"
       },
       {
-        displayName: "Maximum Best Reference Traffic",
-        name: "best_reference_traffic_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Best Reference Traffic",
-        name: "best_reference_traffic_min",
-        default: null,
-        type: "number"
-      },
-      {
         displayName: "Competition Keep NA",
         name: "competition_keep_na",
         default: false,
         type: "boolean"
-      },
-      {
-        displayName: "Maximum Competition",
-        name: "competition_max",
-        default: null,
-        description: "Between 0 and 1",
-        type: "number",
-        typeOptions: {
-          minValue: 0,
-          maxValue: 1
-        }
-      },
-      {
-        displayName: "Minimum Competition",
-        name: "competition_min",
-        default: null,
-        description: "Between 0 and 1",
-        type: "number",
-        typeOptions: {
-          minValue: 0,
-          maxValue: 1
-        }
-      },
-      {
-        displayName: "Maximum Competitors Positions",
-        name: "competitors_positions_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Competitors Positions",
-        name: "competitors_positions_min",
-        default: null,
-        type: "number"
       },
       {
         displayName: "CPC Keep NA",
@@ -4087,34 +3995,10 @@ export class Haloscan implements INodeType {
         type: "boolean"
       },
       {
-        displayName: "Maximum CPC",
-        name: "cpc_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum CPC",
-        name: "cpc_min",
-        default: null,
-        type: "number"
-      },
-      {
         displayName: "Google Indexed Keep NA",
         name: "google_indexed_keep_na",
         default: false,
         type: "boolean"
-      },
-      {
-        displayName: 'Maximum Google Indexed',
-        name: "google_indexed_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: 'Minimum Google Indexed',
-        name: "google_indexed_min",
-        default: null,
-        type: "number"
       },
       {
         displayName: "Keyword Excluded",
@@ -4131,8 +4015,162 @@ export class Haloscan implements INodeType {
         type: "string"
       },
       {
+        displayName: "KGR Keep NA",
+        name: "kgr_keep_na",
+        default: false,
+        type: "boolean"
+      },
+      {
+        displayName: "KVI Keep NA",
+        name: "kvi_keep_na",
+        default: false,
+        type: "boolean"
+      },
+      {
+        displayName: "Maximum Allintitle",
+        name: "allintitle_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum Best Competitor Position",
+        name: "best_competitor_position_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum Best Competitor Traffic",
+        name: "best_competitor_traffic_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum Best Reference Position",
+        name: "best_reference_position_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum Best Reference Traffic",
+        name: "best_reference_traffic_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum Competition",
+        name: "competition_max",
+        default: null,
+        description: "Between 0 and 1",
+        type: "number",
+        typeOptions: {
+          minValue: 0,
+          maxValue: 1
+        }
+      },
+      {
+        displayName: "Maximum Competitors Positions",
+        name: "competitors_positions_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum CPC",
+        name: "cpc_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: 'Maximum Google Indexed',
+        name: "google_indexed_max",
+        default: null,
+        type: "number"
+      },
+      {
         displayName: "Maximum Keyword Word Count",
         name: "keyword_word_count_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum KGR",
+        name: "kgr_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum KVI",
+        name: "kvi_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum Unique Competitors Count",
+        name: "unique_competitors_count_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum Volume",
+        name: "volume_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Allintitle",
+        name: "allintitle_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Best Competitor Position",
+        name: "best_competitor_position_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Best Competitor Traffic",
+        name: "best_competitor_traffic_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Best Reference Position",
+        name: "best_reference_position_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Best Reference Traffic",
+        name: "best_reference_traffic_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Competition",
+        name: "competition_min",
+        default: null,
+        description: "Between 0 and 1",
+        type: "number",
+        typeOptions: {
+          minValue: 0,
+          maxValue: 1
+        }
+      },
+      {
+        displayName: "Minimum Competitors Positions",
+        name: "competitors_positions_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum CPC",
+        name: "cpc_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: 'Minimum Google Indexed',
+        name: "google_indexed_min",
         default: null,
         type: "number"
       },
@@ -4143,38 +4181,26 @@ export class Haloscan implements INodeType {
         type: "number"
       },
       {
-        displayName: "KGR Keep NA",
-        name: "kgr_keep_na",
-        default: false,
-        type: "boolean"
-      },
-      {
-        displayName: "Maximum KGR",
-        name: "kgr_max",
-        default: null,
-        type: "number"
-      },
-      {
         displayName: "Minimum KGR",
         name: "kgr_min",
         default: null,
         type: "number"
       },
       {
-        displayName: "KVI Keep NA",
-        name: "kvi_keep_na",
-        default: false,
-        type: "boolean"
-      },
-      {
-        displayName: "Maximum KVI",
-        name: "kvi_max",
+        displayName: "Minimum KVI",
+        name: "kvi_min",
         default: null,
         type: "number"
       },
       {
-        displayName: "Minimum KVI",
-        name: "kvi_min",
+        displayName: "Minimum Unique Competitors Count",
+        name: "unique_competitors_count_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Volume",
+        name: "volume_min",
         default: null,
         type: "number"
       },
@@ -4260,35 +4286,11 @@ export class Haloscan implements INodeType {
         ]
       },
       {
-        displayName: "Maximum Unique Competitors Count",
-        name: "unique_competitors_count_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Unique Competitors Count",
-        name: "unique_competitors_count_min",
-        default: null,
-        type: "number"
-      },
-      {
         displayName: "Volume Keep NA",
         name: "volume_keep_na",
         default: false,
         type: "boolean"
       },
-      {
-        displayName: "Maximum Volume",
-        name: "volume_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Volume",
-        name: "volume_min",
-        default: null,
-        type: "number"
-      }
     ]
   },
 
@@ -4318,46 +4320,10 @@ export class Haloscan implements INodeType {
         type: "boolean"
       },
       {
-        displayName: "Maximum Allintitle",
-        name: "allintitle_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Allintitle",
-        name: "allintitle_min",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Maximum Best Competitor Position",
-        name: "best_competitor_position_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Best Competitor Position",
-        name: "best_competitor_position_min",
-        default: null,
-        type: "number"
-      },
-      {
         displayName: "Best Competitor Traffic Keep NA",
         name: "best_competitor_traffic_keep_na",
         default: false,
         type: "boolean"
-      },
-      {
-        displayName: "Maximum Best Competitor Traffic",
-        name: "best_competitor_traffic_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Best Competitor Traffic",
-        name: "best_competitor_traffic_min",
-        default: null,
-        type: "number"
       },
       {
         displayName: "Competition Keep NA",
@@ -4366,56 +4332,10 @@ export class Haloscan implements INodeType {
         type: "boolean"
       },
       {
-        displayName: "Maximum Competition",
-        name: "competition_max",
-        default: null,
-        description: "Between 0 and 1",
-        type: "number",
-        typeOptions: {
-          minValue: 0,
-          maxValue: 1
-        }
-      },
-      {
-        displayName: "Minimum Competition",
-        name: "competition_min",
-        default: null,
-        description: "Between 0 and 1",
-        type: "number",
-        typeOptions: {
-          minValue: 0,
-          maxValue: 1
-        }
-      },
-      {
-        displayName: "Maximum Competitors Positions",
-        name: "competitors_positions_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Competitors Positions",
-        name: "competitors_positions_min",
-        default: null,
-        type: "number"
-      },
-      {
         displayName: "CPC Keep NA",
         name: "cpc_keep_na",
         default: false,
         type: "boolean"
-      },
-      {
-        displayName: "Maximum CPC",
-        name: "cpc_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum CPC",
-        name: "cpc_min",
-        default: null,
-        type: "number"
       },
       {
         displayName: "Keyword Excluded",
@@ -4432,34 +4352,10 @@ export class Haloscan implements INodeType {
         type: "string"
       },
       {
-        displayName: "Maximum Keyword Word Count",
-        name: "keyword_word_count_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Keyword Word Count",
-        name: "keyword_word_count_min",
-        default: null,
-        type: "number"
-      },
-      {
         displayName: "KGR Keep NA",
         name: "kgr_keep_na",
         default: false,
         type: "boolean"
-      },
-      {
-        displayName: "Maximum KGR",
-        name: "kgr_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum KGR",
-        name: "kgr_min",
-        default: null,
-        type: "number"
       },
       {
         displayName: "KVI Keep NA",
@@ -4468,14 +4364,61 @@ export class Haloscan implements INodeType {
         type: "boolean"
       },
       {
-        displayName: "Maximum KVI",
-        name: "kvi_max",
+        displayName: "Maximum Allintitle",
+        name: "allintitle_max",
         default: null,
         type: "number"
       },
       {
-        displayName: "Minimum KVI",
-        name: "kvi_min",
+        displayName: "Maximum Best Competitor Position",
+        name: "best_competitor_position_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum Best Competitor Traffic",
+        name: "best_competitor_traffic_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum Competition",
+        name: "competition_max",
+        default: null,
+        description: "Between 0 and 1",
+        type: "number",
+        typeOptions: {
+          minValue: 0,
+          maxValue: 1
+        }
+      },
+      {
+        displayName: "Maximum Competitors Positions",
+        name: "competitors_positions_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum CPC",
+        name: "cpc_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum Keyword Word Count",
+        name: "keyword_word_count_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum KGR",
+        name: "kgr_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum KVI",
+        name: "kvi_max",
         default: null,
         type: "number"
       },
@@ -4486,8 +4429,79 @@ export class Haloscan implements INodeType {
         type: "number"
       },
       {
+        displayName: "Maximum Volume",
+        name: "volume_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Allintitle",
+        name: "allintitle_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Best Competitor Position",
+        name: "best_competitor_position_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Best Competitor Traffic",
+        name: "best_competitor_traffic_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Competition",
+        name: "competition_min",
+        default: null,
+        description: "Between 0 and 1",
+        type: "number",
+        typeOptions: {
+          minValue: 0,
+          maxValue: 1
+        }
+      },
+      {
+        displayName: "Minimum Competitors Positions",
+        name: "competitors_positions_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum CPC",
+        name: "cpc_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Keyword Word Count",
+        name: "keyword_word_count_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum KGR",
+        name: "kgr_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum KVI",
+        name: "kvi_min",
+        default: null,
+        type: "number"
+      },
+      {
         displayName: "Minimum Unique Competitors Count",
         name: "unique_competitors_count_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Volume",
+        name: "volume_min",
         default: null,
         type: "number"
       },
@@ -4497,18 +4511,6 @@ export class Haloscan implements INodeType {
         default: false,
         type: "boolean"
       },
-      {
-        displayName: "Maximum Volume",
-        name: "volume_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Volume",
-        name: "volume_min",
-        default: null,
-        type: "number"
-      }
     ]
   },
 
@@ -4532,26 +4534,34 @@ export class Haloscan implements INodeType {
     },
     options: [
       {
+        displayName: "Keyword Excluded",
+        name: "keyword_exclude",
+        default: "",
+        description: "Regular expression for keywords to be excluded",
+        type: "string"
+      },
+      {
+        displayName: "Keyword Included",
+        name: "keyword_include",
+        default: "",
+        description: "Regular expression for keywords to be included",
+        type: "string"
+      },
+      {
+        displayName: "KVI Keep NA",
+        name: "kvi_keep_na",
+        default: false,
+        type: "boolean"
+      },
+			{
         displayName: "Maximum Allintitle",
         name: "allintitle_max",
         default: null,
         type: "number"
       },
       {
-        displayName: "Minimum Allintitle",
-        name: "allintitle_min",
-        default: null,
-        type: "number"
-      },
-      {
         displayName: "Maximum Best Position",
         name: "best_position_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Best Position",
-        name: "best_position_min",
         default: null,
         type: "number"
       },
@@ -4567,25 +4577,8 @@ export class Haloscan implements INodeType {
         }
       },
       {
-        displayName: "Minimum Competition",
-        name: "competition_min",
-        default: null,
-        description: "Between 0 and 1",
-        type: "number",
-        typeOptions: {
-          minValue: 0,
-          maxValue: 1
-        }
-      },
-      {
         displayName: "Maximum CPC",
         name: "cpc_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum CPC",
-        name: "cpc_min",
         default: null,
         type: "number"
       },
@@ -4597,53 +4590,14 @@ export class Haloscan implements INodeType {
         type: "string"
       },
       {
-        displayName: "Minimum First Time Seen",
-        name: "first_time_seen_min",
-        default: "",
-        description: "Date with YYYY-MM-DD format",
-        type: "string"
-      },
-      {
-        displayName: "Keyword Excluded",
-        name: "keyword_exclude",
-        default: "",
-        description: "Regular expression for keywords to be excluded",
-        type: "string"
-      },
-      {
-        displayName: "Keyword Included",
-        name: "keyword_include",
-        default: "",
-        description: "Regular expression for keywords to be included",
-        type: "string"
-      },
-      {
         displayName: "Maximum KGR",
         name: "kgr_max",
         default: null,
         type: "number"
       },
       {
-        displayName: "Minimum KGR",
-        name: "kgr_min",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "KVI Keep NA",
-        name: "kvi_keep_na",
-        default: false,
-        type: "boolean"
-      },
-      {
         displayName: "Maximum KVI",
         name: "kvi_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum KVI",
-        name: "kvi_min",
         default: null,
         type: "number"
       },
@@ -4655,6 +4609,91 @@ export class Haloscan implements INodeType {
         type: "string"
       },
       {
+        displayName: "Maximum Most Recent Position",
+        name: "most_recent_position_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum Page Count",
+        name: "page_count_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum Subdomain Count",
+        name: "subdomain_count_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum Volume",
+        name: "volume_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum Word Count",
+        name: "word_count_max",
+        default: null,
+        description: "Max number of words making up the keyword",
+        type: "number"
+      },
+      {
+        displayName: "Maximum Worst Position",
+        name: "worst_position_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Allintitle",
+        name: "allintitle_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Best Position",
+        name: "best_position_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Competition",
+        name: "competition_min",
+        default: null,
+        description: "Between 0 and 1",
+        type: "number",
+        typeOptions: {
+          minValue: 0,
+          maxValue: 1
+        }
+      },
+      {
+        displayName: "Minimum CPC",
+        name: "cpc_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum First Time Seen",
+        name: "first_time_seen_min",
+        default: "",
+        description: "Date with YYYY-MM-DD format",
+        type: "string"
+      },
+      {
+        displayName: "Minimum KGR",
+        name: "kgr_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum KVI",
+        name: "kvi_min",
+        default: null,
+        type: "number"
+      },
+      {
         displayName: "Minimum Last Time Seen",
         name: "last_time_seen_min",
         default: "",
@@ -4662,14 +4701,39 @@ export class Haloscan implements INodeType {
         type: "string"
       },
       {
-        displayName: "Maximum Most Recent Position",
-        name: "most_recent_position_max",
+        displayName: "Minimum Most Recent Position",
+        name: "most_recent_position_min",
         default: null,
         type: "number"
       },
       {
-        displayName: "Minimum Most Recent Position",
-        name: "most_recent_position_min",
+        displayName: "Minimum Page Count",
+        name: "page_count_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Subdomain Count",
+        name: "subdomain_count_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Volume",
+        name: "volume_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Word Count",
+        name: "word_count_min",
+        default: null,
+        description: "Min number of words making up the keyword",
+        type: "number"
+      },
+      {
+        displayName: "Minimum Worst Position",
+        name: "worst_position_min",
         default: null,
         type: "number"
       },
@@ -4691,74 +4755,12 @@ export class Haloscan implements INodeType {
         ]
       },
       {
-        displayName: "Maximum Page Count",
-        name: "page_count_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Page Count",
-        name: "page_count_min",
-        default: null,
-        type: "number"
-      },
-      {
         displayName: "Still There",
         name: "still_there",
         default: false,
         description: "Whether to keep certain positions.When TRUE, only keep positions that are still held. When FALSE, only keep positions that were lost. Leave empty if you don't want to filter.",
         type: "boolean"
       },
-      {
-        displayName: "Maximum Subdomain Count",
-        name: "subdomain_count_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Subdomain Count",
-        name: "subdomain_count_min",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Maximum Volume",
-        name: "volume_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Volume",
-        name: "volume_min",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Maximum Word Count",
-        name: "word_count_max",
-        default: null,
-        description: "Max number of words making up the keyword",
-        type: "number"
-      },
-      {
-        displayName: "Minimum Word Count",
-        name: "word_count_min",
-        default: null,
-        description: "Min number of words making up the keyword",
-        type: "number"
-      },
-      {
-        displayName: "Maximum Worst Position",
-        name: "worst_position_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Worst Position",
-        name: "worst_position_min",
-        default: null,
-        type: "number"
-      }
     ]
   },
 
@@ -4782,50 +4784,18 @@ export class Haloscan implements INodeType {
     },
     options: [
       {
-        displayName: "Maximum Allintitle",
-        name: "allintitle_max",
-        default: null,
-        type: "number"
+        displayName: "Exclude Title",
+        name: "title_exclude",
+        default: "",
+        description: "Regular expression for titles to be excluded",
+        type: "string"
       },
       {
-        displayName: "Minimum Allintitle",
-        name: "allintitle_min",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Maximum Competition",
-        name: "competition_max",
-        default: null,
-        description: "Between 0 and 1",
-        type: "number",
-        typeOptions: {
-          minValue: 0,
-          maxValue: 1
-        }
-      },
-      {
-        displayName: "Minimum Competition",
-        name: "competition_min",
-        default: null,
-        description: "Between 0 and 1",
-        type: "number",
-        typeOptions: {
-          minValue: 0,
-          maxValue: 1
-        }
-      },
-      {
-        displayName: "Maximum CPC",
-        name: "cpc_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum CPC",
-        name: "cpc_min",
-        default: null,
-        type: "number"
+        displayName: "Include Title",
+        name: "title_include",
+        default: "",
+        description: "Regular expression for titles to be included",
+        type: "string"
       },
       {
         displayName: "Keyword Excluded",
@@ -4842,8 +4812,98 @@ export class Haloscan implements INodeType {
         type: "string"
       },
       {
+        displayName: "KVI Keep NA",
+        name: "kvi_keep_na",
+        default: false,
+        type: "boolean"
+      },
+			{
+        displayName: "Maximum Allintitle",
+        name: "allintitle_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum Competition",
+        name: "competition_max",
+        default: null,
+        description: "Between 0 and 1",
+        type: "number",
+        typeOptions: {
+          minValue: 0,
+          maxValue: 1
+        }
+      },
+      {
+        displayName: "Maximum CPC",
+        name: "cpc_max",
+        default: null,
+        type: "number"
+      },
+      {
         displayName: "Maximum KGR",
         name: "kgr_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum KVI",
+        name: "kvi_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum Position",
+        name: "position_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum SERP Date",
+        name: "serp_date_max",
+        default: "",
+        type: "string"
+      },
+      {
+        displayName: "Maximum Title Word Count",
+        name: "title_word_count_max",
+        default: null,
+        description: "Max number of words making up the keyword",
+        type: "number"
+      },
+      {
+        displayName: "Maximum Traffic",
+        name: "traffic_max",
+        default: null,
+        description: "Max number of words making up the keyword",
+        type: "number"
+      },
+      {
+        displayName: "Maximum Volume",
+        name: "volume_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Allintitle",
+        name: "allintitle_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Competition",
+        name: "competition_min",
+        default: null,
+        description: "Between 0 and 1",
+        type: "number",
+        typeOptions: {
+          minValue: 0,
+          maxValue: 1
+        }
+      },
+      {
+        displayName: "Minimum CPC",
+        name: "cpc_min",
         default: null,
         type: "number"
       },
@@ -4854,20 +4914,40 @@ export class Haloscan implements INodeType {
         type: "number"
       },
       {
-        displayName: "KVI Keep NA",
-        name: "kvi_keep_na",
-        default: false,
-        type: "boolean"
-      },
-      {
-        displayName: "Maximum KVI",
-        name: "kvi_max",
+        displayName: "Minimum KVI",
+        name: "kvi_min",
         default: null,
         type: "number"
       },
       {
-        displayName: "Minimum KVI",
-        name: "kvi_min",
+        displayName: "Minimum Position",
+        name: "position_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum SERP Date",
+        name: "serp_date_min",
+        default: "",
+        type: "string"
+      },
+      {
+        displayName: "Minimum Title Word Count",
+        name: "title_word_count_min",
+        default: null,
+        description: "Min number of words making up the keyword",
+        type: "number"
+      },
+      {
+        displayName: "Minimum Traffic",
+        name: "traffic_min",
+        default: null,
+        description: "Min number of words making up the keyword",
+        type: "number"
+      },
+      {
+        displayName: "Minimum Volume",
+        name: "volume_min",
         default: null,
         type: "number"
       },
@@ -4888,84 +4968,6 @@ export class Haloscan implements INodeType {
           }
         ]
       },
-      {
-        displayName: "Maximum Position",
-        name: "position_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Position",
-        name: "position_min",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Maximum SERP Date",
-        name: "serp_date_max",
-        default: "",
-        type: "string"
-      },
-      {
-        displayName: "Minimum SERP Date",
-        name: "serp_date_min",
-        default: "",
-        type: "string"
-      },
-      {
-        displayName: "Exclude Title",
-        name: "title_exclude",
-        default: "",
-        description: "Regular expression for titles to be excluded",
-        type: "string"
-      },
-      {
-        displayName: "Include Title",
-        name: "title_include",
-        default: "",
-        description: "Regular expression for titles to be included",
-        type: "string"
-      },
-      {
-        displayName: "Maximum Title Word Count",
-        name: "title_word_count_max",
-        default: null,
-        description: "Max number of words making up the keyword",
-        type: "number"
-      },
-      {
-        displayName: "Minimum Title Word Count",
-        name: "title_word_count_min",
-        default: null,
-        description: "Min number of words making up the keyword",
-        type: "number"
-      },
-      {
-        displayName: "Maximum Traffic",
-        name: "traffic_max",
-        default: null,
-        description: "Max number of words making up the keyword",
-        type: "number"
-      },
-      {
-        displayName: "Minimum Traffic",
-        name: "traffic_min",
-        default: null,
-        description: "Min number of words making up the keyword",
-        type: "number"
-      },
-      {
-        displayName: "Maximum Volume",
-        name: "volume_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Volume",
-        name: "volume_min",
-        default: null,
-        type: "number"
-      }
     ]
   },
 
@@ -4989,14 +4991,42 @@ export class Haloscan implements INodeType {
     },
     options: [
       {
-        displayName: "Maximum Allintitle",
-        name: "allintitle_max",
-        default: null,
-        type: "number"
+        displayName: "Exclude Title",
+        name: "title_exclude",
+        default: "",
+        description: "Regular expression for titles to be excluded",
+        type: "string"
       },
       {
-        displayName: "Minimum Allintitle",
-        name: "allintitle_min",
+        displayName: "Include Title",
+        name: "title_include",
+        default: "",
+        description: "Regular expression for titles to be included",
+        type: "string"
+      },
+			{
+        displayName: "Keyword Excluded",
+        name: "keyword_exclude",
+        default: "",
+        description: "Regular expression for keywords to be excluded",
+        type: "string"
+      },
+      {
+        displayName: "Keyword Included",
+        name: "keyword_include",
+        default: "",
+        description: "Regular expression for keywords to be included",
+        type: "string"
+      },
+      {
+        displayName: "KVI Keep NA",
+        name: "kvi_keep_na",
+        default: false,
+        type: "boolean"
+      },
+			{
+        displayName: "Maximum Allintitle",
+        name: "allintitle_max",
         default: null,
         type: "number"
       },
@@ -5012,6 +5042,61 @@ export class Haloscan implements INodeType {
         }
       },
       {
+        displayName: "Maximum CPC",
+        name: "cpc_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum Keyword Word Count",
+        name: "keyword_word_count_max",
+        default: null,
+        description: "Max number of words making up the keyword",
+        type: "number"
+      },
+      {
+        displayName: "Maximum KGR",
+        name: "kgr_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum KVI",
+        name: "kvi_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum Position",
+        name: "position_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum SERP Date",
+        name: "serp_date_max",
+        default: "",
+        type: "string"
+      },
+      {
+        displayName: "Maximum Traffic",
+        name: "traffic_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum Volume",
+        name: "volume_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Allintitle",
+        name: "allintitle_min",
+        default: null,
+        type: "number"
+      },
+      {
         displayName: "Minimum Competition",
         name: "competition_min",
         default: null,
@@ -5023,36 +5108,9 @@ export class Haloscan implements INodeType {
         }
       },
       {
-        displayName: "Maximum CPC",
-        name: "cpc_max",
-        default: null,
-        type: "number"
-      },
-      {
         displayName: "Minimum CPC",
         name: "cpc_min",
         default: null,
-        type: "number"
-      },
-      {
-        displayName: "Keyword Excluded",
-        name: "keyword_exclude",
-        default: "",
-        description: "Regular expression for keywords to be excluded",
-        type: "string"
-      },
-      {
-        displayName: "Keyword Included",
-        name: "keyword_include",
-        default: "",
-        description: "Regular expression for keywords to be included",
-        type: "string"
-      },
-      {
-        displayName: "Maximum Keyword Word Count",
-        name: "keyword_word_count_max",
-        default: null,
-        description: "Max number of words making up the keyword",
         type: "number"
       },
       {
@@ -5063,32 +5121,38 @@ export class Haloscan implements INodeType {
         type: "number"
       },
       {
-        displayName: "Maximum KGR",
-        name: "kgr_max",
-        default: null,
-        type: "number"
-      },
-      {
         displayName: "Minimum KGR",
         name: "kgr_min",
         default: null,
         type: "number"
       },
       {
-        displayName: "KVI Keep NA",
-        name: "kvi_keep_na",
-        default: false,
-        type: "boolean"
-      },
-      {
-        displayName: "Maximum KVI",
-        name: "kvi_max",
+        displayName: "Minimum KVI",
+        name: "kvi_min",
         default: null,
         type: "number"
       },
       {
-        displayName: "Minimum KVI",
-        name: "kvi_min",
+        displayName: "Minimum Position",
+        name: "position_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum SERP Date",
+        name: "serp_date_min",
+        default: "",
+        type: "string"
+      },
+      {
+        displayName: "Minimum Traffic",
+        name: "traffic_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Volume",
+        name: "volume_min",
         default: null,
         type: "number"
       },
@@ -5109,68 +5173,6 @@ export class Haloscan implements INodeType {
           }
         ]
       },
-      {
-        displayName: "Maximum Position",
-        name: "position_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Position",
-        name: "position_min",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Maximum SERP Date",
-        name: "serp_date_max",
-        default: "",
-        type: "string"
-      },
-      {
-        displayName: "Minimum SERP Date",
-        name: "serp_date_min",
-        default: "",
-        type: "string"
-      },
-      {
-        displayName: "Exclude Title",
-        name: "title_exclude",
-        default: "",
-        description: "Regular expression for titles to be excluded",
-        type: "string"
-      },
-      {
-        displayName: "Include Title",
-        name: "title_include",
-        default: "",
-        description: "Regular expression for titles to be included",
-        type: "string"
-      },
-      {
-        displayName: "Maximum Traffic",
-        name: "traffic_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Traffic",
-        name: "traffic_min",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Maximum Volume",
-        name: "volume_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Volume",
-        name: "volume_min",
-        default: null,
-        type: "number"
-      }
     ]
   },
 
@@ -5201,24 +5203,10 @@ export class Haloscan implements INodeType {
         type: "number"
       },
       {
-        displayName: "Minimum Bested Keywords",
-        name: "bested_keywords_min",
-        default: null,
-        description: "Min value for keywords where the competitor's page is ranked worse than at least one of the search input's pages",
-        type: "number"
-      },
-      {
         displayName: "Maximum Besting Keywords",
         name: "besting_keywords_max",
         default: null,
         description: "Max value for keywords where the competitor's page is ranked better than any of the search input's pages",
-        type: "number"
-      },
-      {
-        displayName: "Minimum Besting Keywords",
-        name: "besting_keywords_min",
-        default: null,
-        description: "Min value for keywords where the competitor's page is ranked better than any of the search input's pages",
         type: "number"
       },
       {
@@ -5229,21 +5217,8 @@ export class Haloscan implements INodeType {
         type: "number"
       },
       {
-        displayName: "Minimum Exclusive Keywords",
-        name: "exclusive_keywords_min",
-        default: null,
-        description: "Min value for keywords exclusive to the competitor's page",
-        type: "number"
-      },
-      {
         displayName: "Maximum Keywords",
         name: "keywords_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Keywords",
-        name: "keywords_min",
         default: null,
         type: "number"
       },
@@ -5254,8 +5229,47 @@ export class Haloscan implements INodeType {
         type: "number"
       },
       {
+        displayName: "Maximum Total Traffic",
+        name: "total_traffic_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Bested Keywords",
+        name: "bested_keywords_min",
+        default: null,
+        description: "Min value for keywords where the competitor's page is ranked worse than at least one of the search input's pages",
+        type: "number"
+      },
+      {
+        displayName: "Minimum Besting Keywords",
+        name: "besting_keywords_min",
+        default: null,
+        description: "Min value for keywords where the competitor's page is ranked better than any of the search input's pages",
+        type: "number"
+      },
+      {
+        displayName: "Minimum Exclusive Keywords",
+        name: "exclusive_keywords_min",
+        default: null,
+        description: "Min value for keywords exclusive to the competitor's page",
+        type: "number"
+      },
+      {
+        displayName: "Minimum Keywords",
+        name: "keywords_min",
+        default: null,
+        type: "number"
+      },
+      {
         displayName: "Minimum Positions",
         name: "positions_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Total Traffic",
+        name: "total_traffic_min",
         default: null,
         type: "number"
       },
@@ -5265,18 +5279,6 @@ export class Haloscan implements INodeType {
         default: false,
         type: "boolean"
       },
-      {
-        displayName: "Maximum Total Traffic",
-        name: "total_traffic_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Total Traffic",
-        name: "total_traffic_min",
-        default: null,
-        type: "number"
-      }
     ]
   },
 
@@ -5327,8 +5329,32 @@ export class Haloscan implements INodeType {
         type: "boolean"
       },
       {
+        displayName: "Longitude Keep NA",
+        name: "longitude_keep_na",
+        default: false,
+        type: "boolean"
+      },
+      {
         displayName: "Maximum Latitude",
         name: "latitude_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum Longitude",
+        name: "longitude_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum Rating Count",
+        name: "rating_count_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum Rating Value",
+        name: "rating_value_max",
         default: null,
         type: "number"
       },
@@ -5339,20 +5365,20 @@ export class Haloscan implements INodeType {
         type: "number"
       },
       {
-        displayName: "Longitude Keep NA",
-        name: "longitude_keep_na",
-        default: false,
-        type: "boolean"
-      },
-      {
-        displayName: "Maximum Longitude",
-        name: "longitude_max",
+        displayName: "Minimum Longitude",
+        name: "longitude_min",
         default: null,
         type: "number"
       },
       {
-        displayName: "Minimum Longitude",
-        name: "longitude_min",
+        displayName: "Minimum Rating Count",
+        name: "rating_count_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Rating Value",
+        name: "rating_value_min",
         default: null,
         type: "number"
       },
@@ -5380,35 +5406,11 @@ export class Haloscan implements INodeType {
         type: "boolean"
       },
       {
-        displayName: "Maximum Rating Count",
-        name: "rating_count_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Rating Count",
-        name: "rating_count_min",
-        default: null,
-        type: "number"
-      },
-      {
         displayName: "Rating Value Keep NA",
         name: "rating_value_keep_na",
         default: false,
         type: "boolean"
       },
-      {
-        displayName: "Maximum Rating Value",
-        name: "rating_value_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Rating Value",
-        name: "rating_value_min",
-        default: null,
-        type: "number"
-      }
     ]
   },
 
@@ -5431,27 +5433,30 @@ export class Haloscan implements INodeType {
       }
     },
     options: [
+
       {
+        displayName: "Exclude Root Domain",
+        name: "root_domain_exclude",
+        default: "",
+        description: "Regular expression for root domains to be excluded",
+        type: "string"
+      },
+      {
+        displayName: "Include Root Domain",
+        name: "root_domain_include",
+        default: "",
+        description: "Regular expression for root domains to be included",
+        type: "string"
+      },
+			{
         displayName: "Maximum FB Comments",
         name: "fb_comments_max",
         default: null,
         type: "number"
       },
       {
-        displayName: "Minimum FB Comments",
-        name: "fb_comments_min",
-        default: null,
-        type: "number"
-      },
-      {
         displayName: "Maximum FB Shares",
         name: "fb_shares_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum FB Shares",
-        name: "fb_shares_min",
         default: null,
         type: "number"
       },
@@ -5470,29 +5475,8 @@ export class Haloscan implements INodeType {
         type: "string"
       },
       {
-        displayName: "Minimum First Time Available",
-        name: "first_time_available_min",
-        default: "",
-        description: "Date in YYYY-MM-DD format",
-        type: "string"
-      },
-      {
-        displayName: "Minimum First Seen",
-        name: "firstseen_min",
-        default: "",
-        description: "Date in YYYY-MM-DD format",
-        type: "string"
-      },
-      {
         displayName: "Maximum Last Seen",
         name: "last_seen_max",
-        default: "",
-        description: "Date in YYYY-MM-DD format",
-        type: "string"
-      },
-      {
-        displayName: "Minimum Last Seen",
-        name: "last_seen_min",
         default: "",
         description: "Date in YYYY-MM-DD format",
         type: "string"
@@ -5505,21 +5489,8 @@ export class Haloscan implements INodeType {
         type: "string"
       },
       {
-        displayName: "Minimum Last Time Available",
-        name: "last_time_available_min",
-        default: "",
-        description: "Date in YYYY-MM-DD format",
-        type: "string"
-      },
-      {
         displayName: "Maximum Matching Keywords",
         name: "matching_keywords_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Matching Keywords",
-        name: "matching_keywords_min",
         default: null,
         type: "number"
       },
@@ -5530,20 +5501,8 @@ export class Haloscan implements INodeType {
         type: "number"
       },
       {
-        displayName: "Minimum Matching Most Recent Position",
-        name: "matching_most_recent_position_min",
-        default: null,
-        type: "number"
-      },
-      {
         displayName: "Maximum Matching Pages",
         name: "matching_pages_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Matching Pages",
-        name: "matching_pages_min",
         default: null,
         type: "number"
       },
@@ -5554,20 +5513,8 @@ export class Haloscan implements INodeType {
         type: "number"
       },
       {
-        displayName: "Minimum Matching Top 10 Positions",
-        name: "matching_top_10_positions_min",
-        default: null,
-        type: "number"
-      },
-      {
         displayName: "Maximum Matching Top 100 Positions",
         name: "matching_top_100_positions_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Matching Top 100 Positions",
-        name: "matching_top_100_positions_min",
         default: null,
         type: "number"
       },
@@ -5578,14 +5525,174 @@ export class Haloscan implements INodeType {
         type: "number"
       },
       {
-        displayName: "Minimum Matching Top 3 Positions",
-        name: "matching_top_3_positions_min",
+        displayName: "Maximum Matching Top 50 Positions",
+        name: "matching_top_50_positions_max",
         default: null,
         type: "number"
       },
       {
-        displayName: "Maximum Matching Top 50 Positions",
-        name: "matching_top_50_positions_max",
+        displayName: "Maximum Matching Traffic",
+        name: "matching_traffic_max",
+        default: null,
+        type: "number"
+      },
+			{
+        displayName: "Maximum Pinterest Pins",
+        name: "pinterest_pins_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum Referring Domains",
+        name: "referring_domains_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum Total Domains",
+        name: "total_domains_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum Total Keywords",
+        name: "total_keywords_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum Total Pages",
+        name: "total_pages_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum Total Top 10 Positions",
+        name: "total_top_10_positions_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum Total Top 10 Traffic",
+        name: "total_top_10_traffic_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum Total Top 100 Positions",
+        name: "total_top_100_positions_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum Total Top 100 Traffic",
+        name: "total_top_100_traffic_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum Total Top 3 Positions",
+        name: "total_top_3_positions_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum Total Top 3 Traffic",
+        name: "total_top_3_traffic_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum Total Top 50 Positions",
+        name: "total_top_50_positions_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum Total Top 50 Traffic",
+        name: "total_top_50_traffic_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Maximum Total Traffic",
+        name: "total_traffic_max",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum FB Comments",
+        name: "fb_comments_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum FB Shares",
+        name: "fb_shares_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum First Seen",
+        name: "firstseen_min",
+        default: "",
+        description: "Date in YYYY-MM-DD format",
+        type: "string"
+      },
+      {
+        displayName: "Minimum First Time Available",
+        name: "first_time_available_min",
+        default: "",
+        description: "Date in YYYY-MM-DD format",
+        type: "string"
+      },
+      {
+        displayName: "Minimum Last Seen",
+        name: "last_seen_min",
+        default: "",
+        description: "Date in YYYY-MM-DD format",
+        type: "string"
+      },
+      {
+        displayName: "Minimum Last Time Available",
+        name: "last_time_available_min",
+        default: "",
+        description: "Date in YYYY-MM-DD format",
+        type: "string"
+      },
+      {
+        displayName: "Minimum Matching Keywords",
+        name: "matching_keywords_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Matching Most Recent Position",
+        name: "matching_most_recent_position_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Matching Pages",
+        name: "matching_pages_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Matching Top 10 Positions",
+        name: "matching_top_10_positions_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Matching Top 100 Positions",
+        name: "matching_top_100_positions_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Matching Top 3 Positions",
+        name: "matching_top_3_positions_min",
         default: null,
         type: "number"
       },
@@ -5596,18 +5703,96 @@ export class Haloscan implements INodeType {
         type: "number"
       },
       {
-        displayName: "Maximum Matching Traffic",
-        name: "matching_traffic_max",
-        default: null,
-        type: "number"
-      },
-      {
         displayName: "Minimum Matching Traffic",
         name: "matching_traffic_min",
         default: null,
         type: "number"
       },
       {
+        displayName: "Minimum Pinterest Pins",
+        name: "pinterest_pins_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Referring Domains",
+        name: "referring_domains_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Total Domains",
+        name: "total_domains_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Total Keywords",
+        name: "total_keywords_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Total Pages",
+        name: "total_pages_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Total Top 10 Positions",
+        name: "total_top_10_positions_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Total Top 10 Traffic",
+        name: "total_top_10_traffic_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Total Top 100 Positions",
+        name: "total_top_100_positions_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Total Top 100 Traffic",
+        name: "total_top_100_traffic_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Total Top 3 Positions",
+        name: "total_top_3_positions_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Total Top 3 Traffic",
+        name: "total_top_3_traffic_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Total Top 50 Positions",
+        name: "total_top_50_positions_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Total Top 50 Traffic",
+        name: "total_top_50_traffic_min",
+        default: null,
+        type: "number"
+      },
+      {
+        displayName: "Minimum Total Traffic",
+        name: "total_traffic_min",
+        default: null,
+        type: "number"
+      },
+			{
         displayName: "Order",
         name: "order",
         default: "asc",
@@ -5624,188 +5809,6 @@ export class Haloscan implements INodeType {
           }
         ]
       },
-      {
-        displayName: "Maximum Pinterest Pins",
-        name: "pinterest_pins_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Pinterest Pins",
-        name: "pinterest_pins_min",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Maximum Referring Domains",
-        name: "referring_domains_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Maximum Referring Domains",
-        name: "referring_domains_min",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Exclude Root Domain",
-        name: "root_domain_exclude",
-        default: "",
-        description: "Regular expression for root domains to be excluded",
-        type: "string"
-      },
-      {
-        displayName: "Include Root Domain",
-        name: "root_domain_include",
-        default: "",
-        description: "Regular expression for root domains to be included",
-        type: "string"
-      },
-      {
-        displayName: "Maximum Total Domains",
-        name: "total_domains_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Total Domains",
-        name: "total_domains_min",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Maximum Total Keywords",
-        name: "total_keywords_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Total Keywords",
-        name: "total_keywords_min",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Maximum Total Pages",
-        name: "total_pages_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Total Pages",
-        name: "total_pages_min",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Maximum Total Top 10 Positions",
-        name: "total_top_10_positions_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Total Top 10 Positions",
-        name: "total_top_10_positions_min",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Maximum Total Top 10 Traffic",
-        name: "total_top_10_traffic_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Total Top 10 Traffic",
-        name: "total_top_10_traffic_min",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Maximum Total Top 100 Positions",
-        name: "total_top_100_positions_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Total Top 100 Positions",
-        name: "total_top_100_positions_min",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Maximum Total Top 100 Traffic",
-        name: "total_top_100_traffic_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Total Top 100 Traffic",
-        name: "total_top_100_traffic_min",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Maximum Total Top 3 Positions",
-        name: "total_top_3_positions_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Total Top 3 Positions",
-        name: "total_top_3_positions_min",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Maximum Total Top 3 Traffic",
-        name: "total_top_3_traffic_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Total Top 3 Traffic",
-        name: "total_top_3_traffic_min",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Maximum Total Top 50 Positions",
-        name: "total_top_50_positions_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Total Top 50 Positions",
-        name: "total_top_50_positions_min",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Maximum Total Top 50 Traffic",
-        name: "total_top_50_traffic_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Maximum Total Top 50 Traffic",
-        name: "total_top_50_traffic_min",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Maximum Total Traffic",
-        name: "total_traffic_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Total Traffic",
-        name: "total_traffic_min",
-        default: null,
-        type: "number"
-      }
     ]
   },
 
@@ -5830,116 +5833,116 @@ export class Haloscan implements INodeType {
     },
     options: [
       {
-        displayName: "Maximum Known Versions",
-        name: "known_versions_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Known Versions",
-        name: "known_versions_min",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Order",
-        name: "order",
-        default: "asc",
-        description: "Whether the results are sorted in ascending or descending order",
-        type: "options",
-        options: [
-          {
-            name: "Ascending",
-            value: "asc"
-          },
-          {
-            name: "Descending",
-            value: "desc"
-          }
-        ]
-      },
-      {
-        displayName: "Maximum Total Top 10",
-        name: "total_top_10_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Total Top 10",
-        name: "total_top_10_min",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Maximum Total Top 100",
-        name: "total_top_100_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Total Top 100",
-        name: "total_top_100_min",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Maximum Total Top 3",
-        name: "total_top_3_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Total Top 3",
-        name: "total_top_3_min",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Maximum Total Top 50",
-        name: "total_top_50_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Total Top 50",
-        name: "total_top_50_min",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Maximum Total Traffic",
-        name: "total_traffic_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Total Traffic",
-        name: "total_traffic_min",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Maximum Unique Keywords",
-        name: "unique_keywords_max",
-        default: null,
-        description: "Between 0 and 1",
-        type: "number",
-        typeOptions: {
-          minValue: 0,
-          maxValue: 1
-        }
-      },
-      {
-        displayName: "Minimum Unique Keywords",
-        name: "unique_keywords_min",
-        default: null,
-        description: "Between 0 and 1",
-        type: "number",
-        typeOptions: {
-          minValue: 0,
-          maxValue: 1
-        }
-      }
+				displayName: "Maximum Known Versions",
+				name: "known_versions_max",
+				default: null,
+				type: "number"
+			},
+			{
+				displayName: "Maximum Total Top 10",
+				name: "total_top_10_max",
+				default: null,
+				type: "number"
+			},
+			{
+				displayName: "Maximum Total Top 100",
+				name: "total_top_100_max",
+				default: null,
+				type: "number"
+			},
+			{
+				displayName: "Maximum Total Top 3",
+				name: "total_top_3_max",
+				default: null,
+				type: "number"
+			},
+			{
+				displayName: "Maximum Total Top 50",
+				name: "total_top_50_max",
+				default: null,
+				type: "number"
+			},
+			{
+				displayName: "Maximum Total Traffic",
+				name: "total_traffic_max",
+				default: null,
+				type: "number"
+			},
+			{
+				displayName: "Maximum Unique Keywords",
+				name: "unique_keywords_max",
+				default: null,
+				description: "Between 0 and 1",
+				type: "number",
+				typeOptions: {
+					minValue: 0,
+					maxValue: 1
+				}
+			},
+			{
+				displayName: "Minimum Known Versions",
+				name: "known_versions_min",
+				default: null,
+				type: "number"
+			},
+			{
+				displayName: "Minimum Total Top 10",
+				name: "total_top_10_min",
+				default: null,
+				type: "number"
+			},
+			{
+				displayName: "Minimum Total Top 100",
+				name: "total_top_100_min",
+				default: null,
+				type: "number"
+			},
+			{
+				displayName: "Minimum Total Top 3",
+				name: "total_top_3_min",
+				default: null,
+				type: "number"
+			},
+			{
+				displayName: "Minimum Total Top 50",
+				name: "total_top_50_min",
+				default: null,
+				type: "number"
+			},
+			{
+				displayName: "Minimum Total Traffic",
+				name: "total_traffic_min",
+				default: null,
+				type: "number"
+			},
+			{
+				displayName: "Minimum Unique Keywords",
+				name: "unique_keywords_min",
+				default: null,
+				description: "Between 0 and 1",
+				type: "number",
+				typeOptions: {
+					minValue: 0,
+					maxValue: 1
+				}
+			},
+			{
+				displayName: "Order",
+				name: "order",
+				default: "asc",
+				description: "Whether the results are sorted in ascending or descending order",
+				type: "options",
+				options: [
+					{
+						name: "Ascending",
+						value: "asc"
+					},
+					{
+						name: "Descending",
+						value: "desc"
+					}
+				]
+			}
     ]
   },
 
@@ -5962,105 +5965,105 @@ export class Haloscan implements INodeType {
       }
     },
     options: [
-      {
-        displayName: "Order",
-        name: "order",
-        default: "asc",
-        description: "Whether the results are sorted in ascending or descending order",
-        type: "options",
-        options: [
-          {
-            name: "Ascending",
-            value: "asc"
-          },
-          {
-            name: "Descending",
-            value: "desc"
-          }
-        ]
-      },
-      {
-        displayName: "Maximum Total Top 10",
-        name: "total_top_10_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Total Top 10",
-        name: "total_top_10_min",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Maximum Total Top 100",
-        name: "total_top_100_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Total Top 100",
-        name: "total_top_100_min",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Maximum Total Top 3",
-        name: "total_top_3_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Total Top 3",
-        name: "total_top_3_min",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Maximum Total Top 50",
-        name: "total_top_50_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Total Top 50",
-        name: "total_top_50_min",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Maximum Total Traffic",
-        name: "total_traffic_max",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Minimum Total Traffic",
-        name: "total_traffic_min",
-        default: null,
-        type: "number"
-      },
-      {
-        displayName: "Maximum Unique Keywords",
-        name: "unique_keywords_max",
-        default: null,
-        description: "Between 0 and 1",
-        type: "number",
-        typeOptions: {
-          minValue: 0,
-          maxValue: 1
-        }
-      },
-      {
-        displayName: "Minimum Unique Keywords",
-        name: "unique_keywords_min",
-        default: null,
-        description: "Between 0 and 1",
-        type: "number",
-        typeOptions: {
-          minValue: 0,
-          maxValue: 1
-        }
-      }
+    {
+			displayName: "Maximum Total Top 10",
+			name: "total_top_10_max",
+			default: null,
+			type: "number"
+		},
+		{
+			displayName: "Maximum Total Top 100",
+			name: "total_top_100_max",
+			default: null,
+			type: "number"
+		},
+		{
+			displayName: "Maximum Total Top 3",
+			name: "total_top_3_max",
+			default: null,
+			type: "number"
+		},
+		{
+			displayName: "Maximum Total Top 50",
+			name: "total_top_50_max",
+			default: null,
+			type: "number"
+		},
+		{
+			displayName: "Maximum Total Traffic",
+			name: "total_traffic_max",
+			default: null,
+			type: "number"
+		},
+		{
+			displayName: "Maximum Unique Keywords",
+			name: "unique_keywords_max",
+			default: null,
+			description: "Between 0 and 1",
+			type: "number",
+			typeOptions: {
+				minValue: 0,
+				maxValue: 1
+			}
+		},
+		{
+			displayName: "Minimum Total Top 10",
+			name: "total_top_10_min",
+			default: null,
+			type: "number"
+		},
+		{
+			displayName: "Minimum Total Top 100",
+			name: "total_top_100_min",
+			default: null,
+			type: "number"
+		},
+		{
+			displayName: "Minimum Total Top 3",
+			name: "total_top_3_min",
+			default: null,
+			type: "number"
+		},
+		{
+			displayName: "Minimum Total Top 50",
+			name: "total_top_50_min",
+			default: null,
+			type: "number"
+		},
+		{
+			displayName: "Minimum Total Traffic",
+			name: "total_traffic_min",
+			default: null,
+			type: "number"
+		},
+		{
+			displayName: "Minimum Unique Keywords",
+			name: "unique_keywords_min",
+			default: null,
+			description: "Between 0 and 1",
+			type: "number",
+			typeOptions: {
+				minValue: 0,
+				maxValue: 1
+			}
+		},
+		{
+			displayName: "Order",
+			name: "order",
+			default: "asc",
+			description: "Whether the results are sorted in ascending or descending order",
+			type: "options",
+			options: [
+				{
+					name: "Ascending",
+					value: "asc"
+				},
+				{
+					name: "Descending",
+					value: "desc"
+				}
+			]
+		}
     ]
   }
 
