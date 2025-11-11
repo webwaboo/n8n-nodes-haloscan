@@ -600,7 +600,7 @@ export class Haloscan implements INodeType {
 								bested: '={{$parameter.bested}}',
 								besting: '={{$parameter.besting}}',
 								competitors: '={{$parameter.competitors}}',
-								//exclusive: '={{$parameter.exclusive}}',
+								exclusive: '={{$parameter.exclusive}}',
 								lineCount: '={{$parameter.lineCount}}',
 								missing: '={{$parameter.missing}}',
 								mode: '={{$parameter.mode}}',
@@ -3444,7 +3444,6 @@ export class Haloscan implements INodeType {
 				},
 			},
 			options: [
-
 				//parameter : exclude
 				{
 					displayName: 'Exclude',
@@ -3590,7 +3589,6 @@ export class Haloscan implements INodeType {
 					type: 'number',
 					default: null,
 				},
-
 			],
 		},
 
@@ -3612,7 +3610,6 @@ export class Haloscan implements INodeType {
 				},
 			},
 			options: [
-
 				//parameter : exclude
 				{
 					displayName: 'Exclude',
@@ -3742,7 +3739,6 @@ export class Haloscan implements INodeType {
 					type: 'number',
 					default: null,
 				},
-
 			],
 		},
 
@@ -3941,7 +3937,6 @@ export class Haloscan implements INodeType {
 					type: 'number',
 					default: null,
 				},
-
 			],
 		},
 
@@ -5433,7 +5428,6 @@ export class Haloscan implements INodeType {
       }
     },
     options: [
-
       {
         displayName: "Exclude Root Domain",
         name: "root_domain_exclude",
@@ -6065,10 +6059,7 @@ export class Haloscan implements INodeType {
 			]
 		}
     ]
-  }
-
-
-
+  },
 
 
 		]
