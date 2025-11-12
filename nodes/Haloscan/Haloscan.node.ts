@@ -1931,7 +1931,11 @@ export class Haloscan implements INodeType {
 			displayName: 'Similarity Max',
 			name: 'similarity_max',
 			type: 'number',
-			default: null,
+			default: 100,
+			typeOptions: {
+          minValue: 0,
+          maxValue: 100
+        },
 			displayOptions: {
 				show: {
 					//only show if you've selected :
@@ -1948,7 +1952,11 @@ export class Haloscan implements INodeType {
 			displayName: 'Similarity Min',
 			name: 'similarity_min',
 			type: 'number',
-			default: null,
+			default: 0,
+			typeOptions: {
+          minValue: 0,
+          maxValue: 100
+        },
 			displayOptions: {
 				show: {
 					//only show if you've selected :
@@ -3859,7 +3867,7 @@ export class Haloscan implements INodeType {
 				//parameter : cpc_min
 				{
 					displayName: 'Minimum CPC',
-					name: 'cpc_mmin',
+					name: 'cpc_min',
 					type: 'number',
 					default: null,
 				},
