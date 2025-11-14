@@ -534,7 +534,7 @@ export class Haloscan implements INodeType {
 							url: '=/keywords/siteStructure',
 							body: {
 								keyword: '={{$parameter.keyword_siteStructure}}',
-								keywords: '={{$parameter.keywords_SiteStructure}}',
+								keywords: '={{$parameter["keywords_siteStructure"]}}',
 								exact_match: '={{$parameter.exact_match}}',
 								neighbours_sources: '={{$parameter.neighbours_sources}}',
 								multipartite_modes: '={{$parameter.multipartite_modes}}',
@@ -543,7 +543,8 @@ export class Haloscan implements INodeType {
 								granularity: '={{$parameter.granularity}}',
 								manual_common_10: '={{$parameter.manual_common_10}}',
 								manual_common_100: '={{$parameter.manual_common_100}}',
-							}
+
+							},
 						},
 					},
 				},
@@ -1348,11 +1349,11 @@ export class Haloscan implements INodeType {
 				},
 			},
 		},
-		// parameter : keywords_SiteStructure
+		// parameter : keywords_siteStructure
 		{
 			displayName: 'Keywords',
 			description: 'Requested keywords in an array if requesting bulk data. Must contain at least 50 keywords.',
-			name: 'keywords_SiteStructure',
+			name: 'keywords_siteStructure',
 			type: 'string',
 			default: [],
 			typeOptions: {
@@ -1365,7 +1366,14 @@ export class Haloscan implements INodeType {
 					operation: ['GetKeywordSiteStructure'],
 				},
 			},
+			/*routing: {
+			send: {
+				property: 'keywords',
+				type: 'body',
+				},
+			},*/
 		},
+
 		// parameter : keywords_sources
 		{
 			displayName: 'Keyword Sources',
