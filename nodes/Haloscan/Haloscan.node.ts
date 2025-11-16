@@ -362,7 +362,7 @@ export class Haloscan implements INodeType {
 								exact_match: '={{$parameter.exact_match}}',
 								exclude: '={{$parameter.additionalFields.exclude}}',
 								include: '={{$parameter.additionalFields.include}}',
-								keywords: '={{$parameter.keywords}}',
+								//keywords: '={{$parameter.keywords}}',
 								kgr_max: '={{$parameter.additionalFields.kgr_max}}',
 								kgr_min: '={{$parameter.additionalFields.kgr_min}}',
 								kvi_keep_na: '={{$parameter.additionalFields.kvi_keep_na}}',
@@ -533,8 +533,9 @@ export class Haloscan implements INodeType {
 							method: 'POST',
 							url: '=/keywords/siteStructure',
 							body: {
-								keyword: '={{$parameter.keyword_siteStructure}}',
-								keywords: '={{$parameter["keywords_siteStructure"]}}',
+								keyword: '={{ $parameter.keyword_siteStructure === "" ? null : $parameter.keyword_siteStructure }}',
+								keywords: '={{ [].concat($parameter.keywords_siteStructure, $parameter.keywords_siteStructure2) }}',
+								/*keywords: '={{$parameter.keywords_siteStructure}}',*/
 								exact_match: '={{$parameter.exact_match}}',
 								neighbours_sources: '={{$parameter.neighbours_sources}}',
 								multipartite_modes: '={{$parameter.multipartite_modes}}',
@@ -1330,7 +1331,14 @@ export class Haloscan implements INodeType {
 					operation: [
 						'GetKeywordDatainBulk',
 						'ScrapKeyword',
+						//'GetKeywordSiteStructure',
 					],
+				},
+			},
+			routing: {
+			send: {
+				property: 'keywords',
+				type: 'body',
 				},
 			},
 		},
@@ -1366,6 +1374,27 @@ export class Haloscan implements INodeType {
 					operation: ['GetKeywordSiteStructure'],
 				},
 			},
+			routing: {
+			send: {
+				property: 'keywords',
+				type: 'body',
+				},
+			},
+		},
+		// parameter : keywords_siteStructure2
+		{
+			displayName: 'Keywords Mapped_array',
+			description: 'Requested keywords in an array if requesting bulk data. Must contain at least 50 keywords. If you have mappped array, put it in this field.',
+			name: 'keywords_siteStructure2',
+			type: 'string',
+			default: '',
+			displayOptions: {
+				show: {
+					//only show if you've selected :
+					resource: ['keywordExplorer'],
+					operation: ['GetKeywordSiteStructure'],
+				},
+			},
 			/*routing: {
 			send: {
 				property: 'keywords',
@@ -1373,7 +1402,6 @@ export class Haloscan implements INodeType {
 				},
 			},*/
 		},
-
 		// parameter : keywords_sources
 		{
 			displayName: 'Keyword Sources',
