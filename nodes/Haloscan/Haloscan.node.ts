@@ -534,8 +534,7 @@ export class Haloscan implements INodeType {
 							url: '=/keywords/siteStructure',
 							body: {
 								keyword: '={{ $parameter.keyword_siteStructure === "" ? null : $parameter.keyword_siteStructure }}',
-								keywords: '={{ [].concat($parameter.keywords_siteStructure, $parameter.keywords_siteStructure2) }}',
-								/*keywords: '={{$parameter.keywords_siteStructure}}',*/
+								keywords: '={{$parameter.keywords_siteStructure}}',
 								exact_match: '={{$parameter.exact_match}}',
 								neighbours_sources: '={{$parameter.neighbours_sources}}',
 								multipartite_modes: '={{$parameter.multipartite_modes}}',
@@ -599,12 +598,12 @@ export class Haloscan implements INodeType {
 							method: 'POST',
 							url: '=/domains/siteCompetitors/keywordsDiff',
 							body: {
-								bested: '={{$parameter.bested}}',
-								besting: '={{$parameter.besting}}',
-								competitors: '={{$parameter.competitors}}',
-								exclusive: '={{$parameter.exclusive}}',
+								bested: '={{$parameter.bested !== false ? undefined  : $parameter.bested }}',
+								besting: '={{$parameter.besting === false ? undefined  : $parameter.besting}}',
+								//competitors: '={{$parameter.competitors}}',
+								exclusive: '={{$parameter.exclusive === false ? undefined  : $parameter.exclusive}}',
 								lineCount: '={{$parameter.lineCount}}',
-								missing: '={{$parameter.missing}}',
+								missing: '={{$parameter.missing === false ? undefined  : $parameter.missing}}',
 								mode: '={{$parameter.mode}}',
 								page: '={{$parameter.page}}',
 								input: '={{$parameter.input}}',
@@ -1331,7 +1330,6 @@ export class Haloscan implements INodeType {
 					operation: [
 						'GetKeywordDatainBulk',
 						'ScrapKeyword',
-						//'GetKeywordSiteStructure',
 					],
 				},
 			},
@@ -1363,30 +1361,6 @@ export class Haloscan implements INodeType {
 			description: 'Requested keywords in an array if requesting bulk data. Must contain at least 50 keywords.',
 			name: 'keywords_siteStructure',
 			type: 'string',
-			default: [],
-			typeOptions: {
-				multipleValues: true
-			},
-			displayOptions: {
-				show: {
-					//only show if you've selected :
-					resource: ['keywordExplorer'],
-					operation: ['GetKeywordSiteStructure'],
-				},
-			},
-			routing: {
-			send: {
-				property: 'keywords',
-				type: 'body',
-				},
-			},
-		},
-		// parameter : keywords_siteStructure2
-		{
-			displayName: 'Keywords Mapped_array',
-			description: 'Requested keywords in an array if requesting bulk data. Must contain at least 50 keywords. If you have mappped array, put it in this field.',
-			name: 'keywords_siteStructure2',
-			type: 'string',
 			default: '',
 			displayOptions: {
 				show: {
@@ -1395,12 +1369,6 @@ export class Haloscan implements INodeType {
 					operation: ['GetKeywordSiteStructure'],
 				},
 			},
-			/*routing: {
-			send: {
-				property: 'keywords',
-				type: 'body',
-				},
-			},*/
 		},
 		// parameter : keywords_sources
 		{
@@ -1554,7 +1522,7 @@ export class Haloscan implements INodeType {
 		// parameter : mode_structure
 		{
 			displayName: 'Mode',
-			description: 'Defines how groups will be made. Manual means that keywords will be grouped when they share at least \'manual_common_10\' URLs in their last SERP top 10 AND at least \'manual_common_100\' URLS in their last SERP top 100. Multi means that keywords will be automatically grouped (hierarchically) depending on their proximity on several modalities specified in \'multipartite_modes\'. You can also influence the attraction force with the \'granularity\' parameter.',
+			description: 'Defines how groups will be made. If sending a ARRAY of keywords, select MANUAL. Manual means that keywords will be grouped when they share at least \'manual_common_10\' URLs in their last SERP top 10 AND at least \'manual_common_100\' URLS in their last SERP top 100. Multi means that keywords will be automatically grouped (hierarchically) depending on their proximity on several modalities specified in \'multipartite_modes\'. You can also influence the attraction force with the \'granularity\' parameter.',
 			name: 'mode_structure',
 			type: 'options',
 			options: [
@@ -2342,7 +2310,13 @@ export class Haloscan implements INodeType {
 			default: ['auto'],
 			typeOptions: {
 				multipleValues: true
-			}
+			},
+			routing: {
+			send: {
+				property: 'competitors',
+				type: 'body',
+				},
+			},
 		},
 		//acceptedTypes
 		{
