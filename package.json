@@ -38,7 +38,8 @@
       "dist/credentials/HaloscanApi.credentials.js"
     ],
     "nodes": [
-      "dist/nodes/Haloscan/Haloscan.node.js"
+      "dist/nodes/Haloscan/Haloscan.node.js",
+      "dist/nodes/Haloscan/v2/HaloscanV2.node.js"
     ]
   },
   "devDependencies": {
