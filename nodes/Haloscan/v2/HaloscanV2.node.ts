@@ -1924,12 +1924,13 @@ export class HaloscanV2 implements INodeType {
 							manual_common_100: manualCommon100,
 						};
 
-						// Handle keyword vs keywords array - keywords takes priority
+						// Always send keywords as array - API requires array format
 						const keywordsArray = toArray(keywordsSiteStructure);
 						if (keywordsArray.length > 0) {
 							body.keywords = keywordsArray;
 						} else if (keyword) {
-							body.keyword = keyword;
+							// Wrap single keyword in array
+							body.keywords = [keyword];
 						}
 
 						responseData = await haloscanApiRequest.call(
