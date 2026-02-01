@@ -379,14 +379,14 @@ export class HaloscanV2 implements INodeType {
 				required: true,
 				name: 'keywords',
 				type: 'string',
-				default: '',
+				default: [],
 				typeOptions: {
 					multipleValues: true,
 				},
 				displayOptions: {
 					show: {
 						resource: ['keywordExplorer'],
-						operation: ['getKeywordDataInBulk', 'scrapKeyword', 'getKeywordSiteStructure'],
+						operation: ['getKeywordDataInBulk', 'scrapKeyword'],
 					},
 				},
 			},
@@ -397,11 +397,14 @@ export class HaloscanV2 implements INodeType {
 				description: 'Requested keywords, ignore if keyword is present',
 				name: 'keywordsFindKeyword',
 				type: 'string',
-				default: '',
+				default: [],
+				typeOptions: {
+					multipleValues: true,
+				},
 				displayOptions: {
 					show: {
 						resource: ['keywordExplorer'],
-						operation: ['findKeyword'],
+						operation: ['findKeyword','getKeywordSiteStructure'],
 					},
 				},
 			},
@@ -583,7 +586,7 @@ export class HaloscanV2 implements INodeType {
 			// Exact Match
 			{
 				displayName: 'Exact Match',
-				description: 'Whether to always ignore accents, punctuation, case, special characters, etc when FALSE.',
+				description: 'Whether to always ignore accents, punctuation, case, special characters, etc when FALSE',
 				name: 'exactMatch',
 				type: 'boolean',
 				default: true,
@@ -667,7 +670,7 @@ export class HaloscanV2 implements INodeType {
 				displayName: 'Minimum Depth',
 				name: 'depthMin',
 				type: 'number',
-				default: '',
+				default: null,
 				displayOptions: {
 					show: {
 						resource: ['keywordExplorer'],
@@ -679,7 +682,7 @@ export class HaloscanV2 implements INodeType {
 				displayName: 'Maximum Depth',
 				name: 'depthMax',
 				type: 'number',
-				default: '',
+				default: null,
 				displayOptions: {
 					show: {
 						resource: ['keywordExplorer'],
@@ -742,7 +745,7 @@ export class HaloscanV2 implements INodeType {
 			},
 			{
 				displayName: 'Granularity',
-				description: 'Low granularity leads to one big group, high granularity leads to many smaller groups. Ignored if mode=\'manual\'',
+				description: 'Low granularity leads to one big group, high granularity leads to many smaller groups. Ignored if mode=\'manual\'.',
 				name: 'granularity',
 				type: 'number',
 				default: 1,
@@ -755,7 +758,7 @@ export class HaloscanV2 implements INodeType {
 			},
 			{
 				displayName: 'Multipartite Modes',
-				description: 'Which sources of data should be used to build the multipartite graph.',
+				description: 'Which sources of data should be used to build the multipartite graph',
 				name: 'multipartiteModes',
 				type: 'multiOptions',
 				options: [
@@ -775,7 +778,7 @@ export class HaloscanV2 implements INodeType {
 			},
 			{
 				displayName: 'Neighbours Sources',
-				description: 'Which strategies should be used to find neighbours for keyword.',
+				description: 'Which strategies should be used to find neighbours for keyword',
 				name: 'neighboursSources',
 				type: 'multiOptions',
 				options: [
@@ -932,7 +935,7 @@ export class HaloscanV2 implements INodeType {
 			// Root Domain Keys for Reveal Expired Domains
 			{
 				displayName: 'Root Domain Keys',
-				description: "List of root_domain_key fields from items in the domains/expired endpoint which you want to reveal.",
+				description: "List of root_domain_key fields from items in the domains/expired endpoint which you want to reveal",
 				name: 'rootDomainKeys',
 				type: 'string',
 				default: '',
@@ -996,7 +999,7 @@ export class HaloscanV2 implements INodeType {
 			// Mode for Site Explorer operations
 			{
 				displayName: 'Mode',
-				description: 'Search mode (domain, root_domain, or url)',
+				description: 'Search mode (domain, root_domain, or URL)',
 				name: 'mode',
 				type: 'options',
 				options: [
@@ -1032,7 +1035,7 @@ export class HaloscanV2 implements INodeType {
 			// Requested Data for Domain Overview
 			{
 				displayName: 'Requested Data',
-				description: 'Requested data for the given URL or domain.',
+				description: 'Requested data for the given URL or domain',
 				name: 'requestedData',
 				type: 'multiOptions',
 				options: [
@@ -1138,7 +1141,7 @@ export class HaloscanV2 implements INodeType {
 			},
 			{
 				displayName: 'Exclusive',
-				description: 'Include positions where only the search input is positioned, and none of the competitors',
+				description: 'Whether to include positions where only the search input is positioned, and none of the competitors',
 				name: 'exclusive',
 				type: 'boolean',
 				default: false,
@@ -1618,7 +1621,7 @@ export class HaloscanV2 implements INodeType {
 						);
 					} else if (operation === 'findKeyword') {
 						const keyword = this.getNodeParameter('keyword', i, '') as string;
-						const keywordsFindKeyword = this.getNodeParameter('keywordsFindKeyword', i, '') as string;
+						const keywordsFindKeyword = this.getNodeParameter('keywordsFindKeyword', i, []) as string | string[];
 						const keywordsSources = this.getNodeParameter('keywordsSources', i, []) as string[];
 						const keepSeed = this.getNodeParameter('keepSeed', i, true) as boolean;
 						const exactMatch = this.getNodeParameter('exactMatch', i, true) as boolean;
@@ -1640,9 +1643,14 @@ export class HaloscanV2 implements INodeType {
 						if (keyword) {
 							body.keyword = keyword;
 						}
-						if (keywordsFindKeyword) {
-							body.keywords = keywordsFindKeyword;
+						// Convert keywords to array - handles both single values and mapped arrays
+						const keywordsArray = toArray(keywordsFindKeyword);
+						if (keywordsArray.length > 0) {
+							body.keywords = keywordsArray;
 						}
+						/*if (keywordsFindKeyword) {
+							body.keywords = keywordsFindKeyword;
+						}*/
 
 						responseData = await haloscanApiRequest.call(
 							this,
@@ -1881,7 +1889,8 @@ export class HaloscanV2 implements INodeType {
 						);
 					} else if (operation === 'getKeywordSiteStructure') {
 						const keyword = this.getNodeParameter('keyword', i, '') as string;
-						const keywords = this.getNodeParameter('keywords', i, []) as string | string[];
+						//const keywords = this.getNodeParameter('keywords', i, []) as string | string[];
+						const keywordsFindKeyword = this.getNodeParameter('keywordsFindKeyword', i, '') as string;
 						const exactMatch = this.getNodeParameter('exactMatch', i, true) as boolean;
 						const mode = this.getNodeParameter('mode', i, 'multi') as string;
 						const granularity = this.getNodeParameter('granularity', i, 1) as number;
@@ -1903,9 +1912,10 @@ export class HaloscanV2 implements INodeType {
 						};
 
 						// FIX: Properly handle keyword vs keywords array
-						const keywordsArray = toArray(keywords);
+						const keywordsArray = toArray(keywordsFindKeyword);
 						if (keywordsArray.length > 0) {
-							body.keywords = keywordsArray;
+							body.keywords = keywordsFindKeyword;
+							//body.keywords = keywordsArray;
 						} else if (keyword) {
 							body.keyword = keyword;
 						}
