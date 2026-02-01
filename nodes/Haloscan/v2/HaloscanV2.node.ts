@@ -1930,7 +1930,7 @@ export class HaloscanV2 implements INodeType {
 							body.keywords = keywordsArray;
 						} else if (keyword) {
 							// Wrap single keyword in array
-							body.keywords = [keyword];
+							body.keyword = keyword;
 						}
 
 						responseData = await haloscanApiRequest.call(
