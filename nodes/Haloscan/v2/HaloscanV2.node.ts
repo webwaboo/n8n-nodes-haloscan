@@ -394,10 +394,13 @@ export class HaloscanV2 implements INodeType {
 			// Keywords for findKeyword (optional)
 			{
 				displayName: 'Keywords',
-				description: 'Requested keywords, ignore if keyword is present',
+				description: 'Requested keywords, ignore if keyword is present. You can map an array here.',
 				name: 'keywordsFindKeyword',
 				type: 'string',
 				default: '',
+				typeOptions: {
+					multipleValues: true,
+				},
 				displayOptions: {
 					show: {
 						resource: ['keywordExplorer'],
@@ -1618,7 +1621,7 @@ export class HaloscanV2 implements INodeType {
 						);
 					} else if (operation === 'findKeyword') {
 						const keyword = this.getNodeParameter('keyword', i, '') as string;
-						const keywordsFindKeyword = this.getNodeParameter('keywordsFindKeyword', i, '') as string;
+						const keywordsFindKeyword = this.getNodeParameter('keywordsFindKeyword', i, []) as string | string[];
 						const keywordsSources = this.getNodeParameter('keywordsSources', i, []) as string[];
 						const keepSeed = this.getNodeParameter('keepSeed', i, true) as boolean;
 						const exactMatch = this.getNodeParameter('exactMatch', i, true) as boolean;
@@ -1640,8 +1643,10 @@ export class HaloscanV2 implements INodeType {
 						if (keyword) {
 							body.keyword = keyword;
 						}
-						if (keywordsFindKeyword) {
-							body.keywords = keywordsFindKeyword;
+						// Convert keywords to array - handles both single values and mapped arrays
+						const keywordsArray = toArray(keywordsFindKeyword);
+						if (keywordsArray.length > 0) {
+							body.keywords = keywordsArray;
 						}
 
 						responseData = await haloscanApiRequest.call(
