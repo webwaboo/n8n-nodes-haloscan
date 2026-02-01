@@ -1248,6 +1248,30 @@ export class HaloscanV2 implements INodeType {
 					},
 				},
 			},
+			{
+				displayName: 'Order By',
+				description: 'Field used for sorting results',
+				name: 'orderByBulk',
+				type: 'options',
+				options: [
+					{ name: 'Allintitle', value: 'allintitle' },
+					{ name: 'Competition', value: 'competition' },
+					{ name: 'CPC', value: 'cpc' },
+					{ name: 'Keep', value: 'keep' },
+					{ name: 'Keyword', value: 'keyword' },
+					{ name: 'KGR', value: 'kgr' },
+					{ name: 'Volume', value: 'volume' },
+				],
+				default: 'keep',
+				displayOptions: {
+					show: {
+						resource: ['keywordExplorer'],
+						operation: [
+							'getKeywordDataInBulk'
+						],
+					},
+				},
+			},
 
 			// Order (asc/desc)
 			{
