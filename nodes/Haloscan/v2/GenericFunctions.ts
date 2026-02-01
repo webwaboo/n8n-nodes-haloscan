@@ -76,11 +76,21 @@ export function removeEmptyValues(obj: IDataObject): IDataObject {
 
 /**
  * Convert a parameter to an array if it's not already
- * Handles comma-separated strings and single values
+ * Handles nested arrays, comma-separated strings, and single values
  */
 export function toArray(value: unknown): string[] {
 	if (Array.isArray(value)) {
-		return value.map(String).filter((v) => v !== '');
+		// Flatten nested arrays (e.g., [['a', 'b']] -> ['a', 'b'])
+		const flattened: string[] = [];
+		for (const item of value) {
+			if (Array.isArray(item)) {
+				// Recursively handle nested arrays
+				flattened.push(...toArray(item));
+			} else if (item !== null && item !== undefined && item !== '') {
+				flattened.push(String(item));
+			}
+		}
+		return flattened;
 	}
 	if (typeof value === 'string' && value !== '') {
 		// Check if it's a JSON array string
@@ -88,7 +98,7 @@ export function toArray(value: unknown): string[] {
 			try {
 				const parsed = JSON.parse(value);
 				if (Array.isArray(parsed)) {
-					return parsed.map(String).filter((v) => v !== '');
+					return toArray(parsed); // Recursively process parsed array
 				}
 			} catch {
 				// Not valid JSON, treat as single value
