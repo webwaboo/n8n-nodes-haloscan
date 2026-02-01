@@ -729,26 +729,13 @@ export class HaloscanV2 implements INodeType {
 			// Site Structure specific parameters
 			{
 				displayName: 'Keywords',
-				description: 'Array containing the requested keywords (use the UI to add multiple)',
+				description: 'Array containing the requested keywords',
 				name: 'keywordsSiteStructure',
 				type: 'string',
 				default: [],
 				typeOptions: {
 					multipleValues: true,
 				},
-				displayOptions: {
-					show: {
-						resource: ['keywordExplorer'],
-						operation: ['getKeywordSiteStructure'],
-					},
-				},
-			},
-			{
-				displayName: 'Keywords (Mapped Array)',
-				description: 'If you have a mapped array from a previous node, put it here instead',
-				name: 'keywordsSiteStructureMapped',
-				type: 'string',
-				default: '',
 				displayOptions: {
 					show: {
 						resource: ['keywordExplorer'],
@@ -1917,7 +1904,6 @@ export class HaloscanV2 implements INodeType {
 					} else if (operation === 'getKeywordSiteStructure') {
 						const keyword = this.getNodeParameter('keyword', i, '') as string;
 						const keywordsSiteStructure = this.getNodeParameter('keywordsSiteStructure', i, []) as string | string[];
-						const keywordsSiteStructureMapped = this.getNodeParameter('keywordsSiteStructureMapped', i, '') as string;
 						const exactMatch = this.getNodeParameter('exactMatch', i, true) as boolean;
 						const mode = this.getNodeParameter('mode', i, 'multi') as string;
 						const granularity = this.getNodeParameter('granularity', i, 1) as number;
@@ -1938,17 +1924,12 @@ export class HaloscanV2 implements INodeType {
 							manual_common_100: manualCommon100,
 						};
 
-						// Always send keywords as array - API requires array format
-						// Combine both keyword sources (UI multipleValues and mapped array)
-						const keywordsFromUI = toArray(keywordsSiteStructure);
-						const keywordsFromMapped = toArray(keywordsSiteStructureMapped);
-						const keywordsArray = [...keywordsFromUI, ...keywordsFromMapped];
-
+						// Handle keywords array
+						const keywordsArray = toArray(keywordsSiteStructure);
 						if (keywordsArray.length > 0) {
 							body.keywords = keywordsArray;
 						} else if (keyword) {
-							// Wrap single keyword in array
-							body.keywords = [keyword];
+							body.keyword = keyword;
 						}
 
 						responseData = await haloscanApiRequest.call(
