@@ -42,8 +42,54 @@ export async function haloscanApiRequest(
 	try {
 		const response = await this.helpers.request(options);
 		return response;
-	} catch (error) {
-		throw new NodeApiError(this.getNode(), error);
+	} catch (error: unknown) {
+		// Extract detailed error information from API response
+		const err = error as {
+			message?: string;
+			statusCode?: number;
+			error?: {
+				message?: string;
+				error?: string;
+				details?: unknown;
+			};
+			response?: {
+				body?: unknown;
+			};
+		};
+
+		// Build detailed error message
+		let errorMessage = 'Haloscan API Error';
+		const errorDetails: IDataObject = {
+			endpoint,
+			method,
+			requestBody: body,
+		};
+
+		if (err.statusCode) {
+			errorDetails.statusCode = err.statusCode;
+		}
+
+		if (err.error) {
+			if (typeof err.error === 'object') {
+				errorDetails.apiError = err.error;
+				errorMessage = err.error.message || err.error.error || errorMessage;
+			} else {
+				errorDetails.apiError = err.error;
+			}
+		}
+
+		if (err.response?.body) {
+			errorDetails.responseBody = err.response.body;
+		}
+
+		if (err.message) {
+			errorDetails.originalMessage = err.message;
+		}
+
+		throw new NodeApiError(this.getNode(), {
+			message: errorMessage,
+			description: JSON.stringify(errorDetails, null, 2),
+		});
 	}
 }
 
