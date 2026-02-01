@@ -372,7 +372,7 @@ export class HaloscanV2 implements INodeType {
 				},
 			},
 
-			// Keywords array parameter
+			// Keywords array parameter (required)
 			{
 				displayName: 'Keywords',
 				description: 'Array containing the requested keywords',
@@ -386,7 +386,7 @@ export class HaloscanV2 implements INodeType {
 				displayOptions: {
 					show: {
 						resource: ['keywordExplorer'],
-						operation: ['getKeywordDataInBulk', 'scrapKeyword' ],
+						operation: ['getKeywordDataInBulk', 'scrapKeyword'],
 					},
 				},
 			},
@@ -1924,7 +1924,7 @@ export class HaloscanV2 implements INodeType {
 							manual_common_100: manualCommon100,
 						};
 
-						// FIX: Properly handle keyword vs keywords array
+						// Handle keyword vs keywords array - keywords takes priority
 						const keywordsArray = toArray(keywordsSiteStructure);
 						if (keywordsArray.length > 0) {
 							body.keywords = keywordsArray;
