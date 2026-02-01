@@ -379,14 +379,14 @@ export class HaloscanV2 implements INodeType {
 				required: true,
 				name: 'keywords',
 				type: 'string',
-				default: '',
+				default: [],
 				typeOptions: {
 					multipleValues: true,
 				},
 				displayOptions: {
 					show: {
 						resource: ['keywordExplorer'],
-						operation: ['getKeywordDataInBulk', 'scrapKeyword', 'getKeywordSiteStructure'],
+						operation: ['getKeywordDataInBulk', 'scrapKeyword' ],
 					},
 				},
 			},
@@ -397,7 +397,7 @@ export class HaloscanV2 implements INodeType {
 				description: 'Requested keywords, ignore if keyword is present. You can map an array here.',
 				name: 'keywordsFindKeyword',
 				type: 'string',
-				default: '',
+				default: [],
 				typeOptions: {
 					multipleValues: true,
 				},
@@ -439,6 +439,7 @@ export class HaloscanV2 implements INodeType {
 				required: true,
 				name: 'period',
 				type: 'options',
+				// eslint-disable-next-line n8n-nodes-base/node-param-options-type-unsorted-items
 				options: [
 					{ name: '1 Month', value: '1 month' },
 					{ name: '3 Months', value: '3 months' },
@@ -727,6 +728,22 @@ export class HaloscanV2 implements INodeType {
 
 			// Site Structure specific parameters
 			{
+				displayName: 'Keywords',
+				description: 'Array containing the requested keywords',
+				name: 'keywordsSiteStructure',
+				type: 'string',
+				default: [],
+				typeOptions: {
+					multipleValues: true,
+				},
+				displayOptions: {
+					show: {
+						resource: ['keywordExplorer'],
+						operation: [ 'getKeywordSiteStructure'],
+					},
+				},
+			},
+			{
 				displayName: 'Mode',
 				description: "Defines how groups will be made. Manual means keywords will be grouped when they share URLs. Multi means keywords will be automatically grouped hierarchically.",
 				name: 'mode',
@@ -879,7 +896,7 @@ export class HaloscanV2 implements INodeType {
 				description: 'Array containing the requested URLs or domains',
 				name: 'inputs',
 				type: 'string',
-				default: '',
+				default: [],
 				typeOptions: {
 					multipleValues: true,
 				},
@@ -898,7 +915,7 @@ export class HaloscanV2 implements INodeType {
 				description: 'List of competitor domains or root domains',
 				name: 'competitors',
 				type: 'string',
-				default: '',
+				default: [],
 				typeOptions: {
 					multipleValues: true,
 				},
@@ -920,7 +937,7 @@ export class HaloscanV2 implements INodeType {
 				description: 'List of keywords to look for',
 				name: 'keywords',
 				type: 'string',
-				default: '',
+				default: [],
 				typeOptions: {
 					multipleValues: true,
 				},
@@ -938,7 +955,7 @@ export class HaloscanV2 implements INodeType {
 				description: "List of root_domain_key fields from items in the domains/expired endpoint which you want to reveal.",
 				name: 'rootDomainKeys',
 				type: 'string',
-				default: '',
+				default: [],
 				typeOptions: {
 					multipleValues: true,
 				},
@@ -1886,7 +1903,7 @@ export class HaloscanV2 implements INodeType {
 						);
 					} else if (operation === 'getKeywordSiteStructure') {
 						const keyword = this.getNodeParameter('keyword', i, '') as string;
-						const keywords = this.getNodeParameter('keywords', i, []) as string | string[];
+						const keywordsSiteStructure = this.getNodeParameter('keywordsSiteStructure', i, []) as string | string[];
 						const exactMatch = this.getNodeParameter('exactMatch', i, true) as boolean;
 						const mode = this.getNodeParameter('mode', i, 'multi') as string;
 						const granularity = this.getNodeParameter('granularity', i, 1) as number;
@@ -1908,7 +1925,7 @@ export class HaloscanV2 implements INodeType {
 						};
 
 						// FIX: Properly handle keyword vs keywords array
-						const keywordsArray = toArray(keywords);
+						const keywordsArray = toArray(keywordsSiteStructure);
 						if (keywordsArray.length > 0) {
 							body.keywords = keywordsArray;
 						} else if (keyword) {
