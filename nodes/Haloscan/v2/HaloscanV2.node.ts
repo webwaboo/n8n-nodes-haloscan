@@ -729,7 +729,7 @@ export class HaloscanV2 implements INodeType {
 			// Site Structure specific parameters
 			{
 				displayName: 'Keywords',
-				description: 'Array containing the requested keywords',
+				description: 'Array containing the requested keywords (use the UI to add multiple)',
 				name: 'keywordsSiteStructure',
 				type: 'string',
 				default: [],
@@ -739,7 +739,20 @@ export class HaloscanV2 implements INodeType {
 				displayOptions: {
 					show: {
 						resource: ['keywordExplorer'],
-						operation: [ 'getKeywordSiteStructure'],
+						operation: ['getKeywordSiteStructure'],
+					},
+				},
+			},
+			{
+				displayName: 'Keywords (Mapped Array)',
+				description: 'If you have a mapped array from a previous node, put it here instead',
+				name: 'keywordsSiteStructureMapped',
+				type: 'string',
+				default: '',
+				displayOptions: {
+					show: {
+						resource: ['keywordExplorer'],
+						operation: ['getKeywordSiteStructure'],
 					},
 				},
 			},
@@ -1904,6 +1917,7 @@ export class HaloscanV2 implements INodeType {
 					} else if (operation === 'getKeywordSiteStructure') {
 						const keyword = this.getNodeParameter('keyword', i, '') as string;
 						const keywordsSiteStructure = this.getNodeParameter('keywordsSiteStructure', i, []) as string | string[];
+						const keywordsSiteStructureMapped = this.getNodeParameter('keywordsSiteStructureMapped', i, '') as string;
 						const exactMatch = this.getNodeParameter('exactMatch', i, true) as boolean;
 						const mode = this.getNodeParameter('mode', i, 'multi') as string;
 						const granularity = this.getNodeParameter('granularity', i, 1) as number;
@@ -1925,7 +1939,11 @@ export class HaloscanV2 implements INodeType {
 						};
 
 						// Always send keywords as array - API requires array format
-						const keywordsArray = toArray(keywordsSiteStructure);
+						// Combine both keyword sources (UI multipleValues and mapped array)
+						const keywordsFromUI = toArray(keywordsSiteStructure);
+						const keywordsFromMapped = toArray(keywordsSiteStructureMapped);
+						const keywordsArray = [...keywordsFromUI, ...keywordsFromMapped];
+
 						if (keywordsArray.length > 0) {
 							body.keywords = keywordsArray;
 						} else if (keyword) {
