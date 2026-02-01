@@ -729,7 +729,7 @@ export class HaloscanV2 implements INodeType {
 			// Site Structure specific parameters
 			{
 				displayName: 'Keywords',
-				description: 'Array containing the requested keywords',
+				description: 'If using multiple keywords, use mode MANUAL',
 				name: 'keywordsSiteStructure',
 				type: 'string',
 				default: [],
@@ -745,7 +745,7 @@ export class HaloscanV2 implements INodeType {
 			},
 			{
 				displayName: 'Mode',
-				description: "Defines how groups will be made. Manual means keywords will be grouped when they share URLs. Multi means keywords will be automatically grouped hierarchically.",
+				description: "Defines how groups will be made. MANUAL is necessary if using multiple keywords. Manual means keywords will be grouped when they share URLs. Multi means keywords will be automatically grouped hierarchically.",
 				name: 'mode',
 				type: 'options',
 				options: [
@@ -1925,11 +1925,19 @@ export class HaloscanV2 implements INodeType {
 						};
 
 						// Handle keywords array
-						const keywordsArray = toArray(keywordsSiteStructure);
+						/*const keywordsArray = toArray(keywordsSiteStructure);
 						if (keywordsArray.length > 0) {
 							body.keywords = keywordsArray;
 						} else if (keyword) {
 							body.keyword = keyword;
+						}*/
+						if (keyword) {
+							body.keyword = keyword;
+						}
+						// Convert keywords to array - handles both single values and mapped arrays
+						const keywordsArray = toArray(keywordsSiteStructure);
+						if (keywordsArray.length > 0) {
+							body.keywords = keywordsArray;
 						}
 
 						responseData = await haloscanApiRequest.call(
