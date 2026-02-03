@@ -2127,6 +2127,9 @@ export class HaloscanV2 implements INodeType {
 				displayOptions: {
 					show: {
 						resource: ['keywordExplorer', 'siteExplorer'],
+						operation: [
+							'findKeywordsMatch','findSimilarKeyword','getKeywordHighlight','findRelatedKeyword','getKeywordQuestion','findKeywordSynonym','findKeyword','getKeywordDataInBulk','getRankingOfDomainKeyword','getDomainTopPages','getDomainPositionHistory','getHistoryOfDomainPages','getKeywordDataFromURL','getDomainDataInBulk','getExpiredDomains','getGMBBacklink'
+						]
 					},
 				},
 			},
@@ -2141,7 +2144,10 @@ export class HaloscanV2 implements INodeType {
 				displayOptions: {
 					show: {
 						resource: ['keywordExplorer', 'siteExplorer'],
-					},
+						operation: [
+							'findKeywordsMatch','findSimilarKeyword','getKeywordHighlight','findRelatedKeyword','getKeywordQuestion','findKeywordSynonym','findKeyword','getKeywordDataInBulk','getBestKeywordsFromPage','getDomainCompetitors','getRankingOfDomainKeyword','getDomainTopPages','getDomainPositionHistory','getHistoryOfDomainPages','getKeywordDataFromURL','getDomainDataInBulk','compareDomainKeywordsWithCompetitors','getCompetitorBestPages','getCompetitorsKeywordsBestPosition','getExpiredDomains','getGMBBacklink'
+						],
+					}
 				},
 			},
 
@@ -2155,6 +2161,9 @@ export class HaloscanV2 implements INodeType {
 				displayOptions: {
 					show: {
 						resource: ['keywordExplorer', 'siteExplorer'],
+						operation: [
+							'findKeywordsMatch','findSimilarKeyword','getKeywordHighlight','findRelatedKeyword','getKeywordQuestion','findKeywordSynonym','findKeyword','getKeywordDataInBulk','getRankingOfDomainKeyword','getDomainTopPages','getDomainPositionHistory','getHistoryOfDomainPages','getKeywordDataFromURL','getDomainDataInBulk','compareDomainKeywordsWithCompetitors','getCompetitorBestPages','getCompetitorsKeywordsBestPosition','getExpiredDomains','getGMBBacklink'
+						]
 					},
 				},
 			},
@@ -2196,6 +2205,13 @@ export class HaloscanV2 implements INodeType {
 						name: 'allintitle_min',
 						type: 'number',
 						default: '',
+					},
+					{
+						displayName: 'BOOOOOBA',
+						name: 'allintitle_min',
+						type: 'number',
+						default: '',
+						displayOptions: { show: { operation: ['getKeywordOverview'] } }
 					},
 					{
 						displayName: 'Competition Max',
