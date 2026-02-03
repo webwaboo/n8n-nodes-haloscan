@@ -2172,6 +2172,7 @@ export class HaloscanV2 implements INodeType {
 			// ADDITIONAL FIELDS (Collections)
 			// ==========================================
 
+			// Additional Fields for keyword explorer operations (synonym, match, related, bulk, highlight, question)
 			{
 				displayName: 'Additional Fields',
 				name: 'additionalFields',
@@ -2182,11 +2183,9 @@ export class HaloscanV2 implements INodeType {
 					show: {
 						resource: ['keywordExplorer'],
 						operation: [
-							'findKeyword',
 							'findKeywordSynonym',
 							'findKeywordsMatch',
 							'findRelatedKeyword',
-							'findSimilarKeyword',
 							'getKeywordDataInBulk',
 							'getKeywordHighlight',
 							'getKeywordQuestion',
@@ -2240,28 +2239,28 @@ export class HaloscanV2 implements INodeType {
 					{
 						displayName: 'Exclude',
 						name: 'exclude',
+						description: 'Regular expression for keywords to be excluded',
 						type: 'string',
 						default: '',
-						description: 'Keywords to exclude from results',
 					},
 					{
 						displayName: 'Include',
 						name: 'include',
+						description: 'Regular expression for keywords to be included',
 						type: 'string',
 						default: '',
-						description: 'Keywords to include in results',
 					},
 					{
 						displayName: 'KGR Max',
 						name: 'kgr_max',
 						type: 'number',
-						default: '',
+						default: undefined,
 					},
 					{
 						displayName: 'KGR Min',
 						name: 'kgr_min',
 						type: 'number',
-						default: '',
+						default: undefined,
 					},
 					{
 						displayName: 'KVI Keep NA',
@@ -2273,37 +2272,96 @@ export class HaloscanV2 implements INodeType {
 						displayName: 'KVI Max',
 						name: 'kvi_max',
 						type: 'number',
-						default: '',
+						default: undefined,
 					},
 					{
 						displayName: 'KVI Min',
 						name: 'kvi_min',
 						type: 'number',
-						default: '',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum Allintitle',
+						name: 'allintitle_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum Competition',
+						description: 'Maximum competition value, between 0 and 1',
+						name: 'competition_max',
+						type: 'number',
+						typeOptions: {
+							maxValue: 1,
+							minValue: 0,
+						},
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum CPC',
+						name: 'cpc_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Allintitle',
+						name: 'allintitle_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Competition',
+						description: 'Minimum competition value, between 0 and 1',
+						name: 'competition_min',
+						type: 'number',
+						typeOptions: {
+							maxValue: 1,
+							minValue: 0,
+						},
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum CPC',
+						name: 'cpc_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Order',
+						description: 'Whether the results are sorted in ascending or descending order',
+						name: 'order',
+						type: 'options',
+						options: [
+							{ name: 'Ascending', value: 'asc' },
+							{ name: 'Descending', value: 'desc' },
+						],
+						default: 'asc',
 					},
 					{
 						displayName: 'Volume Max',
 						name: 'volume_max',
 						type: 'number',
-						default: '',
+						default: undefined,
 					},
 					{
 						displayName: 'Volume Min',
 						name: 'volume_min',
 						type: 'number',
-						default: '',
+						default: undefined,
 					},
 					{
 						displayName: 'Word Count Max',
+						description: 'Max number of words making up the keyword',
 						name: 'word_count_max',
 						type: 'number',
-						default: '',
+						default: undefined,
 					},
 					{
 						displayName: 'Word Count Min',
+						description: 'Min number of words making up the keyword',
 						name: 'word_count_min',
 						type: 'number',
-						default: '',
+						default: undefined,
 					},
 				],
 			},
