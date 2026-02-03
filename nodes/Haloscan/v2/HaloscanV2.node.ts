@@ -2292,6 +2292,107 @@ export class HaloscanV2 implements INodeType {
 				],
 			},
 
+			// Additional Fields for getCompetitorBestPages operation
+			{
+				displayName: 'Additional Fields',
+				name: 'additionalFieldsCompetitorBestPages',
+				type: 'collection',
+				placeholder: 'Add Field',
+				default: {},
+				displayOptions: {
+					show: {
+						resource: ['siteExplorer'],
+						operation: ['getCompetitorBestPages'],
+					},
+				},
+				options: [
+					{
+						displayName: 'Maximum Bested Keywords',
+						name: 'bested_keywords_max',
+						type: 'number',
+						default: undefined,
+						description: "Max value for keywords where the competitor's page is ranked worse than at least one of the search input's pages",
+					},
+					{
+						displayName: 'Maximum Besting Keywords',
+						name: 'besting_keywords_max',
+						type: 'number',
+						default: undefined,
+						description: "Max value for keywords where the competitor's page is ranked better than any of the search input's pages",
+					},
+					{
+						displayName: 'Maximum Exclusive Keywords',
+						name: 'exclusive_keywords_max',
+						type: 'number',
+						default: undefined,
+						description: "Max value for keywords exclusive to the competitor's page",
+					},
+					{
+						displayName: 'Maximum Keywords',
+						name: 'keywords_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum Positions',
+						name: 'positions_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum Total Traffic',
+						name: 'total_traffic_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Bested Keywords',
+						name: 'bested_keywords_min',
+						type: 'number',
+						default: undefined,
+						description: "Min value for keywords where the competitor's page is ranked worse than at least one of the search input's pages",
+					},
+					{
+						displayName: 'Minimum Besting Keywords',
+						name: 'besting_keywords_min',
+						type: 'number',
+						default: undefined,
+						description: "Min value for keywords where the competitor's page is ranked better than any of the search input's pages",
+					},
+					{
+						displayName: 'Minimum Exclusive Keywords',
+						name: 'exclusive_keywords_min',
+						type: 'number',
+						default: undefined,
+						description: "Min value for keywords exclusive to the competitor's page",
+					},
+					{
+						displayName: 'Minimum Keywords',
+						name: 'keywords_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Positions',
+						name: 'positions_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Total Traffic',
+						name: 'total_traffic_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Total Traffic Keep NA',
+						name: 'total_traffic_keep_na',
+						type: 'boolean',
+						default: false,
+					},
+				],
+			},
+
 			// Additional Fields for Site Explorer operations
 			{
 				displayName: 'Additional Fields',
@@ -2889,6 +2990,7 @@ export class HaloscanV2 implements INodeType {
 						const lineCount = this.getNodeParameter('lineCount', i, 100) as number;
 						const page = this.getNodeParameter('page', i, 1) as number;
 						const orderBy = this.getNodeParameter('order_by_competitor_keyworddata', i, 'default') as string;
+						const additionalFieldsCompetitorBestPages = this.getNodeParameter('additionalFieldsCompetitorBestPages', i, {}) as IDataObject;
 
 						const body: IDataObject = {
 							input,
@@ -2904,7 +3006,7 @@ export class HaloscanV2 implements INodeType {
 							this,
 							'POST',
 							'/domains/siteCompetitors/bestPages',
-							removeEmptyValues(mergeAdditionalFields(body, additionalFields)),
+							removeEmptyValues(mergeAdditionalFields(body, additionalFieldsCompetitorBestPages)),
 						);
 					} else if (operation === 'getCompetitorsKeywordsBestPosition') {
 						const competitors = this.getNodeParameter('competitors', i, []) as string | string[];
