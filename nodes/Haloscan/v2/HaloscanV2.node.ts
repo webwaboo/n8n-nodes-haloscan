@@ -2403,6 +2403,7 @@ export class HaloscanV2 implements INodeType {
 				displayOptions: {
 					show: {
 						resource: ['siteExplorer'],
+						operation: ['compareDomainKeywordsWithCompetitors','getCompetitorBestPages','getCompetitorsKeywordsBestPosition','getDomainPositionHistory'],
 					},
 				},
 				options: [
