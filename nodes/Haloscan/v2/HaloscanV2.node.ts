@@ -2366,6 +2366,136 @@ export class HaloscanV2 implements INodeType {
 				],
 			},
 
+			// Additional Fields for findKeyword operation
+			{
+				displayName: 'Additional Fields',
+				name: 'additionalFields_findKeyword',
+				type: 'collection',
+				placeholder: 'Add Field',
+				default: {},
+				displayOptions: {
+					show: {
+						resource: ['keywordExplorer'],
+						operation: ['findKeyword'],
+					},
+				},
+				options: [
+					{
+						displayName: 'Exclude',
+						name: 'exclude',
+						description: 'Regular expression for keywords to be excluded',
+						type: 'string',
+						default: '',
+					},
+					{
+						displayName: 'Include',
+						name: 'include',
+						description: 'Regular expression for keywords to be included',
+						type: 'string',
+						default: '',
+					},
+					{
+						displayName: 'KGR Max',
+						name: 'kgr_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'KGR Min',
+						name: 'kgr_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'KVI Keep NA',
+						name: 'kvi_keep_na',
+						type: 'boolean',
+						default: true,
+					},
+					{
+						displayName: 'KVI Max',
+						name: 'kvi_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'KVI Min',
+						name: 'kvi_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum Allintitle',
+						name: 'allintitle_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum Competition',
+						description: 'Maximum competition value, between 0 and 1',
+						name: 'competition_max',
+						type: 'number',
+						typeOptions: {
+							maxValue: 1,
+							minValue: 0,
+						},
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum CPC',
+						name: 'cpc_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Allintitle',
+						name: 'allintitle_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Competition',
+						description: 'Minimum competition value, between 0 and 1',
+						name: 'competition_min',
+						type: 'number',
+						typeOptions: {
+							maxValue: 1,
+							minValue: 0,
+						},
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum CPC',
+						name: 'cpc_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Order',
+						description: 'Whether the results are sorted in ascending or descending order',
+						name: 'order',
+						type: 'options',
+						options: [
+							{ name: 'Ascending', value: 'asc' },
+							{ name: 'Descending', value: 'desc' },
+						],
+						default: 'asc',
+					},
+					{
+						displayName: 'Volume Max',
+						name: 'volume_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Volume Min',
+						name: 'volume_min',
+						type: 'number',
+						default: undefined,
+					},
+				],
+			},
+
 			// Additional Fields for getCompetitorBestPages operation
 			{
 				displayName: 'Additional Fields',
@@ -2686,6 +2816,7 @@ export class HaloscanV2 implements INodeType {
 						const page = this.getNodeParameter('page', i, 1) as number;
 						const orderBy = this.getNodeParameter('orderByFind', i, 'default') as string;
 						const order = this.getNodeParameter('order', i, 'desc') as string;
+						const additionalFieldsFindKeyword = this.getNodeParameter('additionalFields_findKeyword', i, {}) as IDataObject;
 
 						const body: IDataObject = {
 							keep_seed: keepSeed,
@@ -2710,7 +2841,7 @@ export class HaloscanV2 implements INodeType {
 							this,
 							'POST',
 							'/keywords/find',
-							removeEmptyValues(mergeAdditionalFields(body, additionalFields)),
+							removeEmptyValues(mergeAdditionalFields(body, additionalFieldsFindKeyword)),
 						);
 					} else if (operation === 'findKeywordSynonym') {
 						const keyword = this.getNodeParameter('keyword', i) as string;
