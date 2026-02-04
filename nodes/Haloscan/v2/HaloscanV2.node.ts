@@ -2984,6 +2984,245 @@ export class HaloscanV2 implements INodeType {
 				],
 			},
 
+			// Additional Fields for getDomainPositionHistory operation
+			{
+				displayName: 'Additional Fields',
+				name: 'additionalFields_getDomainPositionHistory',
+				type: 'collection',
+				placeholder: 'Add Field',
+				default: {},
+				displayOptions: {
+					show: {
+						resource: ['siteExplorer'],
+						operation: ['getDomainPositionHistory'],
+					},
+				},
+				options: [
+					{
+						displayName: 'Keyword Excluded',
+						name: 'keyword_exclude',
+						description: 'Regular expression for keywords to be excluded',
+						type: 'string',
+						default: '',
+					},
+					{
+						displayName: 'Keyword Included',
+						name: 'keyword_include',
+						description: 'Regular expression for keywords to be included',
+						type: 'string',
+						default: '',
+					},
+					{
+						displayName: 'KVI Keep NA',
+						name: 'kvi_keep_na',
+						type: 'boolean',
+						default: false,
+					},
+					{
+						displayName: 'Maximum Allintitle',
+						name: 'allintitle_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum Best Position',
+						name: 'best_position_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum Competition',
+						name: 'competition_max',
+						description: 'Between 0 and 1',
+						type: 'number',
+						typeOptions: {
+							minValue: 0,
+							maxValue: 1,
+						},
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum CPC',
+						name: 'cpc_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum First Time Seen',
+						name: 'first_time_seen_max',
+						description: 'Date with YYYY-MM-DD format',
+						type: 'string',
+						default: '',
+					},
+					{
+						displayName: 'Maximum KGR',
+						name: 'kgr_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum KVI',
+						name: 'kvi_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum Last Time Seen',
+						name: 'last_time_seen_max',
+						description: 'Date with YYYY-MM-DD format',
+						type: 'string',
+						default: '',
+					},
+					{
+						displayName: 'Maximum Most Recent Position',
+						name: 'most_recent_position_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum Page Count',
+						name: 'page_count_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum Subdomain Count',
+						name: 'subdomain_count_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum Volume',
+						name: 'volume_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum Word Count',
+						name: 'word_count_max',
+						description: 'Max number of words making up the keyword',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum Worst Position',
+						name: 'worst_position_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Allintitle',
+						name: 'allintitle_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Best Position',
+						name: 'best_position_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Competition',
+						name: 'competition_min',
+						description: 'Between 0 and 1',
+						type: 'number',
+						typeOptions: {
+							minValue: 0,
+							maxValue: 1,
+						},
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum CPC',
+						name: 'cpc_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum First Time Seen',
+						name: 'first_time_seen_min',
+						description: 'Date with YYYY-MM-DD format',
+						type: 'string',
+						default: '',
+					},
+					{
+						displayName: 'Minimum KGR',
+						name: 'kgr_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum KVI',
+						name: 'kvi_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Last Time Seen',
+						name: 'last_time_seen_min',
+						description: 'Date with YYYY-MM-DD format',
+						type: 'string',
+						default: '',
+					},
+					{
+						displayName: 'Minimum Most Recent Position',
+						name: 'most_recent_position_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Page Count',
+						name: 'page_count_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Subdomain Count',
+						name: 'subdomain_count_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Volume',
+						name: 'volume_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Word Count',
+						name: 'word_count_min',
+						description: 'Min number of words making up the keyword',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Worst Position',
+						name: 'worst_position_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Order',
+						name: 'order',
+						description: 'Whether the results are sorted in ascending or descending order',
+						type: 'options',
+						options: [
+							{ name: 'Ascending', value: 'asc' },
+							{ name: 'Descending', value: 'desc' },
+						],
+						default: 'asc',
+					},
+					{
+						displayName: 'Still There',
+						name: 'still_there',
+						description: 'Whether to keep certain positions. When TRUE, only keep positions that are still held. When FALSE, only keep positions that were lost. Leave empty if you don\'t want to filter.',
+						type: 'boolean',
+						default: false,
+					},
+				],
+			},
+
 			// Additional Fields for Site Explorer operations
 			{
 				displayName: 'Additional Fields',
@@ -3716,6 +3955,7 @@ export class HaloscanV2 implements INodeType {
 						const lineCount = this.getNodeParameter('lineCount', i, 100) as number;
 						const page = this.getNodeParameter('page', i, 1) as number;
 						const orderBy = this.getNodeParameter('order_by_domain_history', i, 'default') as string;
+						const additionalFieldsDomainPositionHistory = this.getNodeParameter('additionalFields_getDomainPositionHistory', i, {}) as IDataObject;
 
 						const body: IDataObject = {
 							input,
@@ -3731,7 +3971,7 @@ export class HaloscanV2 implements INodeType {
 							this,
 							'POST',
 							'/domains/history',
-							removeEmptyValues(mergeAdditionalFields(body, additionalFields)),
+							removeEmptyValues(mergeAdditionalFields(body, additionalFieldsDomainPositionHistory)),
 						);
 					} else if (operation === 'getDomainTopPages') {
 						const input = this.getNodeParameter('input', i) as string;
