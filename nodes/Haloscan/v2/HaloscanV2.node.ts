@@ -3410,6 +3410,200 @@ export class HaloscanV2 implements INodeType {
 				],
 			},
 
+			// Additional Fields for getRankingOfDomainKeyword operation
+			{
+				displayName: 'Additional Fields',
+				name: 'additionalFields_getRankingOfDomainKeyword',
+				type: 'collection',
+				placeholder: 'Add Field',
+				default: {},
+				displayOptions: {
+					show: {
+						resource: ['siteExplorer'],
+						operation: ['getRankingOfDomainKeyword'],
+					},
+				},
+				options: [
+					{
+						displayName: 'Exclude Title',
+						name: 'title_exclude',
+						description: 'Regular expression for titles to be excluded',
+						type: 'string',
+						default: '',
+					},
+					{
+						displayName: 'Include Title',
+						name: 'title_include',
+						description: 'Regular expression for titles to be included',
+						type: 'string',
+						default: '',
+					},
+					{
+						displayName: 'Keyword Excluded',
+						name: 'keyword_exclude',
+						description: 'Regular expression for keywords to be excluded',
+						type: 'string',
+						default: '',
+					},
+					{
+						displayName: 'Keyword Included',
+						name: 'keyword_include',
+						description: 'Regular expression for keywords to be included',
+						type: 'string',
+						default: '',
+					},
+					{
+						displayName: 'KVI Keep NA',
+						name: 'kvi_keep_na',
+						type: 'boolean',
+						default: false,
+					},
+					{
+						displayName: 'Maximum Allintitle',
+						name: 'allintitle_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum Competition',
+						name: 'competition_max',
+						description: 'Between 0 and 1',
+						type: 'number',
+						typeOptions: {
+							minValue: 0,
+							maxValue: 1,
+						},
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum CPC',
+						name: 'cpc_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum Keyword Word Count',
+						name: 'keyword_word_count_max',
+						description: 'Max number of words making up the keyword',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum KGR',
+						name: 'kgr_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum KVI',
+						name: 'kvi_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum Position',
+						name: 'position_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum SERP Date',
+						name: 'serp_date_max',
+						type: 'string',
+						default: '',
+					},
+					{
+						displayName: 'Maximum Traffic',
+						name: 'traffic_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum Volume',
+						name: 'volume_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Allintitle',
+						name: 'allintitle_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Competition',
+						name: 'competition_min',
+						description: 'Between 0 and 1',
+						type: 'number',
+						typeOptions: {
+							minValue: 0,
+							maxValue: 1,
+						},
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum CPC',
+						name: 'cpc_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Keyword Word Count',
+						name: 'keyword_word_count_min',
+						description: 'Min number of words making up the keyword',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum KGR',
+						name: 'kgr_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum KVI',
+						name: 'kvi_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Position',
+						name: 'position_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum SERP Date',
+						name: 'serp_date_min',
+						type: 'string',
+						default: '',
+					},
+					{
+						displayName: 'Minimum Traffic',
+						name: 'traffic_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Volume',
+						name: 'volume_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Order',
+						name: 'order',
+						description: 'Whether the results are sorted in ascending or descending order',
+						type: 'options',
+						options: [
+							{ name: 'Ascending', value: 'asc' },
+							{ name: 'Descending', value: 'desc' },
+						],
+						default: 'asc',
+					},
+				],
+			},
+
 			// Additional Fields for Site Explorer operations
 			{
 				displayName: 'Additional Fields',
@@ -4274,6 +4468,7 @@ export class HaloscanV2 implements INodeType {
 						const lineCount = this.getNodeParameter('lineCount', i, 100) as number;
 						const page = this.getNodeParameter('page', i, 1) as number;
 						const orderBy = this.getNodeParameter('order_by_ranking', i, 'default') as string;
+						const additionalFieldsRankingOfDomainKeyword = this.getNodeParameter('additionalFields_getRankingOfDomainKeyword', i, {}) as IDataObject;
 
 						const body: IDataObject = {
 							input,
@@ -4287,7 +4482,7 @@ export class HaloscanV2 implements INodeType {
 							this,
 							'POST',
 							'/domains/positions',
-							removeEmptyValues(mergeAdditionalFields(body, additionalFields)),
+							removeEmptyValues(mergeAdditionalFields(body, additionalFieldsRankingOfDomainKeyword)),
 						);
 					} else if (operation === 'getVisibilityTrendOfDomains') {
 						const inputs = this.getNodeParameter('inputs', i) as string | string[];
