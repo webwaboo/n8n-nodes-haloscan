@@ -2496,6 +2496,178 @@ export class HaloscanV2 implements INodeType {
 				],
 			},
 
+			// Additional Fields for findSimilarKeyword operation
+			{
+				displayName: 'Additional Fields',
+				name: 'additionalFields_findSimilar',
+				type: 'collection',
+				placeholder: 'Add Field',
+				default: {},
+				displayOptions: {
+					show: {
+						resource: ['keywordExplorer'],
+						operation: ['findSimilarKeyword'],
+					},
+				},
+				options: [
+					{
+						displayName: 'Exclude',
+						name: 'exclude',
+						description: 'Regular expression for keywords to be excluded',
+						type: 'string',
+						default: '',
+					},
+					{
+						displayName: 'Include',
+						name: 'include',
+						description: 'Regular expression for keywords to be included',
+						type: 'string',
+						default: '',
+					},
+					{
+						displayName: 'KGR Max',
+						name: 'kgr_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'KGR Min',
+						name: 'kgr_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'KVI Keep NA',
+						name: 'kvi_keep_na',
+						type: 'boolean',
+						default: true,
+					},
+					{
+						displayName: 'KVI Max',
+						name: 'kvi_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'KVI Min',
+						name: 'kvi_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum Allintitle',
+						name: 'allintitle_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum Competition',
+						description: 'Maximum competition value, between 0 and 1',
+						name: 'competition_max',
+						type: 'number',
+						typeOptions: {
+							maxValue: 1,
+							minValue: 0,
+						},
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum CPC',
+						name: 'cpc_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Allintitle',
+						name: 'allintitle_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Competition',
+						description: 'Minimum competition value, between 0 and 1',
+						name: 'competition_min',
+						type: 'number',
+						typeOptions: {
+							maxValue: 1,
+							minValue: 0,
+						},
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum CPC',
+						name: 'cpc_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Order',
+						description: 'Whether the results are sorted in ascending or descending order',
+						name: 'order',
+						type: 'options',
+						options: [
+							{ name: 'Ascending', value: 'asc' },
+							{ name: 'Descending', value: 'desc' },
+						],
+						default: 'asc',
+					},
+					{
+						displayName: 'P1 Score Max',
+						description: 'Max common top 10',
+						name: 'p1_score_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'P1 Score Min',
+						description: 'Min common top 10',
+						name: 'p1_score_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Score Max',
+						description: 'Max common top 100',
+						name: 'score_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Score Min',
+						description: 'Min common top 100',
+						name: 'score_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Volume Max',
+						name: 'volume_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Volume Min',
+						name: 'volume_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Word Count Max',
+						description: 'Max number of words making up the keyword',
+						name: 'word_count_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Word Count Min',
+						description: 'Min number of words making up the keyword',
+						name: 'word_count_min',
+						type: 'number',
+						default: undefined,
+					},
+				],
+			},
+
 			// Additional Fields for getCompetitorBestPages operation
 			{
 				displayName: 'Additional Fields',
@@ -2924,6 +3096,7 @@ export class HaloscanV2 implements INodeType {
 						const page = this.getNodeParameter('page', i, 1) as number;
 						const orderBy = this.getNodeParameter('order_by_findSimilar', i, 'default') as string;
 						const order = this.getNodeParameter('order', i, 'desc') as string;
+						const additionalFieldsFindSimilar = this.getNodeParameter('additionalFields_findSimilar', i, {}) as IDataObject;
 
 						const body: IDataObject = {
 							keyword,
@@ -2939,7 +3112,7 @@ export class HaloscanV2 implements INodeType {
 							this,
 							'POST',
 							'/keywords/similar',
-							removeEmptyValues(mergeAdditionalFields(body, additionalFields)),
+							removeEmptyValues(mergeAdditionalFields(body, additionalFieldsFindSimilar)),
 						);
 					} else if (operation === 'getKeywordDataInBulk') {
 						const keywords = this.getNodeParameter('keywords', i) as string | string[];
