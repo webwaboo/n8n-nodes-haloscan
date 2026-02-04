@@ -3604,6 +3604,127 @@ export class HaloscanV2 implements INodeType {
 				],
 			},
 
+			// Additional Fields for getGMBBacklink operation
+			{
+				displayName: 'Additional Fields',
+				name: 'additionalFields_getGMBBacklink',
+				type: 'collection',
+				placeholder: 'Add Field',
+				default: {},
+				displayOptions: {
+					show: {
+						resource: ['siteExplorer'],
+						operation: ['getGMBBacklink'],
+					},
+				},
+				options: [
+					{
+						displayName: 'Categories Excluded',
+						name: 'categories_exclude',
+						description: 'Regular expression for categories to be excluded',
+						type: 'string',
+						default: '',
+					},
+					{
+						displayName: 'Categories Included',
+						name: 'categories_include',
+						description: 'Regular expression for categories to be included',
+						type: 'string',
+						default: '',
+					},
+					{
+						displayName: 'Is Claimed',
+						name: 'is_claimed',
+						description: "Whether to return claimed or unclaimed companies. When FALSE, only return unclaimed companies. When TRUE, only return claimed companies. Leave empty if you don't want to filter.",
+						type: 'boolean',
+						default: false,
+					},
+					{
+						displayName: 'Latitude Keep NA',
+						name: 'latitude_keep_na',
+						type: 'boolean',
+						default: false,
+					},
+					{
+						displayName: 'Longitude Keep NA',
+						name: 'longitude_keep_na',
+						type: 'boolean',
+						default: false,
+					},
+					{
+						displayName: 'Maximum Latitude',
+						name: 'latitude_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum Longitude',
+						name: 'longitude_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum Rating Count',
+						name: 'rating_count_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum Rating Value',
+						name: 'rating_value_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Latitude',
+						name: 'latitude_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Longitude',
+						name: 'longitude_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Rating Count',
+						name: 'rating_count_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Rating Value',
+						name: 'rating_value_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Order',
+						name: 'order',
+						description: 'Whether the results are sorted in ascending or descending order',
+						type: 'options',
+						options: [
+							{ name: 'Ascending', value: 'asc' },
+							{ name: 'Descending', value: 'desc' },
+						],
+						default: 'asc',
+					},
+					{
+						displayName: 'Rating Count Keep NA',
+						name: 'rating_count_keep_na',
+						type: 'boolean',
+						default: false,
+					},
+					{
+						displayName: 'Rating Value Keep NA',
+						name: 'rating_value_keep_na',
+						type: 'boolean',
+						default: false,
+					},
+				],
+			},
+
 			// Additional Fields for Site Explorer operations
 			{
 				displayName: 'Additional Fields',
@@ -4401,6 +4522,7 @@ export class HaloscanV2 implements INodeType {
 						const lineCount = this.getNodeParameter('lineCount', i, 100) as number;
 						const page = this.getNodeParameter('page', i, 1) as number;
 						const orderBy = this.getNodeParameter('order_by_backlink', i, 'default') as string;
+						const additionalFieldsGMBBacklink = this.getNodeParameter('additionalFields_getGMBBacklink', i, {}) as IDataObject;
 
 						const body: IDataObject = {
 							input,
@@ -4414,7 +4536,7 @@ export class HaloscanV2 implements INodeType {
 							this,
 							'POST',
 							'/domains/gmbBacklinks',
-							removeEmptyValues(mergeAdditionalFields(body, additionalFields)),
+							removeEmptyValues(mergeAdditionalFields(body, additionalFieldsGMBBacklink)),
 						);
 					} else if (operation === 'getHistoryOfDomainPages') {
 						const input = this.getNodeParameter('input', i) as string;
