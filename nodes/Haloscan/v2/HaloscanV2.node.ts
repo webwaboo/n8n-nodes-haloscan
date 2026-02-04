@@ -4233,6 +4233,116 @@ export class HaloscanV2 implements INodeType {
 				],
 			},
 
+			// Additional Fields for getDomainDataInBulk operation
+			{
+				displayName: 'Additional Fields',
+				name: 'additionalFields_getDomainDataInBulk',
+				type: 'collection',
+				placeholder: 'Add Field',
+				default: {},
+				displayOptions: {
+					show: {
+						resource: ['siteExplorer'],
+						operation: ['getDomainDataInBulk'],
+					},
+				},
+				options: [
+					{
+						displayName: 'Maximum Total Top 10',
+						name: 'total_top_10_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum Total Top 100',
+						name: 'total_top_100_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum Total Top 3',
+						name: 'total_top_3_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum Total Top 50',
+						name: 'total_top_50_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum Total Traffic',
+						name: 'total_traffic_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum Unique Keywords',
+						name: 'unique_keywords_max',
+						description: 'Between 0 and 1',
+						type: 'number',
+						typeOptions: {
+							minValue: 0,
+							maxValue: 1,
+						},
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Total Top 10',
+						name: 'total_top_10_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Total Top 100',
+						name: 'total_top_100_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Total Top 3',
+						name: 'total_top_3_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Total Top 50',
+						name: 'total_top_50_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Total Traffic',
+						name: 'total_traffic_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Unique Keywords',
+						name: 'unique_keywords_min',
+						description: 'Between 0 and 1',
+						type: 'number',
+						typeOptions: {
+							minValue: 0,
+							maxValue: 1,
+						},
+						default: undefined,
+					},
+					{
+						displayName: 'Order',
+						name: 'order',
+						description: 'Whether the results are sorted in ascending or descending order',
+						type: 'options',
+						options: [
+							{ name: 'Ascending', value: 'asc' },
+							{ name: 'Descending', value: 'desc' },
+						],
+						default: 'asc',
+					},
+				],
+			},
+
 			// Additional Fields for Site Explorer operations
 			{
 				displayName: 'Additional Fields',
@@ -4911,6 +5021,7 @@ export class HaloscanV2 implements INodeType {
 						const lineCount = this.getNodeParameter('lineCount', i, 100) as number;
 						const page = this.getNodeParameter('page', i, 1) as number;
 						const orderBy = this.getNodeParameter('order_by_bulk', i, 'default') as string;
+						const additionalFieldsDomainDataInBulk = this.getNodeParameter('additionalFields_getDomainDataInBulk', i, {}) as IDataObject;
 
 						const body: IDataObject = {
 							inputs: toArray(inputs),
@@ -4924,7 +5035,7 @@ export class HaloscanV2 implements INodeType {
 							this,
 							'POST',
 							'/domains/bulk',
-							removeEmptyValues(mergeAdditionalFields(body, additionalFields)),
+							removeEmptyValues(mergeAdditionalFields(body, additionalFieldsDomainDataInBulk)),
 						);
 					} else if (operation === 'getDomainGMBBacklinksMap') {
 						const input = this.getNodeParameter('input', i) as string;
