@@ -435,7 +435,7 @@ export class HaloscanV2 implements INodeType {
 			// Period for Compare Keywords SERP
 			{
 				displayName: 'Period',
-				description: "The comparison period for SERPs. If custom is used, 'first_date' and 'second_date' must be provided.",
+				description: "The comparison period for SERPs. If custom is used, first_date and second_date must be provided and be dates where the requested keyword's SERP is available, which you can get by calling the keywords/serp/availableDates endpoint, or by calling this endpoint with another period first.",
 				required: true,
 				name: 'period',
 				type: 'options',
@@ -538,7 +538,7 @@ export class HaloscanV2 implements INodeType {
 			// Language for Keyword Overview
 			{
 				displayName: 'Language',
-				description: "Only used in conjunction with 'categories' in 'requested_data'.",
+				description: "Only used in conjunction with \"categories\" in requested_data, the label field will be translated if a different language than english is requested. Original value is also present.",
 				name: 'lang',
 				type: 'options',
 				options: [
@@ -557,7 +557,7 @@ export class HaloscanV2 implements INodeType {
 			// Requested Data for Keyword Overview
 			{
 				displayName: 'Requested Data',
-				description: 'Requested data for the given keyword, corresponding to the content of different sections of the haloscan overview page.',
+				description: 'Requested data for the given keyword, corresponding to the content of different sections of the haloscan overview page. Data will be sent back in a field with the same name in the response, except for the metrics that are split into seo_metrics and ads_metrics in the response.',
 				required: true,
 				name: 'requestedData',
 				type: 'multiOptions',
@@ -575,7 +575,7 @@ export class HaloscanV2 implements INodeType {
 					{ name: 'Top Sites', value: 'top_sites' },
 					{ name: 'Volume History', value: 'volume_history' },
 				],
-				default: [],
+				default: ['metrics','keyword_match','similar_highlight','top_sites','serp'],
 				displayOptions: {
 					show: {
 						resource: ['keywordExplorer'],
@@ -587,7 +587,7 @@ export class HaloscanV2 implements INodeType {
 			// Exact Match
 			{
 				displayName: 'Exact Match',
-				description: 'Whether to always ignore accents, punctuation, case, special characters, etc when FALSE.',
+				description: 'Whether to always ignore accents, punctuation, case, special characters, etc when FALSE',
 				name: 'exactMatch',
 				type: 'boolean',
 				default: true,
@@ -762,7 +762,7 @@ export class HaloscanV2 implements INodeType {
 			},
 			{
 				displayName: 'Granularity',
-				description: 'Low granularity leads to one big group, high granularity leads to many smaller groups. Ignored if mode=\'manual\'',
+				description: 'Low granularity leads to one big group, high granularity leads to many smaller groups. Ignored if mode=\'manual\'.',
 				name: 'granularity',
 				type: 'number',
 				default: 1,
@@ -775,7 +775,7 @@ export class HaloscanV2 implements INodeType {
 			},
 			{
 				displayName: 'Multipartite Modes',
-				description: 'Which sources of data should be used to build the multipartite graph.',
+				description: 'Which sources of data should be used to build the multipartite graph',
 				name: 'multipartiteModes',
 				type: 'multiOptions',
 				options: [
@@ -795,7 +795,7 @@ export class HaloscanV2 implements INodeType {
 			},
 			{
 				displayName: 'Neighbours Sources',
-				description: 'Which strategies should be used to find neighbours for keyword.',
+				description: 'Which strategies should be used to find neighbours for keyword',
 				name: 'neighboursSources',
 				type: 'multiOptions',
 				options: [
@@ -952,7 +952,7 @@ export class HaloscanV2 implements INodeType {
 			// Root Domain Keys for Reveal Expired Domains
 			{
 				displayName: 'Root Domain Keys',
-				description: "List of root_domain_key fields from items in the domains/expired endpoint which you want to reveal.",
+				description: "List of root_domain_key fields from items in the domains/expired endpoint which you want to reveal. 1 expired domain credit will be consumed for each item in this list that you haven't previously revealed.",
 				name: 'rootDomainKeys',
 				type: 'string',
 				default: [],
@@ -1053,7 +1053,7 @@ export class HaloscanV2 implements INodeType {
 			// Requested Data for Domain Overview
 			{
 				displayName: 'Requested Data',
-				description: 'Requested data for the given URL or domain.',
+				description: 'Requested data for the given URL or domain',
 				name: 'requestedData',
 				type: 'multiOptions',
 				options: [
@@ -1081,7 +1081,7 @@ export class HaloscanV2 implements INodeType {
 			// Language for Domain Overview
 			{
 				displayName: 'Language',
-				description: "Only used in conjunction with 'categories' in 'requested_data'.",
+				description: "Only used in conjunction with \'categories\' in \'requested_data\'",
 				name: 'lang',
 				type: 'options',
 				options: [
@@ -1120,7 +1120,7 @@ export class HaloscanV2 implements INodeType {
 			// Boolean filters for Compare Domain Keywords
 			{
 				displayName: 'Missing',
-				description: 'Include positions where the search input is not positioned, but at least one competitor is',
+				description: 'Whether to include positions where the search input is not positioned, and at least one of the requested competitors is',
 				name: 'missing',
 				type: 'boolean',
 				default: true,
@@ -1133,7 +1133,7 @@ export class HaloscanV2 implements INodeType {
 			},
 			{
 				displayName: 'Besting',
-				description: 'Include positions where the search input is positioned better than at least one competitor',
+				description: 'Whether to include positions where the search input is positioned, and better positioned than at least one of the requested competitors',
 				name: 'besting',
 				type: 'boolean',
 				default: true,
@@ -1146,7 +1146,7 @@ export class HaloscanV2 implements INodeType {
 			},
 			{
 				displayName: 'Bested',
-				description: 'Include positions where the search input is positioned, but at least one competitor is better',
+				description: 'Whether to include positions where the search input is positioned, but at least one of the requested competitors is positioned better',
 				name: 'bested',
 				type: 'boolean',
 				default: true,
@@ -1159,7 +1159,7 @@ export class HaloscanV2 implements INodeType {
 			},
 			{
 				displayName: 'Exclusive',
-				description: 'Include positions where only the search input is positioned, and none of the competitors',
+				description: 'Whether to include positions where only the search input is positioned, and none of the requested competitors is',
 				name: 'exclusive',
 				type: 'boolean',
 				default: true,
@@ -1174,7 +1174,7 @@ export class HaloscanV2 implements INodeType {
 			// Accepted Types for Compare Domain Keywords
 			{
 				displayName: 'Accepted Types',
-				description: 'Filter by comparison type',
+				description: 'That’s just a filter, it’s not necessary to use it if you used the matching boolean params (using the boolean params makes it faster). The only difference is that with this, you can separate mixed keywords, where seed is better than some competitors and less good than others. Hence, bested and besting become absolute: bested by every single competitor (that is there), or besting every single competitor',
 				name: 'acceptedTypes',
 				type: 'multiOptions',
 				options: [
@@ -2204,13 +2204,6 @@ export class HaloscanV2 implements INodeType {
 						name: 'allintitle_min',
 						type: 'number',
 						default: '',
-					},
-					{
-						displayName: 'BOOOOOBA',
-						name: 'allintitle_min',
-						type: 'number',
-						default: '',
-						displayOptions: { show: { operation: ['getKeywordOverview'] } }
 					},
 					{
 						displayName: 'Competition Max',
