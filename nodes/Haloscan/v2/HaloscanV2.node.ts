@@ -2769,6 +2769,221 @@ export class HaloscanV2 implements INodeType {
 				],
 			},
 
+			// Additional Fields for getCompetitorsKeywordsBestPosition operation
+			{
+				displayName: 'Additional Fields',
+				name: 'additionalFields_getCompetitorsKeywordsBestPosition',
+				type: 'collection',
+				placeholder: 'Add Field',
+				default: {},
+				displayOptions: {
+					show: {
+						resource: ['siteExplorer'],
+						operation: ['getCompetitorsKeywordsBestPosition'],
+					},
+				},
+				options: [
+					{
+						displayName: 'Allintitle Keep NA',
+						name: 'allintitle_keep_na',
+						type: 'boolean',
+						default: false,
+					},
+					{
+						displayName: 'Best Competitor Traffic Keep NA',
+						name: 'best_competitor_traffic_keep_na',
+						type: 'boolean',
+						default: false,
+					},
+					{
+						displayName: 'Competition Keep NA',
+						name: 'competition_keep_na',
+						type: 'boolean',
+						default: false,
+					},
+					{
+						displayName: 'CPC Keep NA',
+						name: 'cpc_keep_na',
+						type: 'boolean',
+						default: false,
+					},
+					{
+						displayName: 'Keyword Excluded',
+						name: 'keyword_exclude',
+						description: 'Regular expression for keywords to be excluded',
+						type: 'string',
+						default: '',
+					},
+					{
+						displayName: 'Keyword Included',
+						name: 'keyword_include',
+						description: 'Regular expression for keywords to be included',
+						type: 'string',
+						default: '',
+					},
+					{
+						displayName: 'KGR Keep NA',
+						name: 'kgr_keep_na',
+						type: 'boolean',
+						default: false,
+					},
+					{
+						displayName: 'KVI Keep NA',
+						name: 'kvi_keep_na',
+						type: 'boolean',
+						default: false,
+					},
+					{
+						displayName: 'Maximum Allintitle',
+						name: 'allintitle_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum Best Competitor Position',
+						name: 'best_competitor_position_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum Best Competitor Traffic',
+						name: 'best_competitor_traffic_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum Competition',
+						name: 'competition_max',
+						description: 'Between 0 and 1',
+						type: 'number',
+						typeOptions: {
+							minValue: 0,
+							maxValue: 1,
+						},
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum Competitors Positions',
+						name: 'competitors_positions_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum CPC',
+						name: 'cpc_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum Keyword Word Count',
+						name: 'keyword_word_count_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum KGR',
+						name: 'kgr_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum KVI',
+						name: 'kvi_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum Unique Competitors Count',
+						name: 'unique_competitors_count_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Maximum Volume',
+						name: 'volume_max',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Allintitle',
+						name: 'allintitle_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Best Competitor Position',
+						name: 'best_competitor_position_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Best Competitor Traffic',
+						name: 'best_competitor_traffic_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Competition',
+						name: 'competition_min',
+						description: 'Between 0 and 1',
+						type: 'number',
+						typeOptions: {
+							minValue: 0,
+							maxValue: 1,
+						},
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Competitors Positions',
+						name: 'competitors_positions_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum CPC',
+						name: 'cpc_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Keyword Word Count',
+						name: 'keyword_word_count_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum KGR',
+						name: 'kgr_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum KVI',
+						name: 'kvi_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Unique Competitors Count',
+						name: 'unique_competitors_count_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Minimum Volume',
+						name: 'volume_min',
+						type: 'number',
+						default: undefined,
+					},
+					{
+						displayName: 'Volume Keep NA',
+						name: 'volume_keep_na',
+						type: 'boolean',
+						default: false,
+					},
+				],
+			},
+
 			// Additional Fields for Site Explorer operations
 			{
 				displayName: 'Additional Fields',
@@ -3393,6 +3608,7 @@ export class HaloscanV2 implements INodeType {
 						const lineCount = this.getNodeParameter('lineCount', i, 100) as number;
 						const page = this.getNodeParameter('page', i, 1) as number;
 						const orderBy = this.getNodeParameter('order_by_bestposition', i, 'default') as string;
+						const additionalFieldsKeywordsBestPosition = this.getNodeParameter('additionalFields_getCompetitorsKeywordsBestPosition', i, {}) as IDataObject;
 
 						const body: IDataObject = {
 							competitors: toArray(competitors),
@@ -3407,7 +3623,7 @@ export class HaloscanV2 implements INodeType {
 							this,
 							'POST',
 							'/domains/siteCompetitors/keywordsBestPos',
-							removeEmptyValues(mergeAdditionalFields(body, additionalFields)),
+							removeEmptyValues(mergeAdditionalFields(body, additionalFieldsKeywordsBestPosition)),
 						);
 					} else if (operation === 'getDomainCategoriesBasedOnGMBBacklinks') {
 						const input = this.getNodeParameter('input', i) as string;
