@@ -629,7 +629,7 @@ export class HaloscanV2 implements INodeType {
 				description: 'Whether to include only PAA (People Also Ask) from google in the response',
 				name: 'keepOnlyPaa',
 				type: 'boolean',
-				default: true,
+				default: false,
 				displayOptions: {
 					show: {
 						resource: ['keywordExplorer'],
@@ -671,7 +671,7 @@ export class HaloscanV2 implements INodeType {
 				displayName: 'Minimum Depth',
 				name: 'depthMin',
 				type: 'number',
-				default: '',
+				default: null,
 				displayOptions: {
 					show: {
 						resource: ['keywordExplorer'],
@@ -683,7 +683,7 @@ export class HaloscanV2 implements INodeType {
 				displayName: 'Maximum Depth',
 				name: 'depthMax',
 				type: 'number',
-				default: '',
+				default: null,
 				displayOptions: {
 					show: {
 						resource: ['keywordExplorer'],
@@ -3407,6 +3407,20 @@ export class HaloscanV2 implements INodeType {
 						type: 'string',
 						default: '',
 					},
+					{
+						displayName: 'URL Excluded',
+						name: 'url_include',
+						description: 'Regular expression for URL to be excluded',
+						type: 'string',
+						default: '',
+					},
+					{
+						displayName: 'URL Included',
+						name: 'url_exclude',
+						description: 'Regular expression for URL to be included',
+						type: 'string',
+						default: '',
+					},
 				],
 			},
 
@@ -4353,7 +4367,7 @@ export class HaloscanV2 implements INodeType {
 				displayOptions: {
 					show: {
 						resource: ['siteExplorer'],
-						operation: ['compareDomainKeywordsWithCompetitors','getCompetitorBestPages','getCompetitorsKeywordsBestPosition','getDomainPositionHistory'],
+						operation: ['compareDomainKeywordsWithCompetitors','getCompetitorBestPages','getCompetitorsKeywordsBestPosition'],
 					},
 				},
 				options: [
