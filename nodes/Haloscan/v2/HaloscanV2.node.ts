@@ -1032,7 +1032,6 @@ export class HaloscanV2 implements INodeType {
 						operation: [
 							'compareDomainKeywordsWithCompetitors',
 							'getCompetitorBestPages',
-							'getCompetitorsKeywordsBestPosition',
 							'getDomainCategoriesBasedOnGMBBacklinks',
 							'getDomainCompetitors',
 							'getDomainDataInBulk',
@@ -1046,6 +1045,25 @@ export class HaloscanV2 implements INodeType {
 							'getRankingOfDomainKeyword',
 							'getVisibilityTrendOfDomains',
 						],
+					},
+				},
+			},
+
+			// Mode for getCompetitorsKeywordsBestPosition operations
+			{
+				displayName: 'Mode',
+				description: 'Whether to look for a domain or a full URL. Leave empty for auto detection.',
+				name: 'mode_getCompetitorsKeywordsBestPosition',
+				type: 'options',
+				options: [
+					{ name: 'Domain', value: 'domain' },
+					{ name: 'Root', value: 'root' }
+				],
+				default: 'root',
+				displayOptions: {
+					show: {
+						resource: ['siteExplorer'],
+						operation: ['getCompetitorsKeywordsBestPosition'],
 					},
 				},
 			},
@@ -1201,10 +1219,12 @@ export class HaloscanV2 implements INodeType {
 				name: 'type',
 				type: 'options',
 				options: [
-					{ name: 'Positions Breakdown', value: 'positions_breakdown' },
-					{ name: 'Visibility Index', value: 'visibility_index' },
+					{ name: 'Index', value: 'index' },
+					{ name: 'First', value: 'first' },
+					{ name: 'Highest', value: 'highest' },
+					{ name: 'Trends', value: 'trends' },
 				],
-				default: 'visibility_index',
+				default: 'trends',
 				displayOptions: {
 					show: {
 						resource: ['siteExplorer'],
@@ -4343,17 +4363,7 @@ export class HaloscanV2 implements INodeType {
 						},
 						default: undefined,
 					},
-					{
-						displayName: 'Order',
-						name: 'order',
-						description: 'Whether the results are sorted in ascending or descending order',
-						type: 'options',
-						options: [
-							{ name: 'Ascending', value: 'asc' },
-							{ name: 'Descending', value: 'desc' },
-						],
-						default: 'asc',
-					},
+
 				],
 			},
 
@@ -4367,7 +4377,7 @@ export class HaloscanV2 implements INodeType {
 				displayOptions: {
 					show: {
 						resource: ['siteExplorer'],
-						operation: ['compareDomainKeywordsWithCompetitors','getCompetitorBestPages','getCompetitorsKeywordsBestPosition'],
+						operation: ['compareDomainKeywordsWithCompetitors','getCompetitorBestPages'],
 					},
 				},
 				options: [
@@ -4981,6 +4991,7 @@ export class HaloscanV2 implements INodeType {
 						const lineCount = this.getNodeParameter('lineCount', i, 100) as number;
 						const page = this.getNodeParameter('page', i, 1) as number;
 						const orderBy = this.getNodeParameter('order_by_bestposition', i, 'default') as string;
+						const mode = this.getNodeParameter('mode_getCompetitorsKeywordsBestPosition', i, 'root') as string;
 						const additionalFieldsKeywordsBestPosition = this.getNodeParameter('additionalFields_getCompetitorsKeywordsBestPosition', i, {}) as IDataObject;
 
 						const body: IDataObject = {
