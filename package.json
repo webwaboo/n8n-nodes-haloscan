@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-haloscan",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Haloscan is a powerful SEO analysis tool that provides insights into keyword rankings, domain metrics, and related searches.",
   "keywords": [
     "n8n-community-node-package"
