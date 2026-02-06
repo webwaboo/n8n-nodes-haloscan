@@ -2,6 +2,7 @@ import {
 	IAuthenticateGeneric,
 	ICredentialType,
 	INodeProperties,
+	ICredentialTestRequest
 } from 'n8n-workflow';
 
 export class HaloscanApi implements ICredentialType {
@@ -19,12 +20,21 @@ export class HaloscanApi implements ICredentialType {
 			default: '',
 		},
 	];
+
 	authenticate: IAuthenticateGeneric = {
 		type: 'generic',
 		properties: {
 			headers: {
 				'haloscan-api-key': '={{$credentials.apiKey}}'
 			}
+		},
+	};
+
+	test: ICredentialTestRequest = {
+		request: {
+			baseURL: 'https://api.haloscan.com/api',
+			url: '/user/credit',
+			method: 'GET',
 		},
 	};
 }
