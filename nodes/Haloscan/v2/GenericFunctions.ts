@@ -3,7 +3,7 @@ import type {
 	IHookFunctions,
 	ILoadOptionsFunctions,
 	IHttpRequestMethods,
-	IRequestOptions,
+	IHttpRequestOptions,
 	IDataObject,
 } from 'n8n-workflow';
 import { NodeApiError } from 'n8n-workflow';
@@ -20,15 +20,14 @@ export async function haloscanApiRequest(
 ): Promise<IDataObject | IDataObject[]> {
 	const credentials = await this.getCredentials('haloscanApi');
 
-	const options: IRequestOptions = {
+	const options: IHttpRequestOptions = {
 		method,
 		headers: {
 			'haloscan-api-key': credentials.apiKey as string,
 			'Accept': 'application/json',
 			'Content-Type': 'application/json',
 		},
-		uri: `https://api.haloscan.com/api${endpoint}`,
-		json: true,
+		url: `https://api.haloscan.com/api${endpoint}`,
 	};
 
 	if (Object.keys(body).length > 0) {
@@ -40,7 +39,7 @@ export async function haloscanApiRequest(
 	}
 
 	try {
-		const response = await this.helpers.request(options);
+		const response = await this.helpers.httpRequest(options);
 		return response;
 	} catch (error: unknown) {
 		// Extract detailed error information from API response
