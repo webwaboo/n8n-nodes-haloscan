@@ -1,5 +1,6 @@
 import {
 	IAuthenticateGeneric,
+	Icon,
 	ICredentialType,
 	INodeProperties,
 	ICredentialTestRequest
@@ -10,6 +11,7 @@ export class HaloscanApi implements ICredentialType {
 	displayName = 'Haloscan API';
 	// Uses the link to this tutorial as an example
 	// Replace with your own docs links when building your own nodes
+	icon: Icon = { light: 'file:../nodes/Haloscan/haloscan_bleu_square.svg', dark: 'file:../nodes/Haloscan/haloscan_bleu_square.svg' };
 	documentationUrl = 'https://www.sequance.fr/documentation-api-make-haloscan/';
 	properties: INodeProperties[] = [
 		{
