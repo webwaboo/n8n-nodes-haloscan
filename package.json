@@ -27,7 +27,8 @@
     "format": "prettier nodes credentials --write",
     "lint": "eslint nodes credentials package.json",
     "lintfix": "eslint nodes credentials package.json --fix",
-    "prepublishOnly": "pnpm build && pnpm lint -c .eslintrc.prepublish.js nodes credentials package.json"
+    "prepublishOnly": "pnpm build && pnpm lint -c .eslintrc.prepublish.js nodes credentials package.json",
+    "release": "release-it"
   },
   "files": [
     "dist"
@@ -48,10 +49,16 @@
     "eslint-plugin-n8n-nodes-base": "^1.16.1",
     "gulp": "^5.0.1",
     "prettier": "^3.3.2",
+    "release-it": "^19.2.4",
     "typescript": "^5.5.2"
   },
   "peerDependencies": {
     "n8n-workflow": "*"
   },
-  "dependencies": {}
+  "release-it": {
+    "$schema": "https://unpkg.com/release-it/schema/release-it.json",
+    "github": {
+      "release": true
+    }
+  }
 }
