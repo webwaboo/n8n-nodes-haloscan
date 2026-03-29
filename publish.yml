@@ -99,3 +99,7 @@ jobs:
           npm run release
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          # Avoids "spawn ENAMETOOLONG": sets provenance via config instead of
+          # --provenance CLI flag, preventing npm from embedding the long OIDC
+          # token URL in a spawned subprocess command name.
+          NPM_CONFIG_PROVENANCE: 'true'
