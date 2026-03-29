@@ -1,4 +1,4 @@
-import { INodeType, INodeTypeDescription } from 'n8n-workflow';
+import { INodeType, INodeTypeDescription, NodeConnectionTypes } from 'n8n-workflow';
 
 export class Haloscan implements INodeType {
 	description: INodeTypeDescription = { // Basic node details will go here
@@ -17,8 +17,8 @@ export class Haloscan implements INodeType {
 		defaults: {
 			name: 'Haloscan',
 		},
-		inputs: ['main'],
-		outputs: ['main'],
+		inputs: [NodeConnectionTypes.Main],
+		outputs: [NodeConnectionTypes.Main],
 		//name your credentials "mynodenameApi"
 		credentials: [
 			{
@@ -46,12 +46,6 @@ export class Haloscan implements INodeType {
 			options: [
 				{
 					//name displayed in dropdown
-					name: 'User',
-					//name for the system
-					value: 'user',
-				},
-				{
-					//name displayed in dropdown
 					name: 'Keyword Explorer',
 					//name for the system
 					value: 'keywordExplorer',
@@ -61,6 +55,12 @@ export class Haloscan implements INodeType {
 					name: 'Site Explorer',
 					//name for the system
 					value: 'siteExplorer',
+				},
+				{
+					//name displayed in dropdown
+					name: 'User',
+					//name for the system
+					value: 'user',
 				},
 			],
 			//default option displayed

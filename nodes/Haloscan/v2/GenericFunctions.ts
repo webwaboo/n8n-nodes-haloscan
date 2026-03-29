@@ -18,12 +18,9 @@ export async function haloscanApiRequest(
 	body: IDataObject = {},
 	query: IDataObject = {},
 ): Promise<IDataObject | IDataObject[]> {
-	const credentials = await this.getCredentials('haloscanApi');
-
 	const options: IHttpRequestOptions = {
 		method,
 		headers: {
-			'haloscan-api-key': credentials.apiKey as string,
 			'Accept': 'application/json',
 			'Content-Type': 'application/json',
 		},
@@ -39,7 +36,7 @@ export async function haloscanApiRequest(
 	}
 
 	try {
-		const response = await this.helpers.httpRequest(options);
+		const response = await this.helpers.httpRequestWithAuthentication.call(this, 'haloscanApi', options);
 		return response;
 	} catch (error: unknown) {
 		// Extract detailed error information from API response

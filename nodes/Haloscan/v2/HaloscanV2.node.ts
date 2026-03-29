@@ -5,6 +5,7 @@ import {
 	INodeTypeDescription,
 	IDataObject,
 	NodeOperationError,
+	NodeConnectionTypes,
 } from 'n8n-workflow';
 
 import {
@@ -27,8 +28,8 @@ export class HaloscanV2 implements INodeType {
 		defaults: {
 			name: 'Haloscan',
 		},
-		inputs: ['main'],
-		outputs: ['main'],
+		inputs: [NodeConnectionTypes.Main],
+		outputs: [NodeConnectionTypes.Main],
 		credentials: [
 			{
 				name: 'haloscanApi',
@@ -44,16 +45,16 @@ export class HaloscanV2 implements INodeType {
 				noDataExpression: true,
 				options: [
 					{
-						name: 'User',
-						value: 'user',
-					},
-					{
 						name: 'Keyword Explorer',
 						value: 'keywordExplorer',
 					},
 					{
 						name: 'Site Explorer',
 						value: 'siteExplorer',
+					},
+					{
+						name: 'User',
+						value: 'user',
 					},
 				],
 				default: 'keywordExplorer',
