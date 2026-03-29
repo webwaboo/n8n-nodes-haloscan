@@ -28,7 +28,9 @@ export class HaloscanV2 implements INodeType {
 		defaults: {
 			name: 'Haloscan',
 		},
+		// eslint-disable-next-line n8n-nodes-base/node-class-description-inputs-wrong-regular-node
 		inputs: [NodeConnectionTypes.Main],
+		// eslint-disable-next-line n8n-nodes-base/node-class-description-outputs-wrong
 		outputs: [NodeConnectionTypes.Main],
 		credentials: [
 			{
